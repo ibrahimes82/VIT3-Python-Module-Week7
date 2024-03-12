@@ -44,7 +44,7 @@ class LoginPage(QMainWindow):
                 self.close()
                 self.userprewindow_open.show()
             else:
-                self.loginform.label_log_fail.setText("\tYour email or password is incorrect.")
+                self.loginform.label_log_fail.setText("\tSalih Your email or password is incorrect.")
                 self.loginform.lineEdit_log_username.setText("")
                 self.loginform.lineEdit_log_password.setText("")
 
