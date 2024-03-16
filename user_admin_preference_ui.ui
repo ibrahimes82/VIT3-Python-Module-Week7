@@ -259,7 +259,7 @@ QPushButton:hover{
 Meeting</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_user_admin_main_menu">
+  <widget class="QPushButton" name="pushButton_user_admin_login_page">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -299,7 +299,8 @@ QPushButton:hover{
 </string>
    </property>
    <property name="text">
-    <string>Main Menu</string>
+    <string>Login 
+Page</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_user_admin_interviews">

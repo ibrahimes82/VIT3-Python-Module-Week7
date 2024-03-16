@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton_login = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_login.setGeometry(QtCore.QRect(86, 200, 91, 31))
+        self.pushButton_login.setGeometry(QtCore.QRect(80, 200, 91, 31))
         self.pushButton_login.setMouseTracking(True)
         self.pushButton_login.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
         self.pushButton_login.setStyleSheet("QPushButton{\n"
@@ -42,7 +42,7 @@ class Ui_MainWindow(object):
 "")
         self.pushButton_login.setObjectName("pushButton_login")
         self.pushButton_exit = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_exit.setGeometry(QtCore.QRect(186, 200, 91, 31))
+        self.pushButton_exit.setGeometry(QtCore.QRect(180, 200, 91, 31))
         self.pushButton_exit.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
@@ -105,12 +105,12 @@ class Ui_MainWindow(object):
         self.lineEdit_password.setText("")
         self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.lineEdit_password.setObjectName("lineEdit_password")
-        self.label_logo = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_logo.setGeometry(QtCore.QRect(40, 20, 251, 71))
-        self.label_logo.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
-        self.label_logo.setText("")
-        self.label_logo.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
-        self.label_logo.setObjectName("label_logo")
+        self.label = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(40, 20, 251, 71))
+        self.label.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
+        self.label.setObjectName("label")
         self.pushButton_forgot = QtWidgets.QPushButton(parent=self.centralwidget)
         self.pushButton_forgot.setGeometry(QtCore.QRect(90, 250, 181, 31))
         self.pushButton_forgot.setStyleSheet("QPushButton{\n"
@@ -123,10 +123,9 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_forgot.setObjectName("pushButton_forgot")
         self.label_fail = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_fail.setGeometry(QtCore.QRect(40, 175, 261, 21))
+        self.label_fail.setGeometry(QtCore.QRect(80, 175, 201, 21))
         self.label_fail.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
-"\n"
-"color: rgba(255, 0, 0, 0.5);\n"
+"color: rgb(189, 31, 57);\n"
 "border-radius : 15px;")
         self.label_fail.setScaledContents(False)
         self.label_fail.setObjectName("label_fail")
