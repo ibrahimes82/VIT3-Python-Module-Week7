@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'user_preference.ui'
+# Form implementation generated from reading ui file 'user_preference_ui.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -104,16 +104,16 @@ class Ui_Form(object):
 "}\n"
 "")
         self.pushButton_user_pre_exit.setObjectName("pushButton_user_pre_exit")
-        self.pushButton_user_pre_main_menu = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_user_pre_main_menu.setGeometry(QtCore.QRect(149, 341, 75, 75))
-        self.pushButton_user_pre_main_menu.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_user_pre_main_menu.setMaximumSize(QtCore.QSize(75, 75))
+        self.pushButton_user_pre_login_page = QtWidgets.QPushButton(parent=Form)
+        self.pushButton_user_pre_login_page.setGeometry(QtCore.QRect(149, 341, 75, 75))
+        self.pushButton_user_pre_login_page.setMinimumSize(QtCore.QSize(75, 75))
+        self.pushButton_user_pre_login_page.setMaximumSize(QtCore.QSize(75, 75))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
         font.setBold(True)
-        self.pushButton_user_pre_main_menu.setFont(font)
-        self.pushButton_user_pre_main_menu.setStyleSheet("QPushButton{\n"
+        self.pushButton_user_pre_login_page.setFont(font)
+        self.pushButton_user_pre_login_page.setStyleSheet("QPushButton{\n"
 "    border-radius : 37px;\n"
 "    background-color: rgb(255, 140, 61);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -123,7 +123,7 @@ class Ui_Form(object):
 "    background-color: rgb(170, 92, 41);\n"
 "}\n"
 "")
-        self.pushButton_user_pre_main_menu.setObjectName("pushButton_user_pre_main_menu")
+        self.pushButton_user_pre_login_page.setObjectName("pushButton_user_pre_login_page")
         self.pushButton_user_pre_mentor_meeting = QtWidgets.QPushButton(parent=Form)
         self.pushButton_user_pre_mentor_meeting.setGeometry(QtCore.QRect(107, 224, 75, 75))
         self.pushButton_user_pre_mentor_meeting.setMinimumSize(QtCore.QSize(75, 75))
@@ -167,7 +167,8 @@ class Ui_Form(object):
         self.pushButton_user_pre_applications.setText(_translate("Form", "Applications"))
         self.pushButton_user_pre_interviews.setText(_translate("Form", "Interviews"))
         self.pushButton_user_pre_exit.setText(_translate("Form", "Exit"))
-        self.pushButton_user_pre_main_menu.setText(_translate("Form", "Main Menu"))
+        self.pushButton_user_pre_login_page.setText(_translate("Form", "Login \n"
+"Page"))
         self.pushButton_user_pre_mentor_meeting.setText(_translate("Form", "Mentor\n"
 "Meeting"))
 

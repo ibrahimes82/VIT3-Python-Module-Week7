@@ -18,25 +18,31 @@ class UserAdminPreferencePage(QWidget):
         self.useradminform.pushButton_user_admin_applications.clicked.connect(self.app_in)
         self.useradminform.pushButton_user_admin_interviews.clicked.connect(self.inter_in)
         self.useradminform.pushButton_user_admin_exit.clicked.connect(self.exit_in)
-        self.useradminform.pushButton_user_admin_main_menu.clicked.connect(self.menu_in)
+        self.useradminform.pushButton_user_admin_login_page.clicked.connect(self.logpage_in)
         self.useradminform.pushButton_user_admin_mentor_meeting.clicked.connect(self.mentor_in)
         self.useradminform.pushButton_user_admin_menu.clicked.connect(self.adminmenu_in)
 
     def app_in(self):
+        self.hide()
         UserPreferencePage.app_in(self)
 
     def inter_in(self):
+        self.hide()
         UserPreferencePage.inter_in(self)
 
     def exit_in(self):
         UserPreferencePage.exit_in(self)
         
-    def menu_in(self):pass
-
+    def logpage_in(self):
+        from login import LoginPage
+        self.hide()
+        self.loginwindow = LoginPage()
+        self.loginwindow.show()
+        
 
     def mentor_in(self):
         UserPreferencePage.mentor_in(self)
-
+        
     def adminmenu_in(self):
         self.close()
         self.mainadminmenu_open.show()    

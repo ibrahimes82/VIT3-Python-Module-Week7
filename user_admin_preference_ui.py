@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'user_admin_preference.ui'
+# Form implementation generated from reading ui file 'user_admin_preference_ui.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -118,16 +118,16 @@ class Ui_Form(object):
 "}\n"
 "")
         self.pushButton_user_admin_mentor_meeting.setObjectName("pushButton_user_admin_mentor_meeting")
-        self.pushButton_user_admin_main_menu = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_user_admin_main_menu.setGeometry(QtCore.QRect(150, 342, 75, 75))
-        self.pushButton_user_admin_main_menu.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_user_admin_main_menu.setMaximumSize(QtCore.QSize(75, 75))
+        self.pushButton_user_admin_login_page = QtWidgets.QPushButton(parent=Form)
+        self.pushButton_user_admin_login_page.setGeometry(QtCore.QRect(150, 342, 75, 75))
+        self.pushButton_user_admin_login_page.setMinimumSize(QtCore.QSize(75, 75))
+        self.pushButton_user_admin_login_page.setMaximumSize(QtCore.QSize(75, 75))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
         font.setBold(True)
-        self.pushButton_user_admin_main_menu.setFont(font)
-        self.pushButton_user_admin_main_menu.setStyleSheet("QPushButton{\n"
+        self.pushButton_user_admin_login_page.setFont(font)
+        self.pushButton_user_admin_login_page.setStyleSheet("QPushButton{\n"
 "    border-radius : 37px;\n"
 "    background-color: rgb(255, 140, 61);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -136,7 +136,7 @@ class Ui_Form(object):
 "    background-color: rgb(184, 100, 44);\n"
 "}\n"
 "")
-        self.pushButton_user_admin_main_menu.setObjectName("pushButton_user_admin_main_menu")
+        self.pushButton_user_admin_login_page.setObjectName("pushButton_user_admin_login_page")
         self.pushButton_user_admin_interviews = QtWidgets.QPushButton(parent=Form)
         self.pushButton_user_admin_interviews.setGeometry(QtCore.QRect(319, 223, 75, 75))
         self.pushButton_user_admin_interviews.setMinimumSize(QtCore.QSize(75, 75))
@@ -169,7 +169,8 @@ class Ui_Form(object):
 "Menu"))
         self.pushButton_user_admin_mentor_meeting.setText(_translate("Form", "Mentor \n"
 "Meeting"))
-        self.pushButton_user_admin_main_menu.setText(_translate("Form", "Main Menu"))
+        self.pushButton_user_admin_login_page.setText(_translate("Form", "Login \n"
+"Page"))
         self.pushButton_user_admin_interviews.setText(_translate("Form", "Interviews"))
 
 
