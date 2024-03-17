@@ -19,34 +19,34 @@ class Ui_Form(object):
         icon.addPixmap(QtGui.QPixmap("pictures/wehere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         Form.setWindowIcon(icon)
         Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
-        self.label = QtWidgets.QLabel(parent=Form)
-        self.label.setGeometry(QtCore.QRect(120, 20, 261, 101))
-        self.label.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(parent=Form)
-        self.label_2.setGeometry(QtCore.QRect(80, 130, 341, 311))
+        self.labelLogo = QtWidgets.QLabel(parent=Form)
+        self.labelLogo.setGeometry(QtCore.QRect(120, 20, 261, 101))
+        self.labelLogo.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        self.labelLogo.setText("")
+        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
+        self.labelLogo.setObjectName("labelLogo")
+        self.labelPicMenu = QtWidgets.QLabel(parent=Form)
+        self.labelPicMenu.setGeometry(QtCore.QRect(80, 130, 341, 311))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
         font.setBold(True)
-        self.label_2.setFont(font)
-        self.label_2.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("pictures/user_loop.png"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setObjectName("label_2")
-        self.pushButton_user_admin_exit = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_user_admin_exit.setGeometry(QtCore.QRect(278, 341, 75, 75))
-        self.pushButton_user_admin_exit.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_user_admin_exit.setMaximumSize(QtCore.QSize(75, 75))
+        self.labelPicMenu.setFont(font)
+        self.labelPicMenu.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        self.labelPicMenu.setText("")
+        self.labelPicMenu.setPixmap(QtGui.QPixmap("pictures/user_loop.png"))
+        self.labelPicMenu.setScaledContents(True)
+        self.labelPicMenu.setObjectName("labelPicMenu")
+        self.pushButtonExit = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonExit.setGeometry(QtCore.QRect(278, 341, 75, 75))
+        self.pushButtonExit.setMinimumSize(QtCore.QSize(75, 75))
+        self.pushButtonExit.setMaximumSize(QtCore.QSize(75, 75))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
         font.setBold(True)
-        self.pushButton_user_admin_exit.setFont(font)
-        self.pushButton_user_admin_exit.setStyleSheet("QPushButton{\n"
+        self.pushButtonExit.setFont(font)
+        self.pushButtonExit.setStyleSheet("QPushButton{\n"
 "    border-radius : 37px;\n"
 "    background-color: rgb(243, 199, 65);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -56,17 +56,17 @@ class Ui_Form(object):
 "    background-color: rgb(162, 132, 43);\n"
 "}\n"
 "")
-        self.pushButton_user_admin_exit.setObjectName("pushButton_user_admin_exit")
-        self.pushButton_user_admin_applications = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_user_admin_applications.setGeometry(QtCore.QRect(213, 155, 75, 75))
-        self.pushButton_user_admin_applications.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_user_admin_applications.setMaximumSize(QtCore.QSize(75, 75))
+        self.pushButtonExit.setObjectName("pushButtonExit")
+        self.pushButtonApplications = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonApplications.setGeometry(QtCore.QRect(213, 155, 75, 75))
+        self.pushButtonApplications.setMinimumSize(QtCore.QSize(75, 75))
+        self.pushButtonApplications.setMaximumSize(QtCore.QSize(75, 75))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
         font.setBold(True)
-        self.pushButton_user_admin_applications.setFont(font)
-        self.pushButton_user_admin_applications.setStyleSheet("QPushButton{\n"
+        self.pushButtonApplications.setFont(font)
+        self.pushButtonApplications.setStyleSheet("QPushButton{\n"
 "    border-radius : 37px;\n"
 "    \n"
 "    background-color: rgb(0, 204, 209);\n"
@@ -78,17 +78,17 @@ class Ui_Form(object):
 "    background-color: rgb(0, 251, 255);\n"
 "}\n"
 "")
-        self.pushButton_user_admin_applications.setObjectName("pushButton_user_admin_applications")
-        self.pushButton_user_admin_menu = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_user_admin_menu.setGeometry(QtCore.QRect(210, 250, 75, 75))
-        self.pushButton_user_admin_menu.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_user_admin_menu.setMaximumSize(QtCore.QSize(75, 75))
+        self.pushButtonApplications.setObjectName("pushButtonApplications")
+        self.pushButtonAdminMenu = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonAdminMenu.setGeometry(QtCore.QRect(210, 250, 75, 75))
+        self.pushButtonAdminMenu.setMinimumSize(QtCore.QSize(75, 75))
+        self.pushButtonAdminMenu.setMaximumSize(QtCore.QSize(75, 75))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
         font.setBold(True)
-        self.pushButton_user_admin_menu.setFont(font)
-        self.pushButton_user_admin_menu.setStyleSheet("QPushButton{\n"
+        self.pushButtonAdminMenu.setFont(font)
+        self.pushButtonAdminMenu.setStyleSheet("QPushButton{\n"
 "    border-radius : 37px;\n"
 "    background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 123, 0, 255), stop:1 rgba(0, 255, 255, 255));\n"
 "    color: rgb(255, 255, 255);\n"
@@ -98,17 +98,17 @@ class Ui_Form(object):
 "    background-color: rgb(0, 170, 28);\n"
 "}\n"
 "")
-        self.pushButton_user_admin_menu.setObjectName("pushButton_user_admin_menu")
-        self.pushButton_user_admin_mentor_meeting = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_user_admin_mentor_meeting.setGeometry(QtCore.QRect(106, 224, 75, 75))
-        self.pushButton_user_admin_mentor_meeting.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_user_admin_mentor_meeting.setMaximumSize(QtCore.QSize(75, 75))
+        self.pushButtonAdminMenu.setObjectName("pushButtonAdminMenu")
+        self.pushButtonMentorMeeting = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonMentorMeeting.setGeometry(QtCore.QRect(106, 224, 75, 75))
+        self.pushButtonMentorMeeting.setMinimumSize(QtCore.QSize(75, 75))
+        self.pushButtonMentorMeeting.setMaximumSize(QtCore.QSize(75, 75))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
         font.setBold(True)
-        self.pushButton_user_admin_mentor_meeting.setFont(font)
-        self.pushButton_user_admin_mentor_meeting.setStyleSheet("QPushButton{\n"
+        self.pushButtonMentorMeeting.setFont(font)
+        self.pushButtonMentorMeeting.setStyleSheet("QPushButton{\n"
 "    border-radius : 37px;\n"
 "    background-color: rgb(255, 109, 102);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -117,17 +117,17 @@ class Ui_Form(object):
 "    background-color: rgb(195, 82, 78);\n"
 "}\n"
 "")
-        self.pushButton_user_admin_mentor_meeting.setObjectName("pushButton_user_admin_mentor_meeting")
-        self.pushButton_user_admin_login_page = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_user_admin_login_page.setGeometry(QtCore.QRect(150, 342, 75, 75))
-        self.pushButton_user_admin_login_page.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_user_admin_login_page.setMaximumSize(QtCore.QSize(75, 75))
+        self.pushButtonMentorMeeting.setObjectName("pushButtonMentorMeeting")
+        self.pushButtonSignOut = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonSignOut.setGeometry(QtCore.QRect(150, 342, 75, 75))
+        self.pushButtonSignOut.setMinimumSize(QtCore.QSize(75, 75))
+        self.pushButtonSignOut.setMaximumSize(QtCore.QSize(75, 75))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
         font.setBold(True)
-        self.pushButton_user_admin_login_page.setFont(font)
-        self.pushButton_user_admin_login_page.setStyleSheet("QPushButton{\n"
+        self.pushButtonSignOut.setFont(font)
+        self.pushButtonSignOut.setStyleSheet("QPushButton{\n"
 "    border-radius : 37px;\n"
 "    background-color: rgb(255, 140, 61);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -136,17 +136,17 @@ class Ui_Form(object):
 "    background-color: rgb(184, 100, 44);\n"
 "}\n"
 "")
-        self.pushButton_user_admin_login_page.setObjectName("pushButton_user_admin_login_page")
-        self.pushButton_user_admin_interviews = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_user_admin_interviews.setGeometry(QtCore.QRect(319, 223, 75, 75))
-        self.pushButton_user_admin_interviews.setMinimumSize(QtCore.QSize(75, 75))
-        self.pushButton_user_admin_interviews.setMaximumSize(QtCore.QSize(75, 75))
+        self.pushButtonSignOut.setObjectName("pushButtonSignOut")
+        self.pushButtonInterviews = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonInterviews.setGeometry(QtCore.QRect(319, 223, 75, 75))
+        self.pushButtonInterviews.setMinimumSize(QtCore.QSize(75, 75))
+        self.pushButtonInterviews.setMaximumSize(QtCore.QSize(75, 75))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(8)
         font.setBold(True)
-        self.pushButton_user_admin_interviews.setFont(font)
-        self.pushButton_user_admin_interviews.setStyleSheet("QPushButton{\n"
+        self.pushButtonInterviews.setFont(font)
+        self.pushButtonInterviews.setStyleSheet("QPushButton{\n"
 "    border-radius : 37px;\n"
 "    background-color: rgb(0, 108, 143);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -155,23 +155,38 @@ class Ui_Form(object):
 "    background-color: rgb(0, 152, 198);\n"
 "}\n"
 "")
-        self.pushButton_user_admin_interviews.setObjectName("pushButton_user_admin_interviews")
+        self.pushButtonInterviews.setObjectName("pushButtonInterviews")
+        self.frameCurrentUser = QtWidgets.QFrame(parent=Form)
+        self.frameCurrentUser.setGeometry(QtCore.QRect(430, 0, 71, 51))
+        self.frameCurrentUser.setStyleSheet("background-color: rgba(0, 0, 0, 0);")
+        self.frameCurrentUser.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frameCurrentUser.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frameCurrentUser.setObjectName("frameCurrentUser")
+        self.labelCurrentUser = QtWidgets.QLabel(parent=self.frameCurrentUser)
+        self.labelCurrentUser.setGeometry(QtCore.QRect(20, 0, 31, 31))
+        self.labelCurrentUser.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.labelCurrentUser.setPixmap(QtGui.QPixmap("pictures/wehere_icon.png"))
+        self.labelCurrentUser.setObjectName("labelCurrentUser")
+        self.labelAccountName = QtWidgets.QLabel(parent=self.frameCurrentUser)
+        self.labelAccountName.setGeometry(QtCore.QRect(10, 30, 51, 20))
+        self.labelAccountName.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.labelAccountName.setObjectName("labelAccountName")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "USER ADMIN PREFENCE"))
-        self.pushButton_user_admin_exit.setText(_translate("Form", "Exit"))
-        self.pushButton_user_admin_applications.setText(_translate("Form", "Applications"))
-        self.pushButton_user_admin_menu.setText(_translate("Form", "Admin\n"
+        Form.setWindowTitle(_translate("Form", "ADMIN MENU"))
+        self.pushButtonExit.setText(_translate("Form", "Exit"))
+        self.pushButtonApplications.setText(_translate("Form", "Applications"))
+        self.pushButtonAdminMenu.setText(_translate("Form", "Admin\n"
 "Menu"))
-        self.pushButton_user_admin_mentor_meeting.setText(_translate("Form", "Mentor \n"
+        self.pushButtonMentorMeeting.setText(_translate("Form", "Mentor \n"
 "Meeting"))
-        self.pushButton_user_admin_login_page.setText(_translate("Form", "Login \n"
-"Page"))
-        self.pushButton_user_admin_interviews.setText(_translate("Form", "Interviews"))
+        self.pushButtonSignOut.setText(_translate("Form", "Sign Out"))
+        self.pushButtonInterviews.setText(_translate("Form", "Interviews"))
+        self.labelAccountName.setText(_translate("Form", "Account"))
 
 
 if __name__ == "__main__":

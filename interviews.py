@@ -10,7 +10,8 @@ gc = gspread.service_account(filename=credentials)
 spreadsheet_users = gc.open('Mulakatlar')
 worksheet_interviews = spreadsheet_users.get_worksheet(0)
 interviews = worksheet_interviews.get_all_values()
-interviews.pop(0)
+headers = interviews[0]     # Başlıkları al
+interviews.pop(0)           # Başlıkları at
 
 
 class InterviewsPage(QWidget):
@@ -25,12 +26,17 @@ class InterviewsPage(QWidget):
         self.form_interviews.pushButtonSearch.clicked.connect(self.search_name)
         self.form_interviews.pushButtonSubmittedProjects.clicked.connect(self.get_submitted_projects)
         self.form_interviews.pushButtonProjectArrivals.clicked.connect(self.get_projects_arrivals)
-        self.form_interviews.pushButtonPreferences.clicked.connect(self.back_menu)
+        self.form_interviews.pushButtonBackMenu.clicked.connect(self.back_menu)
         self.form_interviews.pushButtonExit.clicked.connect(self.app_exit)
         self.form_interviews.lineEditUsername.returnPressed.connect(self.search_name)
 
     def write2table(self, a_list):
         table_widget = self.form_interviews.tableWidget
+        # Tabloyu temizle
+        table_widget.clearContents()
+        # Tabloya başlık ekle
+        table_widget.setColumnCount(len(headers))
+        table_widget.setHorizontalHeaderLabels(headers)
         table_widget.setRowCount(len(a_list))
         for i, row in enumerate(a_list):
             for j, col in enumerate(row):

@@ -15,7 +15,7 @@ class Ui_FormInterviews(object):
         FormInterviews.resize(750, 590)
         FormInterviews.setMinimumSize(QtCore.QSize(750, 590))
         FormInterviews.setMaximumSize(QtCore.QSize(750, 590))
-        FormInterviews.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
+        FormInterviews.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
         self.labelPicture = QtWidgets.QLabel(parent=FormInterviews)
         self.labelPicture.setGeometry(QtCore.QRect(10, 10, 201, 171))
         self.labelPicture.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
@@ -52,23 +52,25 @@ class Ui_FormInterviews(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButtonExit.setObjectName("pushButtonExit")
-        self.pushButtonPreferences = QtWidgets.QPushButton(parent=FormInterviews)
-        self.pushButtonPreferences.setGeometry(QtCore.QRect(20, 460, 171, 31))
+        self.pushButtonBackMenu = QtWidgets.QPushButton(parent=FormInterviews)
+        self.pushButtonBackMenu.setGeometry(QtCore.QRect(20, 460, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButtonPreferences.setFont(font)
-        self.pushButtonPreferences.setStyleSheet("QPushButton{\n"
+        self.pushButtonBackMenu.setFont(font)
+        self.pushButtonBackMenu.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButtonPreferences.setObjectName("pushButtonPreferences")
+        self.pushButtonBackMenu.setObjectName("pushButtonBackMenu")
         self.pushButtonSubmittedProjects = QtWidgets.QPushButton(parent=FormInterviews)
         self.pushButtonSubmittedProjects.setGeometry(QtCore.QRect(20, 320, 171, 31))
         font = QtGui.QFont()
@@ -82,6 +84,7 @@ class Ui_FormInterviews(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButtonSubmittedProjects.setObjectName("pushButtonSubmittedProjects")
         self.lineEditUsername = QtWidgets.QLineEdit(parent=FormInterviews)
@@ -140,6 +143,7 @@ class Ui_FormInterviews(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButtonSearch.setObjectName("pushButtonSearch")
         self.labelMenu = QtWidgets.QLabel(parent=FormInterviews)
@@ -165,6 +169,7 @@ class Ui_FormInterviews(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButtonProjectArrivals.setObjectName("pushButtonProjectArrivals")
 
@@ -176,7 +181,7 @@ class Ui_FormInterviews(object):
         FormInterviews.setWindowTitle(_translate("FormInterviews", "INTERVIEWS"))
         self.labelInterviews.setText(_translate("FormInterviews", "INTERVIEWS "))
         self.pushButtonExit.setText(_translate("FormInterviews", "Exit"))
-        self.pushButtonPreferences.setText(_translate("FormInterviews", "Back Menu"))
+        self.pushButtonBackMenu.setText(_translate("FormInterviews", "Back Menu"))
         self.pushButtonSubmittedProjects.setText(_translate("FormInterviews", "Submitted Projects"))
         self.lineEditUsername.setPlaceholderText(_translate("FormInterviews", "      Name or Surname"))
         item = self.tableWidget.horizontalHeaderItem(0)

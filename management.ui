@@ -36,7 +36,7 @@
     <normaloff>pictures/wehere_icon.png</normaloff>pictures/wehere_icon.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));</string>
   </property>
   <widget class="QPushButton" name="pushButton_mam_exit">
    <property name="geometry">
@@ -61,6 +61,7 @@
 }
 QPushButton:hover{
 	background-color: rgb(20, 135, 135);
+ border: 2px solid rgb(162, 0, 0);
 }</string>
    </property>
    <property name="text">
@@ -77,7 +78,8 @@ QPushButton:hover{
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgba(0, 0, 0,0%);</string>
+    <string notr="true">
+background-color: rgba(0, 0, 0,0%);</string>
    </property>
    <property name="text">
     <string/>
@@ -109,6 +111,7 @@ QPushButton:hover{
 }
 QPushButton:hover{
 	background-color: rgb(20, 135, 135);
+ border: 2px solid rgb(162, 0, 0);
 }</string>
    </property>
    <property name="text">
@@ -200,7 +203,7 @@ color: rgb(71, 84, 88);</string>
     </property>
    </column>
   </widget>
-  <widget class="QPushButton" name="pushButton_mam_pre_adm_menu">
+  <widget class="QPushButton" name="pushButton_back_menu">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -223,10 +226,11 @@ color: rgb(71, 84, 88);</string>
 }
 QPushButton:hover{
 	background-color: rgb(20, 135, 135);
+ border: 2px solid rgb(162, 0, 0);
 }</string>
    </property>
    <property name="text">
-    <string>Preference-Admin Menu</string>
+    <string>Back Menu</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
@@ -276,6 +280,7 @@ color: rgb(71, 84, 88);</string>
 }
 QPushButton:hover{
 	background-color: rgb(20, 135, 135);
+ border: 2px solid rgb(162, 0, 0);
 }</string>
    </property>
    <property name="text">

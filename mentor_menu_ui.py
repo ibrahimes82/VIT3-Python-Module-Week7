@@ -18,7 +18,7 @@ class Ui_Form(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("pictures/wehere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         Form.setWindowIcon(icon)
-        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
+        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
         self.label = QtWidgets.QLabel(parent=Form)
         self.label.setGeometry(QtCore.QRect(20, 20, 211, 141))
         self.label.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
@@ -55,6 +55,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_mentor_all_app.setObjectName("pushButton_mentor_all_app")
         self.pushButton_mentor_exit = QtWidgets.QPushButton(parent=Form)
@@ -70,6 +71,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_mentor_exit.setObjectName("pushButton_mentor_exit")
         self.lineEdit_mentor_username = QtWidgets.QLineEdit(parent=Form)
@@ -114,6 +116,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_mentor_back.setObjectName("pushButton_mentor_back")
         self.pushButton_mentor_search = QtWidgets.QPushButton(parent=Form)
@@ -129,6 +132,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_mentor_search.setObjectName("pushButton_mentor_search")
         self.tableWidget_mentor = QtWidgets.QTableWidget(parent=Form)

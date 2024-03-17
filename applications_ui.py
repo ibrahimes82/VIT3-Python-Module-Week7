@@ -18,7 +18,7 @@ class Ui_Form(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("pictures/wehere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         Form.setWindowIcon(icon)
-        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
+        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
         self.pushButton_app_all_app = QtWidgets.QPushButton(parent=Form)
         self.pushButton_app_all_app.setGeometry(QtCore.QRect(40, 210, 171, 31))
         font = QtGui.QFont()
@@ -32,6 +32,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+"    border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_app_all_app.setObjectName("pushButton_app_all_app")
         self.label = QtWidgets.QLabel(parent=Form)
@@ -53,6 +54,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+"    border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_app_planned_mentor.setObjectName("pushButton_app_planned_mentor")
         self.pushButton_app_unscheduled_meeting = QtWidgets.QPushButton(parent=Form)
@@ -68,6 +70,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+"    border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_app_unscheduled_meeting.setObjectName("pushButton_app_unscheduled_meeting")
         self.pushButton_app_pre_vit_control = QtWidgets.QPushButton(parent=Form)
@@ -83,6 +86,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_app_pre_vit_control.setObjectName("pushButton_app_pre_vit_control")
         self.pushButton_app_rep_registrations = QtWidgets.QPushButton(parent=Form)
@@ -98,6 +102,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_app_rep_registrations.setObjectName("pushButton_app_rep_registrations")
         self.pushButton_diff_registration = QtWidgets.QPushButton(parent=Form)
@@ -113,25 +118,27 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_diff_registration.setObjectName("pushButton_diff_registration")
-        self.pushButton_app_preferences = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_app_preferences.setGeometry(QtCore.QRect(40, 510, 171, 31))
+        self.pushButton_app_back_menu = QtWidgets.QPushButton(parent=Form)
+        self.pushButton_app_back_menu.setGeometry(QtCore.QRect(40, 560, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_app_preferences.setFont(font)
-        self.pushButton_app_preferences.setStyleSheet("QPushButton{\n"
+        self.pushButton_app_back_menu.setFont(font)
+        self.pushButton_app_back_menu.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_app_preferences.setObjectName("pushButton_app_preferences")
+        self.pushButton_app_back_menu.setObjectName("pushButton_app_back_menu")
         self.pushButton_app_filter_app = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_app_filter_app.setGeometry(QtCore.QRect(40, 560, 171, 31))
+        self.pushButton_app_filter_app.setGeometry(QtCore.QRect(40, 510, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
@@ -143,6 +150,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_app_filter_app.setObjectName("pushButton_app_filter_app")
         self.pushButton_app_exit = QtWidgets.QPushButton(parent=Form)
@@ -158,6 +166,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+"    border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_app_exit.setObjectName("pushButton_app_exit")
         self.pushButton_app_search = QtWidgets.QPushButton(parent=Form)
@@ -173,6 +182,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+"    border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_app_search.setObjectName("pushButton_app_search")
         self.tableWidget_app = QtWidgets.QTableWidget(parent=Form)
@@ -256,7 +266,7 @@ class Ui_Form(object):
         self.pushButton_app_pre_vit_control.setText(_translate("Form", "Previous VIT Control"))
         self.pushButton_app_rep_registrations.setText(_translate("Form", "Repeated Registration"))
         self.pushButton_diff_registration.setText(_translate("Form", "Different Registration"))
-        self.pushButton_app_preferences.setText(_translate("Form", "Preferences"))
+        self.pushButton_app_back_menu.setText(_translate("Form", "Back Menu"))
         self.pushButton_app_filter_app.setText(_translate("Form", "Filter Application"))
         self.pushButton_app_exit.setText(_translate("Form", "Exit"))
         self.pushButton_app_search.setText(_translate("Form", "Search"))

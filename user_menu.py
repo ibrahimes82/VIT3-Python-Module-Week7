@@ -10,25 +10,29 @@ class UserPreferencePage(QWidget):
     def __init__(self, current_user) -> None:
         super().__init__()
         self.current_user = current_user
-        self.userpreform = Ui_Form()
-        self.userpreform.setupUi(self)
-        self.applicationswindow_open = ApplicationsPage()
-        self.interviewswindow_open = None
-        self.mentormenu_open = MentorMenuPage()
-        self.userpreform.pushButton_user_pre_applications.clicked.connect(self.app_in)
-        self.userpreform.pushButton_user_pre_interviews.clicked.connect(self.inter_in)
-        self.userpreform.pushButton_user_pre_exit.clicked.connect(self.exit_in)
-        self.userpreform.pushButton_user_pre_login_page.clicked.connect(self.logpage_in)
-        self.userpreform.pushButton_user_pre_mentor_meeting.clicked.connect(self.mentor_in)
+        self.user_menu_form = Ui_Form()
+        self.user_menu_form.setupUi(self)
+        self.user_menu_form.labelAccountName.setText(str(current_user[0]).split(' ')[0])
+
+        self.login_window = None
+        self.applications_window_open = ApplicationsPage()
+        self.interviews_window_open = None
+        self.mentor_menu_open = MentorMenuPage()
+
+        self.user_menu_form.pushButtonInterviews.clicked.connect(self.inter_in)
+        self.user_menu_form.pushButtonApplications.clicked.connect(self.app_in)
+        self.user_menu_form.pushButtonMentorMeeting.clicked.connect(self.mentor_in)
+        self.user_menu_form.pushButtonSignOut.clicked.connect(self.logpage_in)
+        self.user_menu_form.pushButtonExit.clicked.connect(self.exit_in)
 
     def app_in(self):
         self.hide()
-        self.applicationswindow_open.show()
+        self.applications_window_open.show()
 
     def inter_in(self):
         self.hide()
-        self.interviewswindow_open = InterviewsPage(self.current_user)
-        self.interviewswindow_open.show()
+        self.interviews_window_open = InterviewsPage(self.current_user)
+        self.interviews_window_open.show()
 
     def exit_in(self):
         self.close()
@@ -36,10 +40,10 @@ class UserPreferencePage(QWidget):
     def logpage_in(self):
         from login import LoginPage
         self.hide()
-        self.loginwindow = LoginPage()
-        self.loginwindow.show()
+        self.login_window = LoginPage()
+        self.login_window.show()
         
     def mentor_in(self):
         self.hide()
-        self.mentormenu_open.show()
+        self.mentor_menu_open.show()
         

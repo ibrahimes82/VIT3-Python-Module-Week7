@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>USER ADMIN PREFENCE</string>
+   <string>ADMIN MENU</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -32,7 +32,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="labelLogo">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -51,7 +51,7 @@
     <pixmap>pictures/wehere_logo.ico</pixmap>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="labelPicMenu">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -80,7 +80,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_user_admin_exit">
+  <widget class="QPushButton" name="pushButtonExit">
    <property name="geometry">
     <rect>
      <x>278</x>
@@ -124,7 +124,7 @@ QPushButton:hover{
     <string>Exit</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_user_admin_applications">
+  <widget class="QPushButton" name="pushButtonApplications">
    <property name="geometry">
     <rect>
      <x>213</x>
@@ -170,7 +170,7 @@ QPushButton:hover{
     <string>Applications</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_user_admin_menu">
+  <widget class="QPushButton" name="pushButtonAdminMenu">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -215,7 +215,7 @@ QPushButton:hover{
 Menu</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_user_admin_mentor_meeting">
+  <widget class="QPushButton" name="pushButtonMentorMeeting">
    <property name="geometry">
     <rect>
      <x>106</x>
@@ -259,7 +259,7 @@ QPushButton:hover{
 Meeting</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_user_admin_login_page">
+  <widget class="QPushButton" name="pushButtonSignOut">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -299,11 +299,10 @@ QPushButton:hover{
 </string>
    </property>
    <property name="text">
-    <string>Login 
-Page</string>
+    <string>Sign Out</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_user_admin_interviews">
+  <widget class="QPushButton" name="pushButtonInterviews">
    <property name="geometry">
     <rect>
      <x>319</x>
@@ -345,6 +344,57 @@ QPushButton:hover{
    <property name="text">
     <string>Interviews</string>
    </property>
+  </widget>
+  <widget class="QFrame" name="frameCurrentUser">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>0</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="labelCurrentUser">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="pixmap">
+     <pixmap>pictures/wehere_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelAccountName">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Account</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
