@@ -148,7 +148,7 @@ QPushButton:hover{
 }</string>
    </property>
    <property name="text">
-    <string>Preferences</string>
+    <string>Back Menu</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonSubmittedProjects">

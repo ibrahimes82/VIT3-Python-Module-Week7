@@ -1,18 +1,19 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget
-from user_preference_ui import Ui_Form
+from user_menu_ui import Ui_Form
 from applications import ApplicationsPage
 from interviews import InterviewsPage
 from mentor_menu import MentorMenuPage
 
 
 class UserPreferencePage(QWidget):
-    def __init__(self) -> None:
+    def __init__(self, current_user) -> None:
         super().__init__()
+        self.current_user = current_user
         self.userpreform = Ui_Form()
         self.userpreform.setupUi(self)
         self.applicationswindow_open = ApplicationsPage()
-        self.interviewswindow_open = InterviewsPage() 
+        self.interviewswindow_open = None
         self.mentormenu_open = MentorMenuPage()
         self.userpreform.pushButton_user_pre_applications.clicked.connect(self.app_in)
         self.userpreform.pushButton_user_pre_interviews.clicked.connect(self.inter_in)
@@ -26,6 +27,7 @@ class UserPreferencePage(QWidget):
 
     def inter_in(self):
         self.hide()
+        self.interviewswindow_open = InterviewsPage(self.current_user)
         self.interviewswindow_open.show()
 
     def exit_in(self):

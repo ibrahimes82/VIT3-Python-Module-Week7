@@ -1,11 +1,10 @@
-from PyQt6.QtWidgets import QMainWindow
-from PyQt6 import QtCore
+from PyQt6.QtWidgets import QMainWindow, QLineEdit
+
 import gspread
 from login_ui import Ui_MainWindow
-from user_admin_preference import UserAdminPreferencePage
-from user_preference import UserPreferencePage
-import json
-import os
+from admin_menu import UserAdminPreferencePage
+from user_menu import UserPreferencePage
+
 credentials = 'key.json'
 gc = gspread.service_account(filename=credentials)
 spreadsheet_users = gc.open('Kullanicilar')
@@ -17,68 +16,47 @@ users.pop(0)
 class LoginPage(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
-        self.loginForm = Ui_MainWindow()
-        self.loginForm.setupUi(self)
-        self.useradminwindow_open = UserAdminPreferencePage()
-        self.userprewindow_open = UserPreferencePage()
-        
-        # Herhangi bir anda Enter tusuna basinca yetki kontrolu yapmak icin kodlar
-        self.loginForm.lineEdit_password.returnPressed.connect(self.app_login)
-        self.loginForm.lineEdit_username.returnPressed.connect(self.app_login)
+        self.form_login = Ui_MainWindow()
+        self.form_login.setupUi(self)
+        self.menu_admin = None
+        self.menu_user = None
+
+        # Password alaninda iken Enter tusuna basinca yetki kontrolu yapmak icin kodlar
+        self.form_login.lineEditPassword.returnPressed.connect(self.app_login)
 
         # 'pushButton_log_login' butonuna tiklandiginda yetki kontrolu yapmak icin kodlar
-        self.loginForm.pushButton_login.clicked.connect(self.app_login)
-        self.loginForm.pushButton_exit.clicked.connect(self.log_exit)
-        
-    def log_exit(self):
-        self.close() 
+        self.form_login.pushButtonLogin.clicked.connect(self.app_login)
+        self.form_login.pushButtonExit.clicked.connect(self.app_exit)
 
+        # Checking the correctness of the password
+        self.form_login.checkBoxPassword.clicked.connect(self.check_password)
 
     def app_login(self):
         user_type = None
-        username = self.loginForm.lineEdit_username.text()
-        password = self.loginForm.lineEdit_password.text()
-        
-         
-        for user in users:
-            if os.path.exists('user_type.json'):
-                with open('user_type.json', 'w') as json_file:
-                    json.dump({}, json_file)
-                    
-            if username == user[0] and password == user[1] and user[2] == 'admin':
-                user_type = 'admin'
-                with open('user_type.json', 'w') as json_file:
-                   json.dump({"user_type": user_type}, json_file)
-                
-                self.hide()
-                self.useradminwindow_open.show()
-                self.loginForm.lineEdit_username.setText("")
-                self.loginForm.lineEdit_password.setText("")
-                self.loginForm.label_fail.setText("")
-                
-                break
-            elif username == user[0] and password == user[1] and user[2] == 'user':
-                user_type = 'user'
-                with open('user_type.json', 'w') as json_file:
-                   json.dump({"user_type": user_type}, json_file)
-                self.hide()
-                self.userprewindow_open.show()
-                self.loginForm.lineEdit_username.setText("")
-                self.loginForm.lineEdit_password.setText("")
-                self.loginForm.label_fail.setText("")
-                break
+        username = self.form_login.lineEditUsername.text()
+        password = self.form_login.lineEditPassword.text()
 
+        for user in users:
+            if username == user[0] and password == user[1] and user[2] == 'admin':
+                self.hide()
+                self.menu_admin = UserAdminPreferencePage(user)
+                self.menu_admin.show()
+
+            elif username == user[0] and password == user[1] and user[2] == 'user':
+                self.hide()
+                self.menu_user = UserPreferencePage(user)
+                self.menu_user.show()
+            else:
+                self.form_login.labelFail.setText("<b>Your email or password is incorrect.</b>")
+                self.form_login.lineEditUsername.setText("")
+                self.form_login.lineEditPassword.setText("")
+
+    # To check the correctness of the password
+    def check_password(self):
+        if self.form_login.checkBoxPassword.isChecked():
+            self.form_login.lineEditPassword.setEchoMode(QLineEdit.EchoMode.Normal)
         else:
-            self.loginForm.label_fail.setText("<b>Your email or password is incorrect.</b>")
-            self.loginForm.lineEdit_username.setText("")
-            self.loginForm.lineEdit_password.setText("") 
-    
-       
-    def fail_del(self):
-        self.loginForm.label_fail.setText("")
-        
-    
-    
-    
+            self.form_login.lineEditPassword.setEchoMode(QLineEdit.EchoMode.Password)
+
+    def app_exit(self):
+        self.close()

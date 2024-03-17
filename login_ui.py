@@ -27,11 +27,11 @@ class Ui_MainWindow(object):
         MainWindow.setDocumentMode(False)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.pushButton_login = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_login.setGeometry(QtCore.QRect(80, 200, 91, 31))
-        self.pushButton_login.setMouseTracking(True)
-        self.pushButton_login.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
-        self.pushButton_login.setStyleSheet("QPushButton{\n"
+        self.pushButtonLogin = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.pushButtonLogin.setGeometry(QtCore.QRect(80, 200, 91, 31))
+        self.pushButtonLogin.setMouseTracking(True)
+        self.pushButtonLogin.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
+        self.pushButtonLogin.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -40,10 +40,10 @@ class Ui_MainWindow(object):
 "    background-color: rgb(20, 135, 135);\n"
 "}\n"
 "")
-        self.pushButton_login.setObjectName("pushButton_login")
-        self.pushButton_exit = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_exit.setGeometry(QtCore.QRect(180, 200, 91, 31))
-        self.pushButton_exit.setStyleSheet("QPushButton{\n"
+        self.pushButtonLogin.setObjectName("pushButtonLogin")
+        self.pushButtonExit = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.pushButtonExit.setGeometry(QtCore.QRect(180, 200, 91, 31))
+        self.pushButtonExit.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -52,12 +52,12 @@ class Ui_MainWindow(object):
 "    background-color: rgb(20, 135, 135);\n"
 "}\n"
 "")
-        self.pushButton_exit.setObjectName("pushButton_exit")
-        self.lineEdit_username = QtWidgets.QLineEdit(parent=self.centralwidget)
-        self.lineEdit_username.setEnabled(True)
-        self.lineEdit_username.setGeometry(QtCore.QRect(80, 100, 191, 31))
-        self.lineEdit_username.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
-        self.lineEdit_username.setStyleSheet("QLineEdit {\n"
+        self.pushButtonExit.setObjectName("pushButtonExit")
+        self.lineEditUsername = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.lineEditUsername.setEnabled(True)
+        self.lineEditUsername.setGeometry(QtCore.QRect(80, 100, 191, 31))
+        self.lineEditUsername.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
+        self.lineEditUsername.setStyleSheet("QLineEdit {\n"
 "  border: 2px solid rgb(38, 38, 48);\n"
 "  border-radius: 15px;\n"
 "  color: #FFF;\n"
@@ -80,11 +80,12 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
-        self.lineEdit_username.setText("")
-        self.lineEdit_username.setObjectName("lineEdit_username")
-        self.lineEdit_password = QtWidgets.QLineEdit(parent=self.centralwidget)
-        self.lineEdit_password.setGeometry(QtCore.QRect(80, 140, 191, 31))
-        self.lineEdit_password.setStyleSheet("QLineEdit {\n"
+        self.lineEditUsername.setText("")
+        self.lineEditUsername.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.lineEditUsername.setObjectName("lineEditUsername")
+        self.lineEditPassword = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.lineEditPassword.setGeometry(QtCore.QRect(80, 140, 191, 31))
+        self.lineEditPassword.setStyleSheet("QLineEdit {\n"
 "  border: 2px solid rgb(38, 38, 48);\n"
 "  border-radius: 15px;\n"
 "  color: #FFF;\n"
@@ -102,18 +103,19 @@ class Ui_MainWindow(object):
 "  background-color: rgb(47, 47, 47);\n"
 "}\n"
 "")
-        self.lineEdit_password.setText("")
-        self.lineEdit_password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
-        self.lineEdit_password.setObjectName("lineEdit_password")
-        self.label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(40, 20, 251, 71))
-        self.label.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
-        self.label.setObjectName("label")
-        self.pushButton_forgot = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_forgot.setGeometry(QtCore.QRect(90, 250, 181, 31))
-        self.pushButton_forgot.setStyleSheet("QPushButton{\n"
+        self.lineEditPassword.setText("")
+        self.lineEditPassword.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
+        self.lineEditPassword.setObjectName("lineEditPassword")
+        self.labelLogo = QtWidgets.QLabel(parent=self.centralwidget)
+        self.labelLogo.setGeometry(QtCore.QRect(40, 20, 251, 71))
+        self.labelLogo.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        self.labelLogo.setText("")
+        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
+        self.labelLogo.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.labelLogo.setObjectName("labelLogo")
+        self.pushButtonForgot = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.pushButtonForgot.setGeometry(QtCore.QRect(90, 250, 181, 31))
+        self.pushButtonForgot.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color: rgba(0, 0, 0,0%);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -121,14 +123,21 @@ class Ui_MainWindow(object):
 "QPushButton:hover{\n"
 "    background-color: rgb(107, 107, 107);\n"
 "}")
-        self.pushButton_forgot.setObjectName("pushButton_forgot")
-        self.label_fail = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_fail.setGeometry(QtCore.QRect(80, 175, 201, 21))
-        self.label_fail.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
-"color: rgb(189, 31, 57);\n"
+        self.pushButtonForgot.setObjectName("pushButtonForgot")
+        self.labelFail = QtWidgets.QLabel(parent=self.centralwidget)
+        self.labelFail.setGeometry(QtCore.QRect(40, 175, 261, 21))
+        self.labelFail.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+"\n"
+"color: rgba(255, 0, 0, 0.5);\n"
 "border-radius : 15px;")
-        self.label_fail.setScaledContents(False)
-        self.label_fail.setObjectName("label_fail")
+        self.labelFail.setScaledContents(False)
+        self.labelFail.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.labelFail.setObjectName("labelFail")
+        self.checkBoxPassword = QtWidgets.QCheckBox(parent=self.centralwidget)
+        self.checkBoxPassword.setGeometry(QtCore.QRect(280, 139, 51, 31))
+        self.checkBoxPassword.setStyleSheet("background-color: rgba(0, 0, 0, 0);\n"
+"color: rgb(255, 255, 255);")
+        self.checkBoxPassword.setObjectName("checkBoxPassword")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 350, 22))
@@ -143,12 +152,13 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        self.pushButton_login.setText(_translate("MainWindow", "Login"))
-        self.pushButton_exit.setText(_translate("MainWindow", "Exit"))
-        self.lineEdit_username.setPlaceholderText(_translate("MainWindow", "username"))
-        self.lineEdit_password.setPlaceholderText(_translate("MainWindow", "password"))
-        self.pushButton_forgot.setText(_translate("MainWindow", "Forgot password.?"))
-        self.label_fail.setText(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
+        self.pushButtonLogin.setText(_translate("MainWindow", "Login"))
+        self.pushButtonExit.setText(_translate("MainWindow", "Exit"))
+        self.lineEditUsername.setPlaceholderText(_translate("MainWindow", "username"))
+        self.lineEditPassword.setPlaceholderText(_translate("MainWindow", "password"))
+        self.pushButtonForgot.setText(_translate("MainWindow", "Forgot password?"))
+        self.labelFail.setText(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
+        self.checkBoxPassword.setText(_translate("MainWindow", "Show"))
 
 
 if __name__ == "__main__":

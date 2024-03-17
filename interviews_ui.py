@@ -176,7 +176,7 @@ class Ui_FormInterviews(object):
         FormInterviews.setWindowTitle(_translate("FormInterviews", "INTERVIEWS"))
         self.labelInterviews.setText(_translate("FormInterviews", "INTERVIEWS "))
         self.pushButtonExit.setText(_translate("FormInterviews", "Exit"))
-        self.pushButtonPreferences.setText(_translate("FormInterviews", "Preferences"))
+        self.pushButtonPreferences.setText(_translate("FormInterviews", "Back Menu"))
         self.pushButtonSubmittedProjects.setText(_translate("FormInterviews", "Submitted Projects"))
         self.lineEditUsername.setPlaceholderText(_translate("FormInterviews", "      Name or Surname"))
         item = self.tableWidget.horizontalHeaderItem(0)

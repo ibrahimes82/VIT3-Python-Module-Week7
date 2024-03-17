@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'user_preference_ui.ui'
+# Form implementation generated from reading ui file 'user_menu_ui.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
