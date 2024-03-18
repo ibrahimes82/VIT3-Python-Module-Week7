@@ -33,7 +33,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>pictures/wehere_icon.png</normaloff>pictures/wehere_icon.png</iconset>
+    <normaloff>pictures/werhere_icon.png</normaloff>pictures/werhere_icon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
@@ -62,14 +62,19 @@ One value - border-radius: 100px;</string>
      <enum>Qt::StrongFocus</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton{
+     <string notr="true">
+QPushButton{
 	border-radius : 15px;
 	background-color : rgb(25, 200, 200);
 	color: rgb(255, 255, 255);
+ 
 }
 QPushButton:hover{
 	background-color: rgb(20, 135, 135);
+    border: 2px solid rgb(162, 0, 0);
+	
 }
+
 </string>
     </property>
     <property name="text">
@@ -93,6 +98,7 @@ QPushButton:hover{
 }
 QPushButton:hover{
 	background-color: rgb(20, 135, 135);
+    border: 2px solid rgb(162, 0, 0);
 }
 </string>
     </property>
@@ -101,9 +107,6 @@ QPushButton:hover{
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEditUsername">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -143,8 +146,8 @@ QLineEdit:hover {
     <property name="text">
      <string/>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    <property name="cursorPosition">
+     <number>0</number>
     </property>
     <property name="placeholderText">
      <string>username</string>
@@ -205,10 +208,7 @@ QLineEdit:hover {
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>pictures/wehere_logo.ico</pixmap>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <pixmap>pictures/werhere_logo.ico</pixmap>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonForgot">
@@ -231,22 +231,21 @@ QPushButton:hover{
 }</string>
     </property>
     <property name="text">
-     <string>Forgot password?</string>
+     <string>Forgot password.?</string>
     </property>
    </widget>
    <widget class="QLabel" name="labelFail">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>80</x>
       <y>175</y>
-      <width>261</width>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(0, 0, 0,0%);
-
-color: rgba(255, 0, 0, 0.5);
+color: rgb(189, 31, 57);
 border-radius : 15px;</string>
     </property>
     <property name="text">
@@ -255,15 +254,12 @@ border-radius : 15px;</string>
     <property name="scaledContents">
      <bool>false</bool>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
    </widget>
    <widget class="QCheckBox" name="checkBoxPassword">
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>139</y>
+      <y>140</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -276,6 +272,14 @@ color: rgb(255, 255, 255);</string>
      <string>Show</string>
     </property>
    </widget>
+   <zorder>pushButtonExit</zorder>
+   <zorder>lineEditUsername</zorder>
+   <zorder>lineEditPassword</zorder>
+   <zorder>labelLogo</zorder>
+   <zorder>pushButtonForgot</zorder>
+   <zorder>labelFail</zorder>
+   <zorder>pushButtonLogin</zorder>
+   <zorder>checkBoxPassword</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -289,6 +293,14 @@ color: rgb(255, 255, 255);</string>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>lineEditUsername</tabstop>
+  <tabstop>lineEditPassword</tabstop>
+  <tabstop>pushButtonLogin</tabstop>
+  <tabstop>pushButtonExit</tabstop>
+  <tabstop>pushButtonForgot</tabstop>
+  <tabstop>checkBoxPassword</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>pictures/wehere_icon.png</normaloff>pictures/wehere_icon.png</iconset>
+    <normaloff>pictures/werhere_icon.png</normaloff>pictures/werhere_icon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
@@ -170,25 +170,25 @@ QPushButton:hover{
     <string>Applications</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonAdminMenu">
+  <widget class="QPushButton" name="pushButtonManagement">
    <property name="geometry">
     <rect>
      <x>210</x>
      <y>250</y>
-     <width>75</width>
-     <height>75</height>
+     <width>81</width>
+     <height>81</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>75</width>
-     <height>75</height>
+     <width>81</width>
+     <height>81</height>
     </size>
    </property>
    <property name="maximumSize">
     <size>
-     <width>75</width>
-     <height>75</height>
+     <width>81</width>
+     <height>81</height>
     </size>
    </property>
    <property name="font">
@@ -211,8 +211,7 @@ QPushButton:hover{
 </string>
    </property>
    <property name="text">
-    <string>Admin
-Menu</string>
+    <string>Management</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonMentorMeeting">
@@ -397,6 +396,14 @@ QPushButton:hover{
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>pushButtonExit</tabstop>
+  <tabstop>pushButtonSignOut</tabstop>
+  <tabstop>pushButtonMentorMeeting</tabstop>
+  <tabstop>pushButtonApplications</tabstop>
+  <tabstop>pushButtonInterviews</tabstop>
+  <tabstop>pushButtonManagement</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

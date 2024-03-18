@@ -1,10 +1,5 @@
-
 from PyQt6.QtWidgets import QWidget
 from admin_menu_ui import Ui_Form
-from applications import ApplicationsPage
-from interviews import InterviewsPage
-from mentor_menu import MentorMenuPage
-from management import ManagementMenuPage
 
 
 class UserAdminPreferencePage(QWidget):
@@ -13,26 +8,29 @@ class UserAdminPreferencePage(QWidget):
         self.current_user = current_user
         self.admin_menu_form = Ui_Form()
         self.admin_menu_form.setupUi(self)
-        self.admin_menu_form.labelAccountName.setText(str(current_user[0]).split(' ')[0])
+        self.admin_menu_form.labelAccountName.setText(str(self.current_user[0]).split(' ')[0])
 
         self.login_window = None
-        self.applications_window_open = ApplicationsPage()
-        self.interviews_window_open = InterviewsPage(self.current_user)
-        self.mentor_menu_open = MentorMenuPage()
-        self.management_menu_open = ManagementMenuPage()
+        self.applications_window_open = None
+        self.interviews_window_open = None
+        self.mentor_menu_open = None
+        self.management_menu_open = None
 
         self.admin_menu_form.pushButtonInterviews.clicked.connect(self.inter_in)
         self.admin_menu_form.pushButtonApplications.clicked.connect(self.app_in)
         self.admin_menu_form.pushButtonMentorMeeting.clicked.connect(self.mentor_in)
         self.admin_menu_form.pushButtonSignOut.clicked.connect(self.logpage_in)
         self.admin_menu_form.pushButtonExit.clicked.connect(self.exit_in)
-        self.admin_menu_form.pushButtonAdminMenu.clicked.connect(self.adminmenu_in)
+        self.admin_menu_form.pushButtonManagement.clicked.connect(self.adminmenu_in)
 
     def app_in(self):
+        from applications import ApplicationsPage
         self.hide()
+        self.applications_window_open = ApplicationsPage(self.current_user)
         self.applications_window_open.show()
 
     def inter_in(self):
+        from interviews import InterviewsPage
         self.hide()
         self.interviews_window_open = InterviewsPage(self.current_user)
         self.interviews_window_open.show()
@@ -47,9 +45,13 @@ class UserAdminPreferencePage(QWidget):
         self.login_window.show()
 
     def mentor_in(self):
+        from mentor_menu import MentorPage
         self.hide()
+        self.mentor_menu_open = MentorPage(self.current_user)
         self.mentor_menu_open.show()
 
     def adminmenu_in(self):
+        from management import ManagementMenuPage
         self.close()
+        self.management_menu_open = ManagementMenuPage(self.current_user)
         self.management_menu_open.show()

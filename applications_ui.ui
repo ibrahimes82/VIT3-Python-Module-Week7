@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>FormApplications</class>
+ <widget class="QWidget" name="FormApplications">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -502,6 +502,20 @@ color: rgb(71, 84, 88);</string>
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_app_username</tabstop>
+  <tabstop>pushButton_app_search</tabstop>
+  <tabstop>pushButton_app_all_app</tabstop>
+  <tabstop>pushButton_app_planned_mentor</tabstop>
+  <tabstop>pushButton_app_unscheduled_meeting</tabstop>
+  <tabstop>pushButton_app_pre_vit_control</tabstop>
+  <tabstop>pushButton_app_rep_registrations</tabstop>
+  <tabstop>pushButton_diff_registration</tabstop>
+  <tabstop>pushButton_app_filter_app</tabstop>
+  <tabstop>tableWidget_app</tabstop>
+  <tabstop>pushButton_app_back_menu</tabstop>
+  <tabstop>pushButton_app_exit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

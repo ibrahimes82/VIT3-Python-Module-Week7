@@ -16,7 +16,7 @@ class Ui_Form(object):
         Form.setMinimumSize(QtCore.QSize(500, 500))
         Form.setMaximumSize(QtCore.QSize(500, 500))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("pictures/wehere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("pictures/werhere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         Form.setWindowIcon(icon)
         Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
         self.labelLogo = QtWidgets.QLabel(parent=Form)
@@ -175,6 +175,10 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+        Form.setTabOrder(self.pushButtonExit, self.pushButtonSignOut)
+        Form.setTabOrder(self.pushButtonSignOut, self.pushButtonMentorMeeting)
+        Form.setTabOrder(self.pushButtonMentorMeeting, self.pushButtonApplications)
+        Form.setTabOrder(self.pushButtonApplications, self.pushButtonInterviews)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

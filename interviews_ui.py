@@ -15,6 +15,9 @@ class Ui_FormInterviews(object):
         FormInterviews.resize(750, 590)
         FormInterviews.setMinimumSize(QtCore.QSize(750, 590))
         FormInterviews.setMaximumSize(QtCore.QSize(750, 590))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("pictures/werhere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        FormInterviews.setWindowIcon(icon)
         FormInterviews.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
         self.labelPicture = QtWidgets.QLabel(parent=FormInterviews)
         self.labelPicture.setGeometry(QtCore.QRect(10, 10, 201, 171))
@@ -175,6 +178,12 @@ class Ui_FormInterviews(object):
 
         self.retranslateUi(FormInterviews)
         QtCore.QMetaObject.connectSlotsByName(FormInterviews)
+        FormInterviews.setTabOrder(self.lineEditUsername, self.pushButtonSearch)
+        FormInterviews.setTabOrder(self.pushButtonSearch, self.pushButtonSubmittedProjects)
+        FormInterviews.setTabOrder(self.pushButtonSubmittedProjects, self.pushButtonProjectArrivals)
+        FormInterviews.setTabOrder(self.pushButtonProjectArrivals, self.tableWidget)
+        FormInterviews.setTabOrder(self.tableWidget, self.pushButtonBackMenu)
+        FormInterviews.setTabOrder(self.pushButtonBackMenu, self.pushButtonExit)
 
     def retranslateUi(self, FormInterviews):
         _translate = QtCore.QCoreApplication.translate

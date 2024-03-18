@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'main_admin_menu.ui'
+# Form implementation generated from reading ui file 'management_ui.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -23,7 +23,7 @@ class Ui_Form(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("pictures/wehere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         Form.setWindowIcon(icon)
-        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
+        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
         self.pushButton_mam_exit = QtWidgets.QPushButton(parent=Form)
         self.pushButton_mam_exit.setGeometry(QtCore.QRect(10, 430, 171, 31))
         font = QtGui.QFont()
@@ -37,11 +37,13 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_mam_exit.setObjectName("pushButton_mam_exit")
         self.label_2 = QtWidgets.QLabel(parent=Form)
         self.label_2.setGeometry(QtCore.QRect(200, 32, 261, 101))
-        self.label_2.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        self.label_2.setStyleSheet("\n"
+"background-color: rgba(0, 0, 0,0%);")
         self.label_2.setText("")
         self.label_2.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
         self.label_2.setObjectName("label_2")
@@ -58,6 +60,7 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_mam_send_mail.setObjectName("pushButton_mam_send_mail")
         self.label = QtWidgets.QLabel(parent=Form)
@@ -93,21 +96,22 @@ class Ui_Form(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(3, item)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(130)
-        self.pushButton_mam_pre_adm_menu = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_mam_pre_adm_menu.setGeometry(QtCore.QRect(10, 350, 171, 31))
+        self.pushButton_back_menu = QtWidgets.QPushButton(parent=Form)
+        self.pushButton_back_menu.setGeometry(QtCore.QRect(10, 350, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_mam_pre_adm_menu.setFont(font)
-        self.pushButton_mam_pre_adm_menu.setStyleSheet("QPushButton{\n"
+        self.pushButton_back_menu.setFont(font)
+        self.pushButton_back_menu.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_mam_pre_adm_menu.setObjectName("pushButton_mam_pre_adm_menu")
+        self.pushButton_back_menu.setObjectName("pushButton_back_menu")
         self.label_4 = QtWidgets.QLabel(parent=Form)
         self.label_4.setGeometry(QtCore.QRect(410, 110, 121, 41))
         font = QtGui.QFont()
@@ -131,11 +135,16 @@ class Ui_Form(object):
 "}\n"
 "QPushButton:hover{\n"
 "    background-color: rgb(20, 135, 135);\n"
+" border: 2px solid rgb(162, 0, 0);\n"
 "}")
         self.pushButton_mam_event_control.setObjectName("pushButton_mam_event_control")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+        Form.setTabOrder(self.pushButton_mam_event_control, self.pushButton_mam_send_mail)
+        Form.setTabOrder(self.pushButton_mam_send_mail, self.pushButton_back_menu)
+        Form.setTabOrder(self.pushButton_back_menu, self.tableWidget)
+        Form.setTabOrder(self.tableWidget, self.pushButton_mam_exit)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -151,7 +160,7 @@ class Ui_Form(object):
         item.setText(_translate("Form", "Participant Mail"))
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("Form", "Organizer Mail"))
-        self.pushButton_mam_pre_adm_menu.setText(_translate("Form", "Preference-Admin Menu"))
+        self.pushButton_back_menu.setText(_translate("Form", "Back Menu"))
         self.label_4.setText(_translate("Form", "MENU"))
         self.pushButton_mam_event_control.setText(_translate("Form", "Event Control"))
 

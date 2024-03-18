@@ -9,46 +9,46 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(1180, 550)
-        Form.setMinimumSize(QtCore.QSize(1180, 550))
-        Form.setMaximumSize(QtCore.QSize(1180, 550))
+class Ui_FormMentor(object):
+    def setupUi(self, FormMentor):
+        FormMentor.setObjectName("FormMentor")
+        FormMentor.resize(1180, 550)
+        FormMentor.setMinimumSize(QtCore.QSize(1180, 550))
+        FormMentor.setMaximumSize(QtCore.QSize(1180, 550))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("pictures/wehere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        Form.setWindowIcon(icon)
-        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
-        self.label = QtWidgets.QLabel(parent=Form)
-        self.label.setGeometry(QtCore.QRect(20, 20, 211, 141))
-        self.label.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("pictures/mentor_menu.png"))
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(parent=Form)
-        self.label_2.setGeometry(QtCore.QRect(370, 10, 261, 101))
-        self.label_2.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
-        self.label_2.setObjectName("label_2")
-        self.label_3 = QtWidgets.QLabel(parent=Form)
-        self.label_3.setGeometry(QtCore.QRect(630, 38, 301, 41))
+        icon.addPixmap(QtGui.QPixmap("pictures/werhere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        FormMentor.setWindowIcon(icon)
+        FormMentor.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.labelPicture = QtWidgets.QLabel(parent=FormMentor)
+        self.labelPicture.setGeometry(QtCore.QRect(20, 20, 211, 141))
+        self.labelPicture.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        self.labelPicture.setText("")
+        self.labelPicture.setPixmap(QtGui.QPixmap("pictures/mentor_menu.png"))
+        self.labelPicture.setScaledContents(True)
+        self.labelPicture.setObjectName("labelPicture")
+        self.labelLogo = QtWidgets.QLabel(parent=FormMentor)
+        self.labelLogo.setGeometry(QtCore.QRect(370, 10, 261, 101))
+        self.labelLogo.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        self.labelLogo.setText("")
+        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
+        self.labelLogo.setObjectName("labelLogo")
+        self.labelMentor = QtWidgets.QLabel(parent=FormMentor)
+        self.labelMentor.setGeometry(QtCore.QRect(630, 38, 301, 41))
         font = QtGui.QFont()
         font.setFamily("Arial Black")
         font.setPointSize(26)
         font.setBold(True)
-        self.label_3.setFont(font)
-        self.label_3.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+        self.labelMentor.setFont(font)
+        self.labelMentor.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "color: rgb(71, 84, 88);")
-        self.label_3.setObjectName("label_3")
-        self.pushButton_mentor_all_app = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_mentor_all_app.setGeometry(QtCore.QRect(30, 300, 171, 31))
+        self.labelMentor.setObjectName("labelMentor")
+        self.pushButtonAllApplications = QtWidgets.QPushButton(parent=FormMentor)
+        self.pushButtonAllApplications.setGeometry(QtCore.QRect(30, 300, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_mentor_all_app.setFont(font)
-        self.pushButton_mentor_all_app.setStyleSheet("QPushButton{\n"
+        self.pushButtonAllApplications.setFont(font)
+        self.pushButtonAllApplications.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -57,14 +57,14 @@ class Ui_Form(object):
 "    background-color: rgb(20, 135, 135);\n"
 " border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_mentor_all_app.setObjectName("pushButton_mentor_all_app")
-        self.pushButton_mentor_exit = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_mentor_exit.setGeometry(QtCore.QRect(30, 480, 171, 31))
+        self.pushButtonAllApplications.setObjectName("pushButtonAllApplications")
+        self.pushButtonExit = QtWidgets.QPushButton(parent=FormMentor)
+        self.pushButtonExit.setGeometry(QtCore.QRect(30, 480, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_mentor_exit.setFont(font)
-        self.pushButton_mentor_exit.setStyleSheet("QPushButton{\n"
+        self.pushButtonExit.setFont(font)
+        self.pushButtonExit.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -73,12 +73,12 @@ class Ui_Form(object):
 "    background-color: rgb(20, 135, 135);\n"
 " border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_mentor_exit.setObjectName("pushButton_mentor_exit")
-        self.lineEdit_mentor_username = QtWidgets.QLineEdit(parent=Form)
-        self.lineEdit_mentor_username.setEnabled(True)
-        self.lineEdit_mentor_username.setGeometry(QtCore.QRect(30, 170, 171, 31))
-        self.lineEdit_mentor_username.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
-        self.lineEdit_mentor_username.setStyleSheet("QLineEdit {\n"
+        self.pushButtonExit.setObjectName("pushButtonExit")
+        self.lineEditSearch = QtWidgets.QLineEdit(parent=FormMentor)
+        self.lineEditSearch.setEnabled(True)
+        self.lineEditSearch.setGeometry(QtCore.QRect(30, 170, 171, 31))
+        self.lineEditSearch.setFocusPolicy(QtCore.Qt.FocusPolicy.StrongFocus)
+        self.lineEditSearch.setStyleSheet("QLineEdit {\n"
 "  border: 2px solid rgb(38, 38, 48);\n"
 "  border-radius: 15px;\n"
 "  color: #FFF;\n"
@@ -101,15 +101,15 @@ class Ui_Form(object):
 "\n"
 "\n"
 "")
-        self.lineEdit_mentor_username.setText("")
-        self.lineEdit_mentor_username.setObjectName("lineEdit_mentor_username")
-        self.pushButton_mentor_back = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_mentor_back.setGeometry(QtCore.QRect(30, 390, 171, 31))
+        self.lineEditSearch.setText("")
+        self.lineEditSearch.setObjectName("lineEditSearch")
+        self.pushButtonBackMenu = QtWidgets.QPushButton(parent=FormMentor)
+        self.pushButtonBackMenu.setGeometry(QtCore.QRect(30, 390, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_mentor_back.setFont(font)
-        self.pushButton_mentor_back.setStyleSheet("QPushButton{\n"
+        self.pushButtonBackMenu.setFont(font)
+        self.pushButtonBackMenu.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -118,14 +118,14 @@ class Ui_Form(object):
 "    background-color: rgb(20, 135, 135);\n"
 " border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_mentor_back.setObjectName("pushButton_mentor_back")
-        self.pushButton_mentor_search = QtWidgets.QPushButton(parent=Form)
-        self.pushButton_mentor_search.setGeometry(QtCore.QRect(30, 220, 171, 31))
+        self.pushButtonBackMenu.setObjectName("pushButtonBackMenu")
+        self.pushButtonSearch = QtWidgets.QPushButton(parent=FormMentor)
+        self.pushButtonSearch.setGeometry(QtCore.QRect(30, 220, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_mentor_search.setFont(font)
-        self.pushButton_mentor_search.setStyleSheet("QPushButton{\n"
+        self.pushButtonSearch.setFont(font)
+        self.pushButtonSearch.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -134,97 +134,103 @@ class Ui_Form(object):
 "    background-color: rgb(20, 135, 135);\n"
 " border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_mentor_search.setObjectName("pushButton_mentor_search")
-        self.tableWidget_mentor = QtWidgets.QTableWidget(parent=Form)
-        self.tableWidget_mentor.setGeometry(QtCore.QRect(230, 170, 921, 341))
-        self.tableWidget_mentor.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
-        self.tableWidget_mentor.setAutoScrollMargin(16)
-        self.tableWidget_mentor.setObjectName("tableWidget_mentor")
-        self.tableWidget_mentor.setColumnCount(8)
-        self.tableWidget_mentor.setRowCount(0)
+        self.pushButtonSearch.setObjectName("pushButtonSearch")
+        self.tableWidget = QtWidgets.QTableWidget(parent=FormMentor)
+        self.tableWidget.setGeometry(QtCore.QRect(230, 170, 921, 341))
+        self.tableWidget.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
+        self.tableWidget.setAutoScrollMargin(16)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(8)
+        self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_mentor.setHorizontalHeaderItem(0, item)
+        self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_mentor.setHorizontalHeaderItem(1, item)
+        self.tableWidget.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_mentor.setHorizontalHeaderItem(2, item)
+        self.tableWidget.setHorizontalHeaderItem(2, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_mentor.setHorizontalHeaderItem(3, item)
+        self.tableWidget.setHorizontalHeaderItem(3, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_mentor.setHorizontalHeaderItem(4, item)
+        self.tableWidget.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_mentor.setHorizontalHeaderItem(5, item)
+        self.tableWidget.setHorizontalHeaderItem(5, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_mentor.setHorizontalHeaderItem(6, item)
+        self.tableWidget.setHorizontalHeaderItem(6, item)
         item = QtWidgets.QTableWidgetItem()
-        self.tableWidget_mentor.setHorizontalHeaderItem(7, item)
-        self.tableWidget_mentor.horizontalHeader().setDefaultSectionSize(115)
-        self.tableWidget_mentor.horizontalHeader().setSortIndicatorShown(True)
-        self.mentor_comboBox = QtWidgets.QComboBox(parent=Form)
-        self.mentor_comboBox.setGeometry(QtCore.QRect(790, 120, 361, 31))
-        self.mentor_comboBox.setStyleSheet("border-radius : 15px;\n"
+        self.tableWidget.setHorizontalHeaderItem(7, item)
+        self.tableWidget.horizontalHeader().setDefaultSectionSize(115)
+        self.tableWidget.horizontalHeader().setSortIndicatorShown(True)
+        self.comboBoxOptions = QtWidgets.QComboBox(parent=FormMentor)
+        self.comboBoxOptions.setGeometry(QtCore.QRect(790, 120, 361, 31))
+        self.comboBoxOptions.setStyleSheet("border-radius : 15px;\n"
 "border: 3px solid rgb(85, 255, 255);\n"
 "background-color: rgba(0, 0, 0,0%);\n"
 "color: rgb(255, 255, 255);\n"
 "")
-        self.mentor_comboBox.setObjectName("mentor_comboBox")
-        self.mentor_comboBox.addItem("")
-        self.mentor_comboBox.addItem("")
-        self.mentor_comboBox.addItem("")
-        self.mentor_comboBox.addItem("")
-        self.mentor_comboBox.addItem("")
-        self.mentor_comboBox.addItem("")
-        self.mentor_comboBox.addItem("")
-        self.mentor_comboBox.addItem("")
+        self.comboBoxOptions.setObjectName("comboBoxOptions")
+        self.comboBoxOptions.addItem("")
+        self.comboBoxOptions.addItem("")
+        self.comboBoxOptions.addItem("")
+        self.comboBoxOptions.addItem("")
+        self.comboBoxOptions.addItem("")
+        self.comboBoxOptions.addItem("")
+        self.comboBoxOptions.addItem("")
+        self.comboBoxOptions.addItem("")
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(FormMentor)
+        QtCore.QMetaObject.connectSlotsByName(FormMentor)
+        FormMentor.setTabOrder(self.lineEditSearch, self.pushButtonSearch)
+        FormMentor.setTabOrder(self.pushButtonSearch, self.pushButtonAllApplications)
+        FormMentor.setTabOrder(self.pushButtonAllApplications, self.tableWidget)
+        FormMentor.setTabOrder(self.tableWidget, self.comboBoxOptions)
+        FormMentor.setTabOrder(self.comboBoxOptions, self.pushButtonBackMenu)
+        FormMentor.setTabOrder(self.pushButtonBackMenu, self.pushButtonExit)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, FormMentor):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "MENTOR MENU"))
-        self.label_3.setText(_translate("Form", "MENTOR MENU"))
-        self.pushButton_mentor_all_app.setText(_translate("Form", "All Applications"))
-        self.pushButton_mentor_exit.setText(_translate("Form", "Exit"))
-        self.lineEdit_mentor_username.setPlaceholderText(_translate("Form", "      Name or Surname"))
-        self.pushButton_mentor_back.setText(_translate("Form", "Back Menu"))
-        self.pushButton_mentor_search.setText(_translate("Form", "Search"))
-        item = self.tableWidget_mentor.horizontalHeaderItem(0)
-        item.setText(_translate("Form", "Interview Date"))
-        item = self.tableWidget_mentor.horizontalHeaderItem(1)
-        item.setText(_translate("Form", "Candidate Name \n"
+        FormMentor.setWindowTitle(_translate("FormMentor", "MENTOR MENU"))
+        self.labelMentor.setText(_translate("FormMentor", "MENTOR MENU"))
+        self.pushButtonAllApplications.setText(_translate("FormMentor", "All Applications"))
+        self.pushButtonExit.setText(_translate("FormMentor", "Exit"))
+        self.lineEditSearch.setPlaceholderText(_translate("FormMentor", "      Name or Surname"))
+        self.pushButtonBackMenu.setText(_translate("FormMentor", "Back Menu"))
+        self.pushButtonSearch.setText(_translate("FormMentor", "Search"))
+        item = self.tableWidget.horizontalHeaderItem(0)
+        item.setText(_translate("FormMentor", "Interview Date"))
+        item = self.tableWidget.horizontalHeaderItem(1)
+        item.setText(_translate("FormMentor", "Candidate Name \n"
 "Surname"))
-        item = self.tableWidget_mentor.horizontalHeaderItem(2)
-        item.setText(_translate("Form", "Mentor Name\n"
+        item = self.tableWidget.horizontalHeaderItem(2)
+        item.setText(_translate("FormMentor", "Mentor Name\n"
 "Surname"))
-        item = self.tableWidget_mentor.horizontalHeaderItem(3)
-        item.setText(_translate("Form", "IT Knowledge"))
-        item = self.tableWidget_mentor.horizontalHeaderItem(4)
-        item.setText(_translate("Form", "Availability"))
-        item = self.tableWidget_mentor.horizontalHeaderItem(5)
-        item.setText(_translate("Form", "Thoughts About \n"
+        item = self.tableWidget.horizontalHeaderItem(3)
+        item.setText(_translate("FormMentor", "IT Knowledge"))
+        item = self.tableWidget.horizontalHeaderItem(4)
+        item.setText(_translate("FormMentor", "Availability"))
+        item = self.tableWidget.horizontalHeaderItem(5)
+        item.setText(_translate("FormMentor", "Thoughts About \n"
 "  the Candidate"))
-        item = self.tableWidget_mentor.horizontalHeaderItem(6)
-        item.setText(_translate("Form", "Candidate\'s \n"
+        item = self.tableWidget.horizontalHeaderItem(6)
+        item.setText(_translate("FormMentor", "Candidate\'s \n"
 "Attendance Status"))
-        item = self.tableWidget_mentor.horizontalHeaderItem(7)
-        item.setText(_translate("Form", "Comments About \n"
+        item = self.tableWidget.horizontalHeaderItem(7)
+        item.setText(_translate("FormMentor", "Comments About \n"
 "the Candidate"))
-        self.mentor_comboBox.setItemText(0, _translate("Form", "    VIT Projesini Tamamina Katilmasi Uygundur."))
-        self.mentor_comboBox.setItemText(1, _translate("Form", "    VIT Projesinin Ilk IT Egitimi Al... a Yonlendirimesi Uygundur."))
-        self.mentor_comboBox.setItemText(2, _translate("Form", "    VIT Projesinin Ingilizce Egitim Al... a Yonlendirimesi Uygundur."))
-        self.mentor_comboBox.setItemText(3, _translate("Form", "    VIT Projesi Kapsaminda Dir... Yonlendirilmesi Uygundur."))
-        self.mentor_comboBox.setItemText(4, _translate("Form", "    Direk Bireysel Kocluk Ile Ise yonlendirilmesi Uygundur."))
-        self.mentor_comboBox.setItemText(5, _translate("Form", "    Bir Sonra Vit Projesine Katilmasi Uygun Olur."))
-        self.mentor_comboBox.setItemText(6, _translate("Form", "    Baska Bir Soktere Yonlendirmesi Uygun Olur."))
-        self.mentor_comboBox.setItemText(7, _translate("Form", "    Diger"))
+        self.comboBoxOptions.setItemText(0, _translate("FormMentor", "    VIT Projesini Tamamina Katilmasi Uygundur."))
+        self.comboBoxOptions.setItemText(1, _translate("FormMentor", "    VIT Projesinin Ilk IT Egitimi Al... a Yonlendirimesi Uygundur."))
+        self.comboBoxOptions.setItemText(2, _translate("FormMentor", "    VIT Projesinin Ingilizce Egitim Al... a Yonlendirimesi Uygundur."))
+        self.comboBoxOptions.setItemText(3, _translate("FormMentor", "    VIT Projesi Kapsaminda Dir... Yonlendirilmesi Uygundur."))
+        self.comboBoxOptions.setItemText(4, _translate("FormMentor", "    Direk Bireysel Kocluk Ile Ise yonlendirilmesi Uygundur."))
+        self.comboBoxOptions.setItemText(5, _translate("FormMentor", "    Bir Sonra Vit Projesine Katilmasi Uygun Olur."))
+        self.comboBoxOptions.setItemText(6, _translate("FormMentor", "    Baska Bir Soktere Yonlendirmesi Uygun Olur."))
+        self.comboBoxOptions.setItemText(7, _translate("FormMentor", "    Diger"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
+    FormMentor = QtWidgets.QWidget()
+    ui = Ui_FormMentor()
+    ui.setupUi(FormMentor)
+    FormMentor.show()
     sys.exit(app.exec())

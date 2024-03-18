@@ -1,9 +1,9 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
-from applications_ui import Ui_Form
-from mentor_menu import MentorMenuPage
 import gspread
+
+from applications_ui import Ui_FormApplications
 
 
 def folders(folder_name):
@@ -17,25 +17,29 @@ def folders(folder_name):
 
 
 class ApplicationsPage(QWidget):
-    def __init__(self) -> None:
+    def __init__(self, current_user) -> None:
         super().__init__()
-        self.applicationsForm = Ui_Form()
-        self.applicationsForm.setupUi(self)
+        self.current_user = current_user
+        self.form_applications = Ui_FormApplications()
+        self.form_applications.setupUi(self)
         self.users = folders('Basvurular')
 
-        self.applicationsForm.pushButton_app_search.clicked.connect(self.search_app)
-        self.applicationsForm.pushButton_app_all_app.clicked.connect(self.app_all_app)
-        self.applicationsForm.pushButton_app_planned_mentor.clicked.connect(self.planned_mentor_app)
-        self.applicationsForm.pushButton_app_unscheduled_meeting.clicked.connect(self.unscheduled)
-        self.applicationsForm.pushButton_app_pre_vit_control.clicked.connect(self.vits_and_applications)
-        self.applicationsForm.pushButton_app_rep_registrations.clicked.connect(self.rep_registrations)
-        self.applicationsForm.pushButton_diff_registration.clicked.connect(self.search_app)
-        self.applicationsForm.pushButton_app_back_menu.clicked.connect(self.preferences_app)
-        self.applicationsForm.pushButton_app_filter_app.clicked.connect(self.search_app)
-        self.applicationsForm.pushButton_app_exit.clicked.connect(self.exit)
+        self.menu_user = None
+        self.menu_admin = None
+
+        self.form_applications.pushButton_app_search.clicked.connect(self.search_app)
+        self.form_applications.pushButton_app_all_app.clicked.connect(self.app_all_app)
+        self.form_applications.pushButton_app_planned_mentor.clicked.connect(self.planned_mentor_app)
+        self.form_applications.pushButton_app_unscheduled_meeting.clicked.connect(self.unscheduled)
+        self.form_applications.pushButton_app_pre_vit_control.clicked.connect(self.vits_and_applications)
+        self.form_applications.pushButton_app_rep_registrations.clicked.connect(self.rep_registrations)
+        self.form_applications.pushButton_diff_registration.clicked.connect(self.diff_registrations)
+        self.form_applications.pushButton_app_back_menu.clicked.connect(self.back_menu)
+        self.form_applications.pushButton_app_filter_app.clicked.connect(self.filter_applications)
+        self.form_applications.pushButton_app_exit.clicked.connect(self.app_exit)
 
     def write2table(self, my_list):
-        table_widget = self.applicationsForm.tableWidget_app
+        table_widget = self.form_applications.tableWidget_app
         table_widget.setRowCount(len(my_list))
         for row_index, item in enumerate(my_list):
             for col_index, data in enumerate(item):
@@ -47,17 +51,19 @@ class ApplicationsPage(QWidget):
         search_users = []
         self.users = folders('Basvurular')
         for user in self.users:
-            if self.applicationsForm.lineEdit_app_username.text().lower() in user[1].lower() \
-                    and self.applicationsForm.lineEdit_app_username.text().lower() != '':
+            if self.form_applications.lineEdit_app_username.text().lower() in user[1].lower() \
+                    and self.form_applications.lineEdit_app_username.text().lower() != '':
                 search_users.append(user)
 
         if search_users:
+
             return self.write2table(search_users)
+
         else:
-            return self.write2table([['No User or Mentor Found.!', '-', '-', '-', '-', '-', '-', '-', ]])
+            return self.write2table([['No User or Mentor Found!', '-', '-', '-', '-', '-', '-', '-', ]])
 
     def write3table(self, my_list, excluded_column_index):
-        table_widget = self.applicationsForm.tableWidget_app
+        table_widget = self.form_applications.tableWidget_app
         table_widget.setRowCount(len(my_list))
         for row_index, item in enumerate(my_list):
             row_data = [item[i] for i in range(len(item)) if i != excluded_column_index]
@@ -70,22 +76,23 @@ class ApplicationsPage(QWidget):
         self.write2table(self.users)
         self.write3table(self.users, 7)
 
-    def planned_and_unscheduled(self, search_text):
+    def planned_and_unscheduled(self, text):
         search_users = []
         for user in self.users:
-            if search_text in user[20]:
+            if text in user[20]:
                 search_users.append(user)
         self.users = folders('Basvurular')
         if search_users:
-            return self.write2table(search_users)
+            return self.write3table(search_users, 7)
         else:
-            return self.write2table([['No User or Mentor Found.!', '-', '-', '-', '-', '-', '-', '-', ]])
+            return self.write3table([['No User or Mentor Found.!', '-', '-', '-', '-', '-', '-', '-', ]])
 
     def planned_mentor_app(self):
         self.planned_and_unscheduled("OK")
 
     def unscheduled(self):
-        self.planned_and_unscheduled("ATANMADI")
+        self.planned_and_unscheduled('ATANMADI')
+        # self.write3table(self.users, 7)
 
     def commen(self):
         common_users = []
@@ -110,15 +117,84 @@ class ApplicationsPage(QWidget):
 
             return self.write2table([['Kullanıcı veya Mentor Bulunamadı!', '-', '-', '-', '-', '-', '-', '-']])
 
-    def rep_registrations(self):
+    def vit1_vit2(self):
         vits_common = []
         vits1 = {user[1] for user in folders('VIT1')}
         vits2 = {user[1] for user in folders('VIT2')}
         vits_common = [user for user in vits1 if user in vits2]
-        pass
+        return vits_common
 
-    def preferences_app(self):
-        MentorMenuPage.back_menu(self)
+    def rep_registrations(self):
+        search_users = []
+        self.users = folders('VIT1')
+        vits_common = self.vit1_vit2()
+        for user in self.users:
+            for common_user in vits_common:
+                if common_user in user[1]:
+                    search_users.append(user)
+                    break
+        if search_users:
+            return self.write3table(search_users, 7)
+        else:
 
-    def exit(self):
+            return self.write2table([['Kullanıcı veya Mentor Bulunamadı!', '-', '-', '-', '-', '-', '-', '-']])
+
+    def diff_registrations(self):
+        vit1_users = folders('VIT1')
+        vit2_users = folders('VIT2')
+
+        different_users = []
+        for user1 in vit1_users:
+            found = False
+            for user2 in vit2_users:
+                if user1[1] == user2[1]:
+                    found = True
+                    break
+            if not found:
+                different_users.append(user1)
+
+        for user2 in vit2_users:
+            found = False
+            for user1 in vit1_users:
+                if user1[1] == user2[1]:
+                    found = True
+                    break
+            if not found:
+                different_users.append(user2)
+
+        self.write2table(different_users)
+        self.write3table(different_users, 7)
+
+    def filter_applications(self):
+        self.applications = folders('Basvurular')
+        unique_names = set()
+        filtered_applications = []
+        for application in self.applications:
+            if application[1] not in unique_names:
+                filtered_applications.append(application)
+                unique_names.add(application[1])
+
+        self.write2table(filtered_applications)
+        self.write3table(filtered_applications, 7)
+
+    def back_menu(self):
+        if self.current_user[2] == "admin":
+            from admin_menu import UserAdminPreferencePage
+            self.hide()
+            self.menu_admin = UserAdminPreferencePage(self.current_user)
+            self.menu_admin.show()
+        else:
+            from user_menu import UserPreferencePage
+            self.hide()
+            self.menu_user = UserPreferencePage(self.current_user)
+            self.menu_user.show()
+
+    def app_exit(self):
         self.close()
+
+
+if __name__ == "__main__":
+    app = QApplication([])
+    main_window = ApplicationsPage(['a', 'b', 'admin'])
+    main_window.show()
+    app.exec()

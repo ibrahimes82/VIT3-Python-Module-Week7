@@ -37,6 +37,7 @@ class InterviewsPage(QWidget):
         # Tabloya başlık ekle
         table_widget.setColumnCount(len(headers))
         table_widget.setHorizontalHeaderLabels(headers)
+        # Tabloyu doldur
         table_widget.setRowCount(len(a_list))
         for i, row in enumerate(a_list):
             for j, col in enumerate(row):
@@ -79,7 +80,6 @@ class InterviewsPage(QWidget):
             self.hide()
             self.menu_admin = UserAdminPreferencePage(self.current_user)
             self.menu_admin.show()
-
         else:
             from user_menu import UserPreferencePage
             self.hide()
