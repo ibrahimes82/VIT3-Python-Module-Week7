@@ -3,7 +3,7 @@ from PyQt6.QtWidgets import QMainWindow, QLineEdit
 import gspread
 from login_ui import Ui_MainWindow
 from admin_menu import UserAdminPreferencePage
-from user_menu import UserPreferencePage
+from user_menu import UserMenuPage
 
 credentials = 'key.json'
 gc = gspread.service_account(filename=credentials)
@@ -44,7 +44,7 @@ class LoginPage(QMainWindow):
 
             elif username == user[0] and password == user[1] and user[2] == 'user':
                 self.hide()
-                self.menu_user = UserPreferencePage(user)
+                self.menu_user = UserMenuPage(user)
                 self.menu_user.show()
             else:
                 self.form_login.labelFail.setText("<b>Your email or password is incorrect.</b>")

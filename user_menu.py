@@ -1,12 +1,12 @@
 from PyQt6.QtWidgets import QWidget
-from user_menu_ui import Ui_Form
+from user_menu_ui import Ui_FormUserMenu
 
 
-class UserPreferencePage(QWidget):
+class UserMenuPage(QWidget):
     def __init__(self, current_user) -> None:
         super().__init__()
         self.current_user = current_user
-        self.user_menu_form = Ui_Form()
+        self.user_menu_form = Ui_FormUserMenu()
         self.user_menu_form.setupUi(self)
         self.user_menu_form.labelAccountName.setText(str(current_user[0]).split(' ')[0])
 

@@ -9,17 +9,17 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(500, 500)
-        Form.setMinimumSize(QtCore.QSize(500, 500))
-        Form.setMaximumSize(QtCore.QSize(500, 500))
+class Ui_FormUserMenu(object):
+    def setupUi(self, FormUserMenu):
+        FormUserMenu.setObjectName("FormUserMenu")
+        FormUserMenu.resize(500, 500)
+        FormUserMenu.setMinimumSize(QtCore.QSize(500, 500))
+        FormUserMenu.setMaximumSize(QtCore.QSize(500, 500))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("pictures/werhere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        Form.setWindowIcon(icon)
-        Form.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
-        self.labelLogo = QtWidgets.QLabel(parent=Form)
+        FormUserMenu.setWindowIcon(icon)
+        FormUserMenu.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.499773, y1:1, x2:0.5, y2:0.00568182, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.labelLogo = QtWidgets.QLabel(parent=FormUserMenu)
         self.labelLogo.setGeometry(QtCore.QRect(120, 20, 261, 101))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -30,7 +30,7 @@ class Ui_Form(object):
         self.labelLogo.setText("")
         self.labelLogo.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
         self.labelLogo.setObjectName("labelLogo")
-        self.labelPicMenu = QtWidgets.QLabel(parent=Form)
+        self.labelPicMenu = QtWidgets.QLabel(parent=FormUserMenu)
         self.labelPicMenu.setGeometry(QtCore.QRect(80, 130, 341, 311))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -42,7 +42,7 @@ class Ui_Form(object):
         self.labelPicMenu.setPixmap(QtGui.QPixmap("pictures/user_loop.png"))
         self.labelPicMenu.setScaledContents(True)
         self.labelPicMenu.setObjectName("labelPicMenu")
-        self.pushButtonApplications = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonApplications = QtWidgets.QPushButton(parent=FormUserMenu)
         self.pushButtonApplications.setGeometry(QtCore.QRect(213, 155, 75, 75))
         self.pushButtonApplications.setMinimumSize(QtCore.QSize(75, 75))
         self.pushButtonApplications.setMaximumSize(QtCore.QSize(75, 75))
@@ -64,7 +64,7 @@ class Ui_Form(object):
 "}\n"
 "")
         self.pushButtonApplications.setObjectName("pushButtonApplications")
-        self.pushButtonInterviews = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonInterviews = QtWidgets.QPushButton(parent=FormUserMenu)
         self.pushButtonInterviews.setGeometry(QtCore.QRect(318, 223, 75, 75))
         self.pushButtonInterviews.setMinimumSize(QtCore.QSize(75, 75))
         self.pushButtonInterviews.setMaximumSize(QtCore.QSize(75, 75))
@@ -84,7 +84,7 @@ class Ui_Form(object):
 "}\n"
 "")
         self.pushButtonInterviews.setObjectName("pushButtonInterviews")
-        self.pushButtonExit = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonExit = QtWidgets.QPushButton(parent=FormUserMenu)
         self.pushButtonExit.setGeometry(QtCore.QRect(278, 341, 75, 75))
         self.pushButtonExit.setMinimumSize(QtCore.QSize(75, 75))
         self.pushButtonExit.setMaximumSize(QtCore.QSize(75, 75))
@@ -104,7 +104,7 @@ class Ui_Form(object):
 "}\n"
 "")
         self.pushButtonExit.setObjectName("pushButtonExit")
-        self.pushButtonSignOut = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonSignOut = QtWidgets.QPushButton(parent=FormUserMenu)
         self.pushButtonSignOut.setGeometry(QtCore.QRect(149, 341, 75, 75))
         self.pushButtonSignOut.setMinimumSize(QtCore.QSize(75, 75))
         self.pushButtonSignOut.setMaximumSize(QtCore.QSize(75, 75))
@@ -124,7 +124,7 @@ class Ui_Form(object):
 "}\n"
 "")
         self.pushButtonSignOut.setObjectName("pushButtonSignOut")
-        self.pushButtonMentorMeeting = QtWidgets.QPushButton(parent=Form)
+        self.pushButtonMentorMeeting = QtWidgets.QPushButton(parent=FormUserMenu)
         self.pushButtonMentorMeeting.setGeometry(QtCore.QRect(107, 224, 75, 75))
         self.pushButtonMentorMeeting.setMinimumSize(QtCore.QSize(75, 75))
         self.pushButtonMentorMeeting.setMaximumSize(QtCore.QSize(75, 75))
@@ -143,7 +143,7 @@ class Ui_Form(object):
 "}\n"
 "")
         self.pushButtonMentorMeeting.setObjectName("pushButtonMentorMeeting")
-        self.labelUsers = QtWidgets.QLabel(parent=Form)
+        self.labelUsers = QtWidgets.QLabel(parent=FormUserMenu)
         self.labelUsers.setGeometry(QtCore.QRect(200, 245, 100, 100))
         self.labelUsers.setMinimumSize(QtCore.QSize(100, 100))
         self.labelUsers.setMaximumSize(QtCore.QSize(100, 100))
@@ -157,7 +157,7 @@ class Ui_Form(object):
         self.labelUsers.setPixmap(QtGui.QPixmap("pictures/user_icon.png"))
         self.labelUsers.setScaledContents(True)
         self.labelUsers.setObjectName("labelUsers")
-        self.frameCurrentUser = QtWidgets.QFrame(parent=Form)
+        self.frameCurrentUser = QtWidgets.QFrame(parent=FormUserMenu)
         self.frameCurrentUser.setGeometry(QtCore.QRect(430, 0, 71, 51))
         self.frameCurrentUser.setStyleSheet("background-color: rgba(0, 0, 0, 0);")
         self.frameCurrentUser.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
@@ -166,37 +166,37 @@ class Ui_Form(object):
         self.labelCurrentUser = QtWidgets.QLabel(parent=self.frameCurrentUser)
         self.labelCurrentUser.setGeometry(QtCore.QRect(20, 0, 31, 31))
         self.labelCurrentUser.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.labelCurrentUser.setPixmap(QtGui.QPixmap("pictures/wehere_icon.png"))
+        self.labelCurrentUser.setPixmap(QtGui.QPixmap("pictures/werhere_icon.png"))
         self.labelCurrentUser.setObjectName("labelCurrentUser")
         self.labelAccountName = QtWidgets.QLabel(parent=self.frameCurrentUser)
         self.labelAccountName.setGeometry(QtCore.QRect(10, 30, 51, 20))
         self.labelAccountName.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.labelAccountName.setObjectName("labelAccountName")
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
-        Form.setTabOrder(self.pushButtonExit, self.pushButtonSignOut)
-        Form.setTabOrder(self.pushButtonSignOut, self.pushButtonMentorMeeting)
-        Form.setTabOrder(self.pushButtonMentorMeeting, self.pushButtonApplications)
-        Form.setTabOrder(self.pushButtonApplications, self.pushButtonInterviews)
+        self.retranslateUi(FormUserMenu)
+        QtCore.QMetaObject.connectSlotsByName(FormUserMenu)
+        FormUserMenu.setTabOrder(self.pushButtonExit, self.pushButtonSignOut)
+        FormUserMenu.setTabOrder(self.pushButtonSignOut, self.pushButtonMentorMeeting)
+        FormUserMenu.setTabOrder(self.pushButtonMentorMeeting, self.pushButtonApplications)
+        FormUserMenu.setTabOrder(self.pushButtonApplications, self.pushButtonInterviews)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, FormUserMenu):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "USER MENU"))
-        self.pushButtonApplications.setText(_translate("Form", "Applications"))
-        self.pushButtonInterviews.setText(_translate("Form", "Interviews"))
-        self.pushButtonExit.setText(_translate("Form", "Exit"))
-        self.pushButtonSignOut.setText(_translate("Form", "Sign Out"))
-        self.pushButtonMentorMeeting.setText(_translate("Form", "Mentor\n"
+        FormUserMenu.setWindowTitle(_translate("FormUserMenu", "USER MENU"))
+        self.pushButtonApplications.setText(_translate("FormUserMenu", "Applications"))
+        self.pushButtonInterviews.setText(_translate("FormUserMenu", "Interviews"))
+        self.pushButtonExit.setText(_translate("FormUserMenu", "Exit"))
+        self.pushButtonSignOut.setText(_translate("FormUserMenu", "Sign Out"))
+        self.pushButtonMentorMeeting.setText(_translate("FormUserMenu", "Mentor\n"
 "Meeting"))
-        self.labelAccountName.setText(_translate("Form", "Account"))
+        self.labelAccountName.setText(_translate("FormUserMenu", "Account"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
+    FormUserMenu = QtWidgets.QWidget()
+    ui = Ui_FormUserMenu()
+    ui.setupUi(FormUserMenu)
+    FormUserMenu.show()
     sys.exit(app.exec())

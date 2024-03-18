@@ -81,9 +81,9 @@ class InterviewsPage(QWidget):
             self.menu_admin = UserAdminPreferencePage(self.current_user)
             self.menu_admin.show()
         else:
-            from user_menu import UserPreferencePage
+            from user_menu import UserMenuPage
             self.hide()
-            self.menu_user = UserPreferencePage(self.current_user)
+            self.menu_user = UserMenuPage(self.current_user)
             self.menu_user.show()
 
     def app_exit(self):

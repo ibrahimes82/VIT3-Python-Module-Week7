@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>FormUserMenu</class>
+ <widget class="QWidget" name="FormUserMenu">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -381,7 +381,7 @@ Meeting</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="pixmap">
-     <pixmap>pictures/wehere_icon.png</pixmap>
+     <pixmap>pictures/werhere_icon.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="labelAccountName">
