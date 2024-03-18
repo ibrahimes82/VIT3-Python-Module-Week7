@@ -51,7 +51,7 @@ class AdminMenuPage(QWidget):
         self.mentor_menu_open.show()
 
     def adminmenu_in(self):
-        from management import ManagementMenuPage
+        from management import ManagementPage
         self.close()
-        self.management_menu_open = ManagementMenuPage(self.current_user)
+        self.management_menu_open = ManagementPage(self.current_user)
         self.management_menu_open.show()

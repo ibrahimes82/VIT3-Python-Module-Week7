@@ -78,7 +78,7 @@ QPushButton:hover{
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>pictures/wehere_logo.ico</pixmap>
+    <pixmap>pictures/werhere_logo.ico</pixmap>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_app_planned_mentor">

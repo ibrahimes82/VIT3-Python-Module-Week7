@@ -7,7 +7,7 @@ import datetime
 import pickle
 import os.path
 
-from management_ui import Ui_Form
+from management_ui import Ui_FormManagement
 
 # Google Calendar API'deki yetkilendirme kapsamları
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly',
@@ -16,7 +16,7 @@ SCOPES = ['https://www.googleapis.com/auth/calendar.readonly',
           'https://www.googleapis.com/auth/calendar']
 
 
-class ManagementMenuPage(QWidget, Ui_Form):
+class ManagementPage(QWidget, Ui_FormManagement):
     def __init__(self, current_user):
         super().__init__()
         self.setupUi(self)
@@ -29,6 +29,7 @@ class ManagementMenuPage(QWidget, Ui_Form):
         self.pushButton_mam_exit.clicked.connect(self.close)
         self.pushButton_mam_event_control.clicked.connect(self.get_calendar_events)
         self.pushButton_mam_send_mail.clicked.connect(self.send_invitations)
+        self.pushButton_back_menu.clicked.connect(self.back_menu)
 
     def get_calendar_events(self):
         creds = self.get_credentials()
@@ -127,6 +128,6 @@ class ManagementMenuPage(QWidget, Ui_Form):
 
 if __name__ == "__main__":
     app = QApplication([])
-    main_window = ManagementMenuPage(['a', 'b', 'admin'])
+    main_window = ManagementPage(['a', 'b', 'admin'])
     main_window.show()
     app.exec()

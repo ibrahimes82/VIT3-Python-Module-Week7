@@ -30,7 +30,7 @@ class Ui_FormInterviews(object):
         self.labelLogo.setGeometry(QtCore.QRect(210, 12, 261, 101))
         self.labelLogo.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.labelLogo.setText("")
-        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
+        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/werhere_logo.ico"))
         self.labelLogo.setObjectName("labelLogo")
         self.labelInterviews = QtWidgets.QLabel(parent=FormInterviews)
         self.labelInterviews.setGeometry(QtCore.QRect(470, 40, 251, 41))

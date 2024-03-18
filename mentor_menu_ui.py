@@ -30,7 +30,7 @@ class Ui_FormMentor(object):
         self.labelLogo.setGeometry(QtCore.QRect(370, 10, 261, 101))
         self.labelLogo.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.labelLogo.setText("")
-        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
+        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/werhere_logo.ico"))
         self.labelLogo.setObjectName("labelLogo")
         self.labelMentor = QtWidgets.QLabel(parent=FormMentor)
         self.labelMentor.setGeometry(QtCore.QRect(630, 38, 301, 41))

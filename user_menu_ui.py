@@ -28,7 +28,7 @@ class Ui_FormUserMenu(object):
         self.labelLogo.setFont(font)
         self.labelLogo.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.labelLogo.setText("")
-        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
+        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/werhere_logo.ico"))
         self.labelLogo.setObjectName("labelLogo")
         self.labelPicMenu = QtWidgets.QLabel(parent=FormUserMenu)
         self.labelPicMenu.setGeometry(QtCore.QRect(80, 130, 341, 311))

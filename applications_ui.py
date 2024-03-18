@@ -39,7 +39,7 @@ class Ui_FormApplications(object):
         self.label.setGeometry(QtCore.QRect(270, 22, 261, 101))
         self.label.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("pictures/wehere_logo.ico"))
+        self.label.setPixmap(QtGui.QPixmap("pictures/werhere_logo.ico"))
         self.label.setObjectName("label")
         self.pushButton_app_planned_mentor = QtWidgets.QPushButton(parent=FormApplications)
         self.pushButton_app_planned_mentor.setGeometry(QtCore.QRect(40, 260, 171, 31))
