@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QWidget
 from admin_menu_ui import Ui_FormAdminMenu
 
 
-class UserAdminPreferencePage(QWidget):
+class AdminMenuPage(QWidget):
     def __init__(self, current_user) -> None:
         super().__init__()
         self.current_user = current_user

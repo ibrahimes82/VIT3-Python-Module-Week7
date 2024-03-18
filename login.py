@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QMainWindow, QLineEdit
 
 import gspread
 from login_ui import Ui_MainWindow
-from admin_menu import UserAdminPreferencePage
+from admin_menu import AdminMenuPage
 from user_menu import UserMenuPage
 
 credentials = 'key.json'
@@ -39,7 +39,7 @@ class LoginPage(QMainWindow):
         for user in users:
             if username == user[0] and password == user[1] and user[2] == 'admin':
                 self.hide()
-                self.menu_admin = UserAdminPreferencePage(user)
+                self.menu_admin = AdminMenuPage(user)
                 self.menu_admin.show()
 
             elif username == user[0] and password == user[1] and user[2] == 'user':

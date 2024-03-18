@@ -179,9 +179,9 @@ class ApplicationsPage(QWidget):
 
     def back_menu(self):
         if self.current_user[2] == "admin":
-            from admin_menu import UserAdminPreferencePage
+            from admin_menu import AdminMenuPage
             self.hide()
-            self.menu_admin = UserAdminPreferencePage(self.current_user)
+            self.menu_admin = AdminMenuPage(self.current_user)
             self.menu_admin.show()
         else:
             from user_menu import UserMenuPage
