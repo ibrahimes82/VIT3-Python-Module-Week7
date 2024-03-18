@@ -10,8 +10,8 @@ gc = gspread.service_account(filename=credentials)
 spreadsheet_users = gc.open('Mulakatlar')
 worksheet_interviews = spreadsheet_users.get_worksheet(0)
 interviews = worksheet_interviews.get_all_values()
-headers = interviews[0]     # Başlıkları al
-interviews.pop(0)           # Başlıkları at
+headers = interviews[0]  # Başlıkları al
+interviews.pop(0)        # Başlıkları at
 
 
 class InterviewsPage(QWidget):
@@ -49,13 +49,13 @@ class InterviewsPage(QWidget):
         searched_people = []
         for person in interviews:
             # If the text in the textbox appears within one of the names in the list AND is not empty at the same time!
-            if self.form_interviews.lineEditUsername.text() in person[0] and self.form_interviews.lineEditUsername.text() != '':
+            if self.form_interviews.lineEditUsername.text().lower() in str(person[0]).lower() and self.form_interviews.lineEditUsername.text() != '':
                 searched_people += [person]
 
         # Make empty the search area
         self.form_interviews.lineEditUsername.setText('')
 
-        if searched_people:     # If the searched_people variable is not empty!
+        if searched_people:  # If the searched_people variable is not empty!
             return self.write2table(searched_people)
         else:
             return self.write2table([['No user found!', '-', '-']])
@@ -88,3 +88,10 @@ class InterviewsPage(QWidget):
 
     def app_exit(self):
         self.close()
+
+
+if __name__ == "__main__":
+    app = QApplication([])
+    main_window = InterviewsPage(['a', 'b', 'admin'])
+    main_window.show()
+    app.exec()

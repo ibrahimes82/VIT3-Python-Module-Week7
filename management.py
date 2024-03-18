@@ -1,5 +1,4 @@
-from PyQt6.QtWidgets import QApplication, QWidget, QTableWidgetItem, QMessageBox
-from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import QApplication, QWidget, QTableWidgetItem
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
@@ -16,20 +15,21 @@ SCOPES = ['https://www.googleapis.com/auth/calendar.readonly',
           'https://www.googleapis.com/auth/calendar']
 
 
-class ManagementPage(QWidget, Ui_FormManagement):
+class ManagementPage(QWidget):
     def __init__(self, current_user):
         super().__init__()
-        self.setupUi(self)
+        self.events = None
         self.current_user = current_user
+        self.form_management = Ui_FormManagement()
+        self.form_management.setupUi(self)
 
         self.menu_user = None
         self.menu_admin = None
 
-        self.setWindowIcon(QIcon("pictures/werhere_icon.png"))
-        self.pushButton_mam_exit.clicked.connect(self.close)
-        self.pushButton_mam_event_control.clicked.connect(self.get_calendar_events)
-        self.pushButton_mam_send_mail.clicked.connect(self.send_invitations)
-        self.pushButton_back_menu.clicked.connect(self.back_menu)
+        self.form_management.pushButton_mam_exit.clicked.connect(self.close)
+        self.form_management.pushButton_mam_event_control.clicked.connect(self.get_calendar_events)
+        self.form_management.pushButton_mam_send_mail.clicked.connect(self.send_invitations)
+        self.form_management.pushButton_back_menu.clicked.connect(self.back_menu)
 
     def get_calendar_events(self):
         creds = self.get_credentials()
@@ -47,7 +47,7 @@ class ManagementPage(QWidget, Ui_FormManagement):
         self.events = events_result.get('items', [])  # events'i sınıf seviyesinde bir değişken olarak sakla
 
         # Etkinlikleri tabloya yerleştir
-        self.tableWidget.setRowCount(0)  # Önceki verileri temizle
+        self.form_management.tableWidget.setRowCount(0)  # Önceki verileri temizle
         for event in self.events:
             start = event['start'].get('dateTime', event['start'].get('date'))
             formatted_start = self.format_datetime(start)  # Tarih/saat formatlamasını yap
@@ -55,12 +55,15 @@ class ManagementPage(QWidget, Ui_FormManagement):
             participant_emails = ", ".join([attendee['email'] for attendee in attendees if attendee.get('email')])
             organizer_email = event['organizer'].get('email') if event.get('organizer') else 'Unknown'
 
-            self.tableWidget.insertRow(self.tableWidget.rowCount())
-            self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 0,
-                                     QTableWidgetItem(event.get('summary', 'No Name')))
-            self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 1, QTableWidgetItem(formatted_start))
-            self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 2, QTableWidgetItem(participant_emails))
-            self.tableWidget.setItem(self.tableWidget.rowCount() - 1, 3, QTableWidgetItem(organizer_email))
+            self.form_management.tableWidget.insertRow(self.form_management.tableWidget.rowCount())
+            self.form_management.tableWidget.setItem(self.form_management.tableWidget.rowCount() - 1, 0,
+                                                     QTableWidgetItem(event.get('summary', 'No Name')))
+            self.form_management.tableWidget.setItem(self.form_management.tableWidget.rowCount() - 1, 1,
+                                                     QTableWidgetItem(formatted_start))
+            self.form_management.tableWidget.setItem(self.form_management.tableWidget.rowCount() - 1, 2,
+                                                     QTableWidgetItem(participant_emails))
+            self.form_management.tableWidget.setItem(self.form_management.tableWidget.rowCount() - 1, 3,
+                                                     QTableWidgetItem(organizer_email))
 
     def format_datetime(self, datetime_str):
         # Tarih ve saat değerini ISO formatından dönüştür
@@ -117,13 +120,13 @@ class ManagementPage(QWidget, Ui_FormManagement):
         if self.current_user[2] == "admin":
             from admin_menu import AdminMenuPage
             self.hide()
-            self.menu_admin = AdminMenuPage(self.current_user)
-            self.menu_admin.show()
+            self.form_management.menu_admin = AdminMenuPage(self.current_user)
+            self.form_management.menu_admin.show()
         else:
             from user_menu import UserMenuPage
             self.hide()
-            self.menu_user = UserMenuPage(self.current_user)
-            self.menu_user.show()
+            self.form_management.menu_user = UserMenuPage(self.current_user)
+            self.form_management.menu_user.show()
 
 
 if __name__ == "__main__":

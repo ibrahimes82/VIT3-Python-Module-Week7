@@ -21,7 +21,7 @@ class Ui_FormManagement(object):
         FormManagement.setMinimumSize(QtCore.QSize(750, 500))
         FormManagement.setMaximumSize(QtCore.QSize(750, 500))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("pictures/wehere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("pictures/werhere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         FormManagement.setWindowIcon(icon)
         FormManagement.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
         self.pushButton_mam_exit = QtWidgets.QPushButton(parent=FormManagement)
