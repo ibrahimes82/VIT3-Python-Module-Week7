@@ -8,7 +8,7 @@ class UserMenuPage(QWidget):
         self.current_user = current_user
         self.user_menu_form = Ui_FormUserMenu()
         self.user_menu_form.setupUi(self)
-        self.user_menu_form.labelAccountName.setText(str(current_user[0]).split(' ')[0])
+        self.user_menu_form.labelCurrentUser.setText(str(current_user[0]).split(' ')[0])
 
         self.login_window = None
         self.applications_window_open = None

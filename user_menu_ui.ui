@@ -368,7 +368,7 @@ Meeting</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QLabel" name="labelCurrentUser">
+   <widget class="QLabel" name="labelCurrentUserPic">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -384,7 +384,7 @@ Meeting</string>
      <pixmap>pictures/werhere_icon.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="labelAccountName">
+   <widget class="QLabel" name="labelCurrentUser">
     <property name="geometry">
      <rect>
       <x>10</x>

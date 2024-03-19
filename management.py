@@ -18,18 +18,19 @@ SCOPES = ['https://www.googleapis.com/auth/calendar.readonly',
 class ManagementPage(QWidget):
     def __init__(self, current_user):
         super().__init__()
-        self.events = None
         self.current_user = current_user
         self.form_management = Ui_FormManagement()
         self.form_management.setupUi(self)
 
+        self.events = None
+
         self.menu_user = None
         self.menu_admin = None
 
-        self.form_management.pushButton_mam_exit.clicked.connect(self.close)
-        self.form_management.pushButton_mam_event_control.clicked.connect(self.get_calendar_events)
-        self.form_management.pushButton_mam_send_mail.clicked.connect(self.send_invitations)
-        self.form_management.pushButton_back_menu.clicked.connect(self.back_menu)
+        self.form_management.pushButtonGetAllEvents.clicked.connect(self.get_calendar_events)
+        self.form_management.pushButtonSendEmail.clicked.connect(self.send_invitations)
+        self.form_management.pushButtonBackMenu.clicked.connect(self.back_menu)
+        self.form_management.pushButtonExit.clicked.connect(self.close)
 
     def get_calendar_events(self):
         creds = self.get_credentials()
@@ -45,6 +46,7 @@ class ManagementPage(QWidget):
                                               maxResults=10, singleEvents=True,
                                               orderBy='startTime').execute()
         self.events = events_result.get('items', [])  # events'i sınıf seviyesinde bir değişken olarak sakla
+        #print(self.events)
 
         # Etkinlikleri tabloya yerleştir
         self.form_management.tableWidget.setRowCount(0)  # Önceki verileri temizle
@@ -52,6 +54,7 @@ class ManagementPage(QWidget):
             start = event['start'].get('dateTime', event['start'].get('date'))
             formatted_start = self.format_datetime(start)  # Tarih/saat formatlamasını yap
             attendees = event.get('attendees', [])
+
             participant_emails = ", ".join([attendee['email'] for attendee in attendees if attendee.get('email')])
             organizer_email = event['organizer'].get('email') if event.get('organizer') else 'Unknown'
 

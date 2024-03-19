@@ -38,7 +38,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));</string>
   </property>
-  <widget class="QPushButton" name="pushButton_mam_exit">
+  <widget class="QPushButton" name="pushButtonExit">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -68,10 +68,10 @@ QPushButton:hover{
     <string>Exit</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="labelLogo">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>190</x>
      <y>32</y>
      <width>261</width>
      <height>101</height>
@@ -88,7 +88,7 @@ background-color: rgba(0, 0, 0,0%);</string>
     <pixmap>pictures/werhere_logo.ico</pixmap>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_mam_send_mail">
+  <widget class="QPushButton" name="pushButtonSendEmail">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -140,12 +140,12 @@ QPushButton:hover{
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="labelManagement">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>450</x>
      <y>60</y>
-     <width>251</width>
+     <width>281</width>
      <height>41</height>
     </rect>
    </property>
@@ -161,7 +161,7 @@ QPushButton:hover{
 color: rgb(71, 84, 88);</string>
    </property>
    <property name="text">
-    <string>MAIN ADMIN</string>
+    <string>MANAGEMENT</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
@@ -203,7 +203,7 @@ color: rgb(71, 84, 88);</string>
     </property>
    </column>
   </widget>
-  <widget class="QPushButton" name="pushButton_back_menu">
+  <widget class="QPushButton" name="pushButtonBackMenu">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -233,7 +233,7 @@ QPushButton:hover{
     <string>Back Menu</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="labelPage">
    <property name="geometry">
     <rect>
      <x>410</x>
@@ -254,10 +254,10 @@ QPushButton:hover{
 color: rgb(71, 84, 88);</string>
    </property>
    <property name="text">
-    <string>MENU</string>
+    <string>PAGE</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_mam_event_control">
+  <widget class="QPushButton" name="pushButtonGetAllEvents">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -284,16 +284,16 @@ QPushButton:hover{
 }</string>
    </property>
    <property name="text">
-    <string>Event Control</string>
+    <string>Get All Events</string>
    </property>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>pushButton_mam_event_control</tabstop>
-  <tabstop>pushButton_mam_send_mail</tabstop>
-  <tabstop>pushButton_back_menu</tabstop>
+  <tabstop>pushButtonGetAllEvents</tabstop>
+  <tabstop>pushButtonSendEmail</tabstop>
+  <tabstop>pushButtonBackMenu</tabstop>
   <tabstop>tableWidget</tabstop>
-  <tabstop>pushButton_mam_exit</tabstop>
+  <tabstop>pushButtonExit</tabstop>
  </tabstops>
  <resources/>
  <connections/>

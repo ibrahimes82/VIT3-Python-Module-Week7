@@ -162,15 +162,15 @@ class Ui_FormAdminMenu(object):
         self.frameCurrentUser.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frameCurrentUser.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frameCurrentUser.setObjectName("frameCurrentUser")
+        self.labelCurrentUserPic = QtWidgets.QLabel(parent=self.frameCurrentUser)
+        self.labelCurrentUserPic.setGeometry(QtCore.QRect(20, 0, 31, 31))
+        self.labelCurrentUserPic.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.labelCurrentUserPic.setPixmap(QtGui.QPixmap("pictures/werhere_icon.png"))
+        self.labelCurrentUserPic.setObjectName("labelCurrentUserPic")
         self.labelCurrentUser = QtWidgets.QLabel(parent=self.frameCurrentUser)
-        self.labelCurrentUser.setGeometry(QtCore.QRect(20, 0, 31, 31))
-        self.labelCurrentUser.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.labelCurrentUser.setPixmap(QtGui.QPixmap("pictures/werhere_icon.png"))
+        self.labelCurrentUser.setGeometry(QtCore.QRect(10, 30, 51, 20))
+        self.labelCurrentUser.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.labelCurrentUser.setObjectName("labelCurrentUser")
-        self.labelAccountName = QtWidgets.QLabel(parent=self.frameCurrentUser)
-        self.labelAccountName.setGeometry(QtCore.QRect(10, 30, 51, 20))
-        self.labelAccountName.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.labelAccountName.setObjectName("labelAccountName")
 
         self.retranslateUi(FormAdminMenu)
         QtCore.QMetaObject.connectSlotsByName(FormAdminMenu)
@@ -190,7 +190,7 @@ class Ui_FormAdminMenu(object):
 "Meeting"))
         self.pushButtonSignOut.setText(_translate("FormAdminMenu", "Sign Out"))
         self.pushButtonInterviews.setText(_translate("FormAdminMenu", "Interviews"))
-        self.labelAccountName.setText(_translate("FormAdminMenu", "Account"))
+        self.labelCurrentUser.setText(_translate("FormAdminMenu", "Account"))
 
 
 if __name__ == "__main__":

@@ -24,13 +24,13 @@ class Ui_FormManagement(object):
         icon.addPixmap(QtGui.QPixmap("pictures/werhere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         FormManagement.setWindowIcon(icon)
         FormManagement.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
-        self.pushButton_mam_exit = QtWidgets.QPushButton(parent=FormManagement)
-        self.pushButton_mam_exit.setGeometry(QtCore.QRect(10, 430, 171, 31))
+        self.pushButtonExit = QtWidgets.QPushButton(parent=FormManagement)
+        self.pushButtonExit.setGeometry(QtCore.QRect(10, 430, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_mam_exit.setFont(font)
-        self.pushButton_mam_exit.setStyleSheet("QPushButton{\n"
+        self.pushButtonExit.setFont(font)
+        self.pushButtonExit.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -39,21 +39,21 @@ class Ui_FormManagement(object):
 "    background-color: rgb(20, 135, 135);\n"
 " border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_mam_exit.setObjectName("pushButton_mam_exit")
-        self.label_2 = QtWidgets.QLabel(parent=FormManagement)
-        self.label_2.setGeometry(QtCore.QRect(200, 32, 261, 101))
-        self.label_2.setStyleSheet("\n"
+        self.pushButtonExit.setObjectName("pushButtonExit")
+        self.labelLogo = QtWidgets.QLabel(parent=FormManagement)
+        self.labelLogo.setGeometry(QtCore.QRect(190, 32, 261, 101))
+        self.labelLogo.setStyleSheet("\n"
 "background-color: rgba(0, 0, 0,0%);")
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("pictures/werhere_logo.ico"))
-        self.label_2.setObjectName("label_2")
-        self.pushButton_mam_send_mail = QtWidgets.QPushButton(parent=FormManagement)
-        self.pushButton_mam_send_mail.setGeometry(QtCore.QRect(10, 270, 171, 31))
+        self.labelLogo.setText("")
+        self.labelLogo.setPixmap(QtGui.QPixmap("pictures/werhere_logo.ico"))
+        self.labelLogo.setObjectName("labelLogo")
+        self.pushButtonSendEmail = QtWidgets.QPushButton(parent=FormManagement)
+        self.pushButtonSendEmail.setGeometry(QtCore.QRect(10, 270, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_mam_send_mail.setFont(font)
-        self.pushButton_mam_send_mail.setStyleSheet("QPushButton{\n"
+        self.pushButtonSendEmail.setFont(font)
+        self.pushButtonSendEmail.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -62,7 +62,7 @@ class Ui_FormManagement(object):
 "    background-color: rgb(20, 135, 135);\n"
 " border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_mam_send_mail.setObjectName("pushButton_mam_send_mail")
+        self.pushButtonSendEmail.setObjectName("pushButtonSendEmail")
         self.label = QtWidgets.QLabel(parent=FormManagement)
         self.label.setGeometry(QtCore.QRect(10, 10, 191, 171))
         self.label.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
@@ -70,16 +70,16 @@ class Ui_FormManagement(object):
         self.label.setPixmap(QtGui.QPixmap("pictures/main_admin.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
-        self.label_3 = QtWidgets.QLabel(parent=FormManagement)
-        self.label_3.setGeometry(QtCore.QRect(460, 60, 251, 41))
+        self.labelManagement = QtWidgets.QLabel(parent=FormManagement)
+        self.labelManagement.setGeometry(QtCore.QRect(450, 60, 281, 41))
         font = QtGui.QFont()
         font.setFamily("Arial Black")
         font.setPointSize(26)
         font.setBold(True)
-        self.label_3.setFont(font)
-        self.label_3.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+        self.labelManagement.setFont(font)
+        self.labelManagement.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "color: rgb(71, 84, 88);")
-        self.label_3.setObjectName("label_3")
+        self.labelManagement.setObjectName("labelManagement")
         self.tableWidget = QtWidgets.QTableWidget(parent=FormManagement)
         self.tableWidget.setGeometry(QtCore.QRect(200, 190, 521, 271))
         self.tableWidget.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
@@ -96,13 +96,13 @@ class Ui_FormManagement(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(3, item)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(130)
-        self.pushButton_back_menu = QtWidgets.QPushButton(parent=FormManagement)
-        self.pushButton_back_menu.setGeometry(QtCore.QRect(10, 350, 171, 31))
+        self.pushButtonBackMenu = QtWidgets.QPushButton(parent=FormManagement)
+        self.pushButtonBackMenu.setGeometry(QtCore.QRect(10, 350, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_back_menu.setFont(font)
-        self.pushButton_back_menu.setStyleSheet("QPushButton{\n"
+        self.pushButtonBackMenu.setFont(font)
+        self.pushButtonBackMenu.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -111,24 +111,24 @@ class Ui_FormManagement(object):
 "    background-color: rgb(20, 135, 135);\n"
 " border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_back_menu.setObjectName("pushButton_back_menu")
-        self.label_4 = QtWidgets.QLabel(parent=FormManagement)
-        self.label_4.setGeometry(QtCore.QRect(410, 110, 121, 41))
+        self.pushButtonBackMenu.setObjectName("pushButtonBackMenu")
+        self.labelPage = QtWidgets.QLabel(parent=FormManagement)
+        self.labelPage.setGeometry(QtCore.QRect(410, 110, 121, 41))
         font = QtGui.QFont()
         font.setFamily("Arial Black")
         font.setPointSize(26)
         font.setBold(True)
-        self.label_4.setFont(font)
-        self.label_4.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
+        self.labelPage.setFont(font)
+        self.labelPage.setStyleSheet("background-color: rgba(0, 0, 0,0%);\n"
 "color: rgb(71, 84, 88);")
-        self.label_4.setObjectName("label_4")
-        self.pushButton_mam_event_control = QtWidgets.QPushButton(parent=FormManagement)
-        self.pushButton_mam_event_control.setGeometry(QtCore.QRect(10, 190, 171, 31))
+        self.labelPage.setObjectName("labelPage")
+        self.pushButtonGetAllEvents = QtWidgets.QPushButton(parent=FormManagement)
+        self.pushButtonGetAllEvents.setGeometry(QtCore.QRect(10, 190, 171, 31))
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setBold(True)
-        self.pushButton_mam_event_control.setFont(font)
-        self.pushButton_mam_event_control.setStyleSheet("QPushButton{\n"
+        self.pushButtonGetAllEvents.setFont(font)
+        self.pushButtonGetAllEvents.setStyleSheet("QPushButton{\n"
 "    border-radius : 15px;\n"
 "    background-color : rgb(25, 200, 200);\n"
 "    color: rgb(255, 255, 255);\n"
@@ -137,21 +137,21 @@ class Ui_FormManagement(object):
 "    background-color: rgb(20, 135, 135);\n"
 " border: 2px solid rgb(162, 0, 0);\n"
 "}")
-        self.pushButton_mam_event_control.setObjectName("pushButton_mam_event_control")
+        self.pushButtonGetAllEvents.setObjectName("pushButtonGetAllEvents")
 
         self.retranslateUi(FormManagement)
         QtCore.QMetaObject.connectSlotsByName(FormManagement)
-        FormManagement.setTabOrder(self.pushButton_mam_event_control, self.pushButton_mam_send_mail)
-        FormManagement.setTabOrder(self.pushButton_mam_send_mail, self.pushButton_back_menu)
-        FormManagement.setTabOrder(self.pushButton_back_menu, self.tableWidget)
-        FormManagement.setTabOrder(self.tableWidget, self.pushButton_mam_exit)
+        FormManagement.setTabOrder(self.pushButtonGetAllEvents, self.pushButtonSendEmail)
+        FormManagement.setTabOrder(self.pushButtonSendEmail, self.pushButtonBackMenu)
+        FormManagement.setTabOrder(self.pushButtonBackMenu, self.tableWidget)
+        FormManagement.setTabOrder(self.tableWidget, self.pushButtonExit)
 
     def retranslateUi(self, FormManagement):
         _translate = QtCore.QCoreApplication.translate
         FormManagement.setWindowTitle(_translate("FormManagement", "MANAGEMENT PAGE"))
-        self.pushButton_mam_exit.setText(_translate("FormManagement", "Exit"))
-        self.pushButton_mam_send_mail.setText(_translate("FormManagement", "Send Mail"))
-        self.label_3.setText(_translate("FormManagement", "MAIN ADMIN"))
+        self.pushButtonExit.setText(_translate("FormManagement", "Exit"))
+        self.pushButtonSendEmail.setText(_translate("FormManagement", "Send Mail"))
+        self.labelManagement.setText(_translate("FormManagement", "MANAGEMENT"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("FormManagement", "Event Name"))
         item = self.tableWidget.horizontalHeaderItem(1)
@@ -160,9 +160,9 @@ class Ui_FormManagement(object):
         item.setText(_translate("FormManagement", "Participant Mail"))
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("FormManagement", "Organizer Mail"))
-        self.pushButton_back_menu.setText(_translate("FormManagement", "Back Menu"))
-        self.label_4.setText(_translate("FormManagement", "MENU"))
-        self.pushButton_mam_event_control.setText(_translate("FormManagement", "Event Control"))
+        self.pushButtonBackMenu.setText(_translate("FormManagement", "Back Menu"))
+        self.labelPage.setText(_translate("FormManagement", "PAGE"))
+        self.pushButtonGetAllEvents.setText(_translate("FormManagement", "Get All Events"))
 
 
 if __name__ == "__main__":
