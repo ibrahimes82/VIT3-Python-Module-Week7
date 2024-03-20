@@ -1,23 +1,16 @@
 from PyQt6 import QtCore
 from PyQt6.QtWidgets import QMainWindow, QLineEdit
 
-import gspread
-
+import main
 from login_ui import Ui_MainWindow
 from admin_menu import AdminMenuPage
 from user_menu import UserMenuPage
-
-credentials = 'key.json'
-gc = gspread.service_account(filename=credentials)
-spreadsheet_users = gc.open('Kullanicilar')
-worksheet_users = spreadsheet_users.get_worksheet(0)
-users = worksheet_users.get_all_values()
-users.pop(0)
 
 
 class LoginPage(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.users = main.connection_hub('key.json', 'Kullanicilar')
         self.form_login = Ui_MainWindow()
         self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
@@ -39,7 +32,7 @@ class LoginPage(QMainWindow):
         username = self.form_login.lineEditUsername.text()
         password = self.form_login.lineEditPassword.text()
 
-        for user in users:
+        for user in self.users[1:]:
             if username == user[0] and password == user[1] and user[2] == 'admin':
                 self.hide()
                 self.menu_admin = AdminMenuPage(user)

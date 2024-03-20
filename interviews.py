@@ -1,16 +1,8 @@
 from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
-import gspread
 
+import main
 from interviews_ui import Ui_FormInterviews
-
-credentials = 'key.json'
-gc = gspread.service_account(filename=credentials)
-spreadsheet_users = gc.open('Mulakatlar')
-worksheet_interviews = spreadsheet_users.get_worksheet(0)
-interviews = worksheet_interviews.get_all_values()
-headers = interviews[0]  # Başlıkları al
-interviews.pop(0)        # Başlıkları at
 
 
 class InterviewsPage(QWidget):
@@ -19,6 +11,8 @@ class InterviewsPage(QWidget):
         self.current_user = current_user
         self.form_interviews = Ui_FormInterviews()
         self.form_interviews.setupUi(self)
+
+        self.interviews = main.connection_hub('key.json', 'Mulakatlar')
         self.menu_admin = None
         self.menu_user = None
 
@@ -34,8 +28,8 @@ class InterviewsPage(QWidget):
         # Tabloyu temizle
         table_widget.clearContents()
         # Tabloya başlık ekle
-        table_widget.setColumnCount(len(headers))
-        table_widget.setHorizontalHeaderLabels(headers)
+        table_widget.setColumnCount(len(self.interviews[0]))
+        table_widget.setHorizontalHeaderLabels(self.interviews[0])
         # Tabloyu doldur
         table_widget.setRowCount(len(a_list))
         for i, row in enumerate(a_list):
@@ -46,7 +40,7 @@ class InterviewsPage(QWidget):
 
     def search_name(self):
         searched_people = []
-        for person in interviews:
+        for person in self.interviews[1:]:
             # If the text in the textbox appears within one of the names in the list AND is not empty at the same time!
             if self.form_interviews.lineEditUsername.text().lower() in str(person[0]).lower() and self.form_interviews.lineEditUsername.text() != '':
                 searched_people += [person]
@@ -60,14 +54,14 @@ class InterviewsPage(QWidget):
             return self.write2table([['No user found!', '-', '-']])
 
     def get_submitted_projects(self):
-        submitted_projects = interviews
+        submitted_projects = self.interviews[1:]
         for i in submitted_projects:
             if not i[1]:
                 submitted_projects.remove(i)
         return self.write2table(submitted_projects)
 
     def get_projects_arrivals(self):
-        projects_arrivals = interviews
+        projects_arrivals = self.interviews[1:]
         for i in projects_arrivals:
             if not i[2]:
                 projects_arrivals.remove(i)
