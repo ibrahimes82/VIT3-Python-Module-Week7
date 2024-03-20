@@ -172,6 +172,13 @@ class Ui_FormUserMenu(object):
         self.labelCurrentUser.setGeometry(QtCore.QRect(10, 30, 51, 20))
         self.labelCurrentUser.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.labelCurrentUser.setObjectName("labelCurrentUser")
+        self.toolButtonAccount = QtWidgets.QToolButton(parent=self.frameCurrentUser)
+        self.toolButtonAccount.setGeometry(QtCore.QRect(20, 0, 31, 41))
+        self.toolButtonAccount.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
+"background-image:/src_/werhere_icon.png;")
+        self.toolButtonAccount.setText("")
+        self.toolButtonAccount.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonFollowStyle)
+        self.toolButtonAccount.setObjectName("toolButtonAccount")
 
         self.retranslateUi(FormUserMenu)
         QtCore.QMetaObject.connectSlotsByName(FormUserMenu)

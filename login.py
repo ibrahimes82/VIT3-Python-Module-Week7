@@ -1,6 +1,8 @@
+from PyQt6 import QtCore
 from PyQt6.QtWidgets import QMainWindow, QLineEdit
 
 import gspread
+
 from login_ui import Ui_MainWindow
 from admin_menu import AdminMenuPage
 from user_menu import UserMenuPage
@@ -17,6 +19,8 @@ class LoginPage(QMainWindow):
     def __init__(self):
         super().__init__()
         self.form_login = Ui_MainWindow()
+        self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
+        self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)
         self.form_login.setupUi(self)
         self.menu_admin = None
         self.menu_user = None
@@ -32,7 +36,6 @@ class LoginPage(QMainWindow):
         self.form_login.checkBoxPassword.clicked.connect(self.check_password)
 
     def app_login(self):
-        user_type = None
         username = self.form_login.lineEditUsername.text()
         password = self.form_login.lineEditPassword.text()
 

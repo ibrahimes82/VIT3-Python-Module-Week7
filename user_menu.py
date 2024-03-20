@@ -10,16 +10,23 @@ class UserMenuPage(QWidget):
         self.user_menu_form.setupUi(self)
         self.user_menu_form.labelCurrentUser.setText(str(current_user[0]).split(' ')[0])
 
+        self.settings_window_open = None
         self.login_window = None
         self.applications_window_open = None
         self.interviews_window_open = None
         self.mentor_menu_open = None
 
+        self.user_menu_form.toolButtonAccount.clicked.connect(self.settings_in)
         self.user_menu_form.pushButtonInterviews.clicked.connect(self.inter_in)
         self.user_menu_form.pushButtonApplications.clicked.connect(self.app_in)
         self.user_menu_form.pushButtonMentorMeeting.clicked.connect(self.mentor_in)
         self.user_menu_form.pushButtonSignOut.clicked.connect(self.logpage_in)
         self.user_menu_form.pushButtonExit.clicked.connect(self.app_exit)
+
+    def settings_in(self):
+        from settings import SettingsPage
+        self.settings_window_open = SettingsPage(self.current_user)
+        self.settings_window_open.show()
 
     def app_in(self):
         from applications import ApplicationsPage

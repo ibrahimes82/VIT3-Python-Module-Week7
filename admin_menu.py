@@ -1,4 +1,5 @@
-from PyQt6.QtWidgets import QWidget
+from PyQt6.QtWidgets import QWidget, QApplication
+
 from admin_menu_ui import Ui_FormAdminMenu
 
 
@@ -10,18 +11,25 @@ class AdminMenuPage(QWidget):
         self.admin_menu_form.setupUi(self)
         self.admin_menu_form.labelCurrentUser.setText(str(self.current_user[0]).split(' ')[0])
 
+        self.settings_window_open = None
         self.login_window = None
         self.applications_window_open = None
         self.interviews_window_open = None
         self.mentor_menu_open = None
         self.management_menu_open = None
 
+        self.admin_menu_form.toolButtonAccount.clicked.connect(self.settings_in)
         self.admin_menu_form.pushButtonInterviews.clicked.connect(self.inter_in)
         self.admin_menu_form.pushButtonApplications.clicked.connect(self.app_in)
         self.admin_menu_form.pushButtonMentorMeeting.clicked.connect(self.mentor_in)
+        self.admin_menu_form.pushButtonManagement.clicked.connect(self.adminmenu_in)
         self.admin_menu_form.pushButtonSignOut.clicked.connect(self.logpage_in)
         self.admin_menu_form.pushButtonExit.clicked.connect(self.exit_in)
-        self.admin_menu_form.pushButtonManagement.clicked.connect(self.adminmenu_in)
+
+    def settings_in(self):
+        from settings import SettingsPage
+        self.settings_window_open = SettingsPage(self.current_user)
+        self.settings_window_open.show()
 
     def app_in(self):
         from applications import ApplicationsPage
@@ -55,3 +63,10 @@ class AdminMenuPage(QWidget):
         self.close()
         self.management_menu_open = ManagementPage(self.current_user)
         self.management_menu_open.show()
+
+
+if __name__ == "__main__":
+    app = QApplication([])
+    main_window = AdminMenuPage(['a', 'b', 'admin'])
+    main_window.show()
+    app.exec()

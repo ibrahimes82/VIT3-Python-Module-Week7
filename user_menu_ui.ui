@@ -400,6 +400,26 @@ Meeting</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QToolButton" name="toolButtonAccount">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);
+background-image:/src_/werhere_icon.png;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonFollowStyle</enum>
+    </property>
+   </widget>
   </widget>
  </widget>
  <tabstops>

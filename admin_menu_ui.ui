@@ -362,7 +362,7 @@ QPushButton:hover{
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QLabel" name="labelCurrentUserPic">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -371,11 +371,34 @@ QPushButton:hover{
       <height>31</height>
      </rect>
     </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
     <property name="pixmap">
      <pixmap>pictures/werhere_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonAccount">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);
+background-image:/src_/werhere_icon.png;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonFollowStyle</enum>
     </property>
    </widget>
    <widget class="QLabel" name="labelCurrentUser">
@@ -404,6 +427,8 @@ QPushButton:hover{
   <tabstop>pushButtonInterviews</tabstop>
   <tabstop>pushButtonManagement</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="pictures/a.qrc"/>
+ </resources>
  <connections/>
 </ui>
