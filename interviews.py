@@ -17,55 +17,41 @@ class InterviewsPage(QWidget):
         self.menu_user = None
 
         self.form_interviews.pushButtonSearch.clicked.connect(self.search_name)
+        self.form_interviews.lineEditUsername.returnPressed.connect(self.search_name)
         self.form_interviews.pushButtonSubmittedProjects.clicked.connect(self.get_submitted_projects)
         self.form_interviews.pushButtonProjectArrivals.clicked.connect(self.get_projects_arrivals)
         self.form_interviews.pushButtonBackMenu.clicked.connect(self.back_menu)
         self.form_interviews.pushButtonExit.clicked.connect(self.app_exit)
-        self.form_interviews.lineEditUsername.returnPressed.connect(self.search_name)
-
-    def write2table(self, a_list):
-        table_widget = self.form_interviews.tableWidget
-        # Tabloyu temizle
-        table_widget.clearContents()
-        # Tabloya başlık ekle
-        table_widget.setColumnCount(len(self.interviews[0]))
-        table_widget.setHorizontalHeaderLabels(self.interviews[0])
-        # Tabloyu doldur
-        table_widget.setRowCount(len(a_list))
-        for i, row in enumerate(a_list):
-            for j, col in enumerate(row):
-                item = QTableWidgetItem(str(col))
-                table_widget.setItem(i, j, item)
-        return True
 
     def search_name(self):
-        searched_people = []
+        searched_people = [self.interviews[0]]
         for person in self.interviews[1:]:
             # If the text in the textbox appears within one of the names in the list AND is not empty at the same time!
             if self.form_interviews.lineEditUsername.text().lower() in str(person[0]).lower() and self.form_interviews.lineEditUsername.text() != '':
-                searched_people += [person]
+                searched_people.append(person)
 
         # Make empty the search area
         self.form_interviews.lineEditUsername.setText('')
 
-        if searched_people:  # If the searched_people variable is not empty!
-            return self.write2table(searched_people)
+        if len(searched_people) > 1:  # If the searched_people variable is not empty!
+            pass
         else:
-            return self.write2table([['No user found!', '-', '-']])
+            searched_people.append(['No user found!', '-', '-'])
+        return main.write2table(self.form_interviews, searched_people)
 
     def get_submitted_projects(self):
-        submitted_projects = self.interviews[1:]
-        for i in submitted_projects:
-            if not i[1]:
-                submitted_projects.remove(i)
-        return self.write2table(submitted_projects)
+        submitted_projects = [self.interviews[0]]
+        for i in self.interviews[1:]:
+            if i[1]:
+                submitted_projects.append(i)
+        return main.write2table(self.form_interviews, submitted_projects)
 
     def get_projects_arrivals(self):
-        projects_arrivals = self.interviews[1:]
-        for i in projects_arrivals:
-            if not i[2]:
-                projects_arrivals.remove(i)
-        return self.write2table(projects_arrivals)
+        projects_arrivals = [self.interviews[0]]
+        for i in self.interviews[1:]:
+            if i[2]:
+                projects_arrivals.append(i)
+        return main.write2table(self.form_interviews, projects_arrivals)
 
     def back_menu(self):
         if self.current_user[2] == "admin":

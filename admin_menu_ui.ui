@@ -362,7 +362,7 @@ QPushButton:hover{
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelCurrentUserPic">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -427,8 +427,6 @@ background-image:/src_/werhere_icon.png;</string>
   <tabstop>pushButtonInterviews</tabstop>
   <tabstop>pushButtonManagement</tabstop>
  </tabstops>
- <resources>
-  <include location="pictures/a.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

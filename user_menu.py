@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget
+from PyQt6.QtWidgets import QWidget, QApplication
 from user_menu_ui import Ui_FormUserMenu
 
 
@@ -54,3 +54,10 @@ class UserMenuPage(QWidget):
 
     def app_exit(self):
         self.close()
+
+
+if __name__ == "__main__":
+    app = QApplication([])
+    main_window = UserMenuPage(['s', 'd', 'user'])
+    main_window.show()
+    app.exec()

@@ -97,7 +97,7 @@ color: rgb(71, 84, 88);</string>
     <string>MENTOR MENU</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonAllApplications">
+  <widget class="QPushButton" name="pushButtonGetAllApplications">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -124,7 +124,7 @@ QPushButton:hover{
 }</string>
    </property>
    <property name="text">
-    <string>All Applications</string>
+    <string>Get All Applications</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonExit">
@@ -178,7 +178,7 @@ QPushButton:hover{
   border-radius: 15px;
   color: #FFF;
   padding-left: 15px;
-  background-color: rgb(36, 36, 36);
+  background-color: rgba(0, 0, 0,55%);
  
 }
 
@@ -331,7 +331,7 @@ the Candidate</string>
     </property>
    </column>
   </widget>
-  <widget class="QComboBox" name="comboBoxOptions">
+  <widget class="QComboBox" name="comboBoxFilterOptions">
    <property name="geometry">
     <rect>
      <x>790</x>
@@ -343,58 +343,18 @@ the Candidate</string>
    <property name="styleSheet">
     <string notr="true">border-radius : 15px;
 border: 3px solid rgb(85, 255, 255);
-background-color: rgba(0, 0, 0,0%);
+background-color: rgba(0, 0, 0,55%);
 color: rgb(255, 255, 255);
 </string>
    </property>
-   <item>
-    <property name="text">
-     <string>    VIT Projesini Tamamina Katilmasi Uygundur.</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>    VIT Projesinin Ilk IT Egitimi Al... a Yonlendirimesi Uygundur.</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>    VIT Projesinin Ingilizce Egitim Al... a Yonlendirimesi Uygundur.</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>    VIT Projesi Kapsaminda Dir... Yonlendirilmesi Uygundur.</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>    Direk Bireysel Kocluk Ile Ise yonlendirilmesi Uygundur.</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>    Bir Sonra Vit Projesine Katilmasi Uygun Olur.</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>    Baska Bir Soktere Yonlendirmesi Uygun Olur.</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>    Diger</string>
-    </property>
-   </item>
   </widget>
  </widget>
  <tabstops>
   <tabstop>lineEditSearch</tabstop>
   <tabstop>pushButtonSearch</tabstop>
-  <tabstop>pushButtonAllApplications</tabstop>
+  <tabstop>pushButtonGetAllApplications</tabstop>
   <tabstop>tableWidget</tabstop>
-  <tabstop>comboBoxOptions</tabstop>
+  <tabstop>comboBoxFilterOptions</tabstop>
   <tabstop>pushButtonBackMenu</tabstop>
   <tabstop>pushButtonExit</tabstop>
  </tabstops>

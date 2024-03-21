@@ -124,7 +124,7 @@ QPushButton:hover{
   border-radius: 15px;
   color: #FFF;
   padding-left: 15px;
-  background-color: rgb(36, 36, 36);
+  background-color: rgba(0, 0, 0,55%);
  
 }
 
@@ -168,7 +168,7 @@ QLineEdit:hover {
   border-radius: 15px;
   color: #FFF;
   padding-left: 15px;
-  background-color: rgb(36, 36, 36);
+  background-color: rgba(0, 0, 0,55%);
  
 }
 
