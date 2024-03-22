@@ -64,7 +64,36 @@ class SettingsPage(QWidget):
             except Exception as e:
                 raise e
         else:
-            pass  # User details transactions
+            if self.decision == '2':
+                try:
+                    msg_box = QMessageBox()
+                    msg_box.setWindowTitle("Information MessageBox")
+                    if self.current_user[1] == self.form_settings.lineEditUserName.text():
+                        if self.form_settings.lineEditName.text() == self.form_settings.lineEditSurname.text():
+                            changed_user = self.current_user
+                            changed_user[1] = self.form_settings.lineEditSurname.text()
+
+                            # Process of changing the password
+                            result = self.update_user(changed_user)
+
+                            if result:
+                                msg_box.setIcon(QMessageBox.Icon.Information)
+                                msg_box.setText("The password has been successfully changed.")
+                                self.close()
+                            else:
+                                msg_box.setIcon(QMessageBox.Icon.Critical)
+                                msg_box.setText("WARNING! There is a problem while changing the password...\n"
+                                                "The password couldn't be changed!!!")
+                        else:
+                            msg_box.setIcon(QMessageBox.Icon.Warning)
+                            msg_box.setText("You didn't enter new passwords as same!")
+                    else:
+                        msg_box.setIcon(QMessageBox.Icon.Warning)
+                        msg_box.setText('Current password is not right!')
+                    msg_box.exec()
+                    self.change_password_page_start()
+                except Exception as e:
+                    raise e
 
     def click_cancel_button(self):
         try:

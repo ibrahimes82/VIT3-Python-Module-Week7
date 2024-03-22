@@ -24,7 +24,7 @@ class Ui_FormSettings(object):
         self.labelPicture.setGeometry(QtCore.QRect(20, 20, 281, 201))
         self.labelPicture.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.labelPicture.setText("")
-        self.labelPicture.setPixmap(QtGui.QPixmap("UI_Files\\../../../Downloads/settingFoto.png"))
+        self.labelPicture.setPixmap(QtGui.QPixmap("UI_Files\\pictures/settingFoto.png"))
         self.labelPicture.setObjectName("labelPicture")
         self.lineEditUserName = QtWidgets.QLineEdit(parent=FormSettings)
         self.lineEditUserName.setEnabled(False)
