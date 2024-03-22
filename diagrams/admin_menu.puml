@@ -1,0 +1,90 @@
+@startuml
+
+skinparam class {
+    BackgroundColor LightSkyBlue
+}
+
+skinparam classBorder {
+    Color red
+}
+
+skinparam arrowColor red
+
+package "PyQt6.QtWidgets" {
+    class "QWidget" {
+        + __init__()
+    }
+
+    class "QApplication" {
+        + __init__([])
+        + exec()
+    }
+}
+
+package "UI_Files" {
+    class "admin_menu_ui" {
+        + Ui_FormAdminMenu()
+    }
+}
+
+package "settings" {
+    class "SettingsPage" {
+        + __init__(current_user: list)
+    }
+}
+
+package "mentors" {
+    class "MentorPage" {
+        + __init__(current_user: list)
+    }
+}
+
+package "applications" {
+    class "ApplicationsPage" {
+        + __init__(current_user: list)
+    }
+}
+
+package "interviews" {
+    class "InterviewsPage" {
+        + __init__(current_user: list)
+    }
+}
+
+package "management" {
+    class "ManagementPage" {
+        + __init__(current_user: list)
+    }
+}
+
+class "AdminMenuPage" {
+    - current_user: list
+    - admin_menu_form: Ui_FormAdminMenu
+    - settings_window_open: SettingsPage
+    - login_window: LoginPage
+    - applications_window_open: ApplicationsPage
+    - interviews_window_open: InterviewsPage
+    - mentor_menu_open: MentorPage
+    - management_menu_open: ManagementPage
+    + __init__()
+    + go_settings_page()
+    + go_mentors_page()
+    + go_applications_page()
+    + go_interviews_page()
+    + go_management_page()
+    + goback_login_page()
+    + app_exit()
+}
+
+AdminMenuPage --> QWidget
+AdminMenuPage --> Ui_FormAdminMenu
+AdminMenuPage --> SettingsPage
+AdminMenuPage --> MentorPage
+AdminMenuPage --> ApplicationsPage
+AdminMenuPage --> InterviewsPage
+AdminMenuPage --> ManagementPage
+AdminMenuPage --> LoginPage
+
+AdminMenuPage ..> QApplication
+
+@enduml

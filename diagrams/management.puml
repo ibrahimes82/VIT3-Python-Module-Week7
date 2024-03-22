@@ -1,0 +1,112 @@
+@startuml
+
+skinparam class {
+    BackgroundColor LightSkyBlue
+}
+
+skinparam classBorder {
+    Color red
+}
+
+skinparam arrowColor red
+
+package "PyQt6.QtWidgets" {
+    class "QWidget" {
+        + __init__()
+    }
+
+    class "QApplication" {
+        + __init__([])
+        + exec()
+    }
+
+    class "QTableWidgetItem" {
+        + __init__(text: str)
+    }
+}
+
+package "email.mime.text" {
+    class "MIMEText" {
+        + __init__(text: str)
+    }
+}
+
+package "google_auth_oauthlib.flow" {
+    class "InstalledAppFlow" {
+        + from_client_secrets_file(filename: str, scopes: list)
+        + run_local_server(port: int)
+    }
+}
+
+package "googleapiclient.discovery" {
+    class "build" {
+        + build(serviceName: str, version: str, credentials: any)
+    }
+}
+
+package "google.auth.transport.requests" {
+    class "Request" {
+        + ()
+    }
+}
+
+package "os.path" {
+    class "exists" {
+        + ()
+    }
+}
+
+package "pickle" {
+    class "load" {
+        + ()
+    }
+
+    class "dump" {
+        + ()
+    }
+}
+
+package "management" {
+    class "base64" {
+        + urlsafe_b64encode(s: str)
+    }
+}
+
+package "UI_Files" {
+    class "management_ui" {
+        + Ui_FormManagement()
+    }
+}
+
+class "ManagementPage" {
+    - current_user: list
+    - form_management: Ui_FormManagement
+    - events: any
+    - menu_user: UserMenuPage
+    - menu_admin: AdminMenuPage
+    + __init__(current_user: list)
+    + get_calendar_events()
+    + get_credentials()
+    + send_invitations()
+    + create_message(sender: str, to: str, subject: str, message_text: str)
+    + send_message(service: any, user_id: str, message: any)
+    + back_menu()
+}
+
+ManagementPage --> QWidget
+ManagementPage --> Ui_FormManagement
+ManagementPage --> UserMenuPage
+ManagementPage --> AdminMenuPage
+
+ManagementPage ..> QApplication
+ManagementPage --> InstalledAppFlow
+ManagementPage --> MIMEText
+ManagementPage --> build
+ManagementPage --> Request
+ManagementPage --> exists
+ManagementPage --> load
+ManagementPage --> dump
+ManagementPage --> base64
+ManagementPage --> QTableWidgetItem
+
+@enduml

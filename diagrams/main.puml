@@ -1,0 +1,57 @@
+@startuml
+
+skinparam class {
+    BackgroundColor LightSkyBlue
+}
+
+skinparam classBorder {
+    Color red
+}
+
+skinparam arrowColor red
+
+package "Main" {
+    class "Main" {
+        + main()
+    }
+
+    class "login" {
+        + LoginPage()
+    }
+}
+
+package "gspread" {
+    class "service_account" {
+        + __init__(filename: str)
+    }
+
+    class "open" {
+        + __init__(table: str)
+    }
+
+    class "get_worksheet" {
+        + __init__(index: int)
+    }
+
+    class "get_all_values" {
+        + ()
+    }
+}
+
+package "PyQt6.QtWidgets" {
+    class "QApplication" {
+        + __init__([])
+        + exec()
+    }
+
+    class "QTableWidgetItem" {
+        + __init__(text: str)
+    }
+}
+
+Main --> login
+Main --> gspread
+Main --> QApplication
+QApplication --> LoginPage
+
+@enduml
