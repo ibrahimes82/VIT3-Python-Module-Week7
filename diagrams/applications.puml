@@ -1,0 +1,79 @@
+@startuml
+
+skinparam class {
+    BackgroundColor LightSkyBlue
+}
+
+skinparam classBorder {
+    Color red
+}
+
+skinparam arrowColor red
+
+package "PyQt6.QtWidgets" {
+    class "QWidget" {
+        + __init__()
+    }
+
+    class "QApplication" {
+        + __init__([])
+        + exec()
+    }
+
+    class "QTableWidgetItem" {
+        + __init__(text: str)
+    }
+}
+
+package "main" {
+    class "connection_hub" {
+        + __init__(credentials: str, table: str)
+    }
+
+    class "list_exclude" {
+        + __init__(a_list: list, excluded_column_indexes: list)
+    }
+
+    class "write2table" {
+        + __init__(page: QWidget, a_list: list)
+    }
+}
+
+package "UI_Files" {
+    class "applications_ui" {
+        + Ui_FormApplications()
+    }
+}
+
+class "ApplicationsPage" {
+    - current_user: list
+    - form_applications: Ui_FormApplications
+    - applications: list
+    - menu_user: UserMenuPage
+    - menu_admin: AdminMenuPage
+    + __init__(current_user: list)
+    + app_search()
+    + app_all_applications()
+    + app_column_checker(text: str, col: int)
+    + app_planned_meetings()
+    + app_unscheduled_meetings()
+    + app_duplicate_records()
+    + app_previous_vits_check()
+    + app_differential_registrations()
+    + app_filter_applications()
+    + back_menu()
+    + app_exit()
+}
+
+ApplicationsPage --> QWidget
+ApplicationsPage --> Ui_FormApplications
+ApplicationsPage --> UserMenuPage
+ApplicationsPage --> AdminMenuPage
+ApplicationsPage --> connection_hub
+ApplicationsPage --> list_exclude
+ApplicationsPage --> write2table
+ApplicationsPage --> QTableWidgetItem
+
+ApplicationsPage ..> QApplication
+
+@enduml
