@@ -1,6 +1,6 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from PyQt6 import QtWidgets
+from PyQt6 import QtWidgets, QtGui
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from PyQt6.QtWidgets import QWidget
 
@@ -19,8 +19,8 @@ class SettingsPage(QWidget):
         self.current_user = current_user
         self.decision = None
         self.form_settings = Ui_FormSettings()
-        self.form_settings.setupUi(self)
-        self.form_settings.labelCurrentUser.setText(self.current_user[0])
+        self.form_settings.setupUi(self)  # At the beginning, we are writing labels etc..
+        self.user_info_page_start()
         self.form_settings.pushButtonApprove.hide()  # We make the APPROVE button invisible in the startup
 
         self.form_settings.lineEditUserName.setText(current_user[0])
@@ -30,6 +30,7 @@ class SettingsPage(QWidget):
         self.form_settings.pushButtonChangePassword.clicked.connect(self.change_password_page_start)
         self.form_settings.pushButtonChangeAccountDetails.clicked.connect(self.edit_account_details_start)
         self.form_settings.pushButtonApprove.clicked.connect(self.click_approve_button)
+        self.form_settings.pushButtonCancel.clicked.connect(self.click_cancel_button)
 
     def click_approve_button(self):
         if self.decision == '1':
@@ -65,25 +66,32 @@ class SettingsPage(QWidget):
         else:
             pass  # User details transactions
 
+    def click_cancel_button(self):
+        try:
+            self.user_info_page_start()
+        except Exception as e:
+            raise e
+
     def update_user(self, current_u):
         users = main.connection_hub('credentials/key.json', 'Kullanicilar')
         sheet = client.open('Kullanicilar').worksheet('Form Yanıtları 1')
         for i, u in enumerate(users):
             if u[0] == self.current_user[0]:
                 u[1] = current_u[1]
-                sheet.update_cell(i+1, 1+1, u[1])  # Writing data to Google Sheets file
+                sheet.update_cell(i + 1, 1 + 1, u[1])  # Writing data to Google Sheets file
                 return True
         else:
             return False
 
     def change_password_page_start(self):
         self.decision = '1'
-        self.form_settings.labelHosgeldiniz.setText('Change the password for   :')
-        self.form_settings.labelUserName.setText('Current Password')
-        self.form_settings.labelName.setText('New Password')
-        self.form_settings.labelSurname.setText('<html><head/><body><p><center>New Password<span style=" '
-                                                'font-style:italic;"><br>(Again)</center></span></p></body></html>')
-        self.form_settings.labelAccountType.close()
+        # font = QtGui.QFont()      # This is an example for changing font properties from here
+        # font.setFamily("Gabriola")
+        # font.setPointSize(20)
+        # self.form_settings.labelWellcome.setFont(font)
+        self.form_settings.labelWellcome.setText(f'Change Password for    "{self.current_user[0]}"')
+
+        self.form_settings.frameButtons.close()
         self.form_settings.lineEditAccountType.close()
 
         self.form_settings.lineEditUserName.setEnabled(True)
@@ -93,8 +101,9 @@ class SettingsPage(QWidget):
         self.form_settings.lineEditUserName.setText('')
         self.form_settings.lineEditName.setText('')
         self.form_settings.lineEditSurname.setText('')
-        self.form_settings.lineEditName.setPlaceholderText('')
-        self.form_settings.lineEditSurname.setPlaceholderText('')
+        self.form_settings.lineEditUserName.setPlaceholderText('Current Password')
+        self.form_settings.lineEditName.setPlaceholderText('New Password')
+        self.form_settings.lineEditSurname.setPlaceholderText('New Password (Again)')
 
         self.form_settings.lineEditUserName.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.form_settings.lineEditName.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
@@ -106,7 +115,8 @@ class SettingsPage(QWidget):
 
     def edit_account_details_start(self):
         self.decision = '2'
-        self.form_settings.labelAccountType.show()
+
+        self.form_settings.frameButtons.close()
         self.form_settings.lineEditAccountType.show()
 
         self.form_settings.lineEditUserName.setEnabled(True)
@@ -115,8 +125,6 @@ class SettingsPage(QWidget):
 
         self.form_settings.lineEditName.setText('')
         self.form_settings.lineEditSurname.setText('')
-        self.form_settings.lineEditName.setPlaceholderText('')
-        self.form_settings.lineEditSurname.setPlaceholderText('')
 
         self.form_settings.pushButtonChangePassword.hide()
         self.form_settings.pushButtonChangeAccountDetails.hide()
@@ -124,11 +132,11 @@ class SettingsPage(QWidget):
 
     def user_info_page_start(self):
         self.decision = None
-        self.form_settings.labelHosgeldiniz.setText('Wellcome')
-        self.form_settings.labelUserName.setText('UserName')
-        self.form_settings.labelName.setText('Name')
-        self.form_settings.labelSurname.setText('Surname')
-        self.form_settings.labelAccountType.show()
+        self.form_settings.labelWellcome.setText(f'Wellcome,    {self.current_user[0]}')
+        self.form_settings.lineEditUserName.setPlaceholderText('UserName')
+        # self.form_settings.lineEditName.setPlaceholderText('Name')
+        # self.form_settings.lineEditSurname.setPlaceholderText('Surname')
+        self.form_settings.frameButtons.show()
         self.form_settings.lineEditAccountType.show()
 
         self.form_settings.lineEditUserName.setEnabled(False)
