@@ -63,35 +63,34 @@ class SettingsPage(QWidget):
                 self.change_password_page_start()
             except Exception as e:
                 raise e
-        else:
-            if self.decision == '2':
-                try:
-                    msg_box = QMessageBox()
-                    msg_box.setWindowTitle("Information MessageBox")
-                    if self.current_user[1] == self.form_settings.lineEditUserName.text():
-                        changed_user = self.current_user
-                        changed_user[3] = self.form_settings.lineEditName.text()
-                        changed_user[4] = self.form_settings.lineEditSurname.text()
+        elif self.decision == '2':
+            try:
+                msg_box = QMessageBox()
+                msg_box.setWindowTitle("Information MessageBox")
+                if self.current_user[1] == self.form_settings.lineEditUserName.text():
+                    changed_user = self.current_user
+                    changed_user[3] = self.form_settings.lineEditName.text()
+                    changed_user[4] = self.form_settings.lineEditSurname.text()
 
-                        # Process of changing the password
-                        result = self.update_user(changed_user)
+                    # Process of changing the password
+                    result = self.update_user(changed_user)
 
-                        if result:
-                            msg_box.setIcon(QMessageBox.Icon.Information)
-                            msg_box.setText("The user details has been successfully updated.")
-                            self.close()
-                        else:
-                            msg_box.setIcon(QMessageBox.Icon.Critical)
-                            msg_box.setText("WARNING! There is a problem while updating the user details...\n"
-                                            "Nothing changed!!!")
+                    if result:
+                        msg_box.setIcon(QMessageBox.Icon.Information)
+                        msg_box.setText("The user details has been successfully updated.")
+                        self.close()
                     else:
-                        msg_box.setIcon(QMessageBox.Icon.Warning)
-                        msg_box.setText('Hey developer! You have a very big and critical security problem!')
-                    msg_box.exec()
-                    self.user_info_page_start()
+                        msg_box.setIcon(QMessageBox.Icon.Critical)
+                        msg_box.setText("WARNING! There is a problem while updating the user details...\n"
+                                        "Nothing changed!!!")
+                else:
+                    msg_box.setIcon(QMessageBox.Icon.Warning)
+                    msg_box.setText('Hey developer! You have a very big and critical security problem!')
+                msg_box.exec()
+                self.user_info_page_start()
 
-                except Exception as e:
-                    raise e
+            except Exception as e:
+                raise e
 
     def click_cancel_button(self):
         try:
@@ -102,15 +101,26 @@ class SettingsPage(QWidget):
     def update_user(self, current_u):
         users = main.connection_hub('credentials/key.json', 'Kullanicilar')
         sheet = client.open('Kullanicilar').worksheet('Form Yanıtları 1')
-        for i, u in enumerate(users):
-            if u[0] == self.current_user[0]:
-                u[3] = current_u[3]
-                u[4] = current_u[4]
-                sheet.update_cell(i + 1, 3 + 1, u[3])  # Writing data to Google Sheets file
-                sheet.update_cell(i + 1, 4 + 1, u[4])
-                return True
+        if self.decision == '1':
+            for i, u in enumerate(users):
+                if u[0] == self.current_user[0]:
+                    u[1] = current_u[1]
+                    sheet.update_cell(i + 1, 1 + 1, u[1])  # Writing data to Google Sheets file
+                    return True
+            else:
+                return False
+        elif self.decision == '2':
+            for i, u in enumerate(users):
+                if u[0] == self.current_user[0]:
+                    u[3] = current_u[3]
+                    u[4] = current_u[4]
+                    sheet.update_cell(i + 1, 3 + 1, u[3])  # Writing data to Google Sheets file
+                    sheet.update_cell(i + 1, 4 + 1, u[4])
+                    return True
+            else:
+                return False
         else:
-            return False
+            print('There is no user')
 
     def change_password_page_start(self):
         self.decision = '1'
