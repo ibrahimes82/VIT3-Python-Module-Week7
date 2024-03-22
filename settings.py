@@ -21,7 +21,7 @@ class SettingsPage(QWidget):
         self.form_settings = Ui_FormSettings()
         self.form_settings.setupUi(self)
         self.form_settings.labelCurrentUser.setText(self.current_user[0])
-        self.form_settings.pushButtonApprove.hide()  # Acilista APPROVE butonunu gorunmez yapiyoruz
+        self.form_settings.pushButtonApprove.hide()  # We make the APPROVE button invisible in the startup
 
         self.form_settings.lineEditUserName.setText(current_user[0])
         # self.form_settings.lineEditUserName.setText(current_user[0])
@@ -63,7 +63,7 @@ class SettingsPage(QWidget):
             except Exception as e:
                 raise e
         else:
-            pass  # Kullanici detaylari islemleri
+            pass  # User details transactions
 
     def update_user(self, current_u):
         users = main.connection_hub('credentials/key.json', 'Kullanicilar')

@@ -59,8 +59,7 @@ class MentorPage(QWidget):
         selected_item = self.form_mentor.comboBoxFilterOptions.currentText()
 
         for row in self.mentees[1:]:
-
-            if str(row[4]).lower().strip() == selected_item.lower().strip():
+            if str(row[index]).lower().strip() == selected_item.lower().strip():
                 filtered_data.append(row)
         main.write2table(self.form_mentor, filtered_data)
 

@@ -18,10 +18,10 @@ class LoginPage(QMainWindow):
         self.menu_admin = None
         self.menu_user = None
 
-        # Password alaninda iken Enter tusuna basinca yetki kontrolu yapmak icin kodlar
+        # Codes to check authorization when you press the Enter key in the password field
         self.form_login.lineEditPassword.returnPressed.connect(self.app_login)
 
-        # 'pushButton_log_login' butonuna tiklandiginda yetki kontrolu yapmak icin kodlar
+        # Codes to check authorization when the 'pushButtonLogin' button is clicked
         self.form_login.pushButtonLogin.clicked.connect(self.app_login)
         self.form_login.pushButtonExit.clicked.connect(self.app_exit)
 
