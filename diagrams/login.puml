@@ -1,0 +1,65 @@
+@startuml
+
+skinparam class {
+    BackgroundColor LightSkyBlue
+}
+
+skinparam classBorder {
+    Color red
+}
+
+skinparam arrowColor red
+
+package "PyQt6.QtWidgets" {
+    class "QMainWindow" {
+        + __init__()
+    }
+
+    class "QLineEdit" {
+        + __init__()
+    }
+}
+
+package "main" {
+    class "connection_hub" {
+        + __init__(credentials: str, table: str)
+    }
+}
+
+package "UI_Files" {
+    class "login_ui" {
+        + Ui_MainWindow()
+    }
+}
+
+package "admin_menu" {
+    class "AdminMenuPage" {
+        + __init__(user: list)
+    }
+}
+
+package "user_menu" {
+    class "UserMenuPage" {
+        + __init__(user: list)
+    }
+}
+
+class "LoginPage" {
+    - users: list
+    - form_login: Ui_MainWindow
+    - menu_admin: AdminMenuPage
+    - menu_user: UserMenuPage
+    + __init__()
+    + app_login()
+    + check_password()
+    + app_exit()
+}
+
+LoginPage --> QMainWindow
+LoginPage --> connection_hub
+LoginPage --> Ui_MainWindow
+LoginPage --> AdminMenuPage
+LoginPage --> UserMenuPage
+LoginPage --> QLineEdit
+
+@enduml

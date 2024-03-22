@@ -1,0 +1,143 @@
+@startuml
+
+skinparam class {
+    BackgroundColor LightBlue
+    BorderColor Black
+}
+
+skinparam component {
+    BackgroundColor LightGreen
+    BorderColor Black
+}
+
+skinparam arrow {
+    Color Red
+    Thickness 2
+}
+
+class Main {
+    - app: QApplication
+    + main()
+}
+
+class LoginPage {
+    - form_login: Ui_MainWindow
+    - menu_admin: AdminMenuPage
+    - menu_user: UserMenuPage
+    + __init__()
+    + app_login()
+    + check_password()
+    + app_exit()
+}
+
+class UserMenuPage {
+    - current_user
+    - user_menu_form: Ui_FormUserMenu
+    - applications_window_open: ApplicationsPage
+    - interviews_window_open: InterviewsPage
+    - mentor_menu_open: MentorPage
+    - login_window: LoginPage
+    + __init__(current_user)
+    + app_in()
+    + inter_in()
+    + logpage_in()
+    + mentor_in()
+    + app_exit()
+}
+
+class AdminMenuPage {
+    - current_user: list
+    - admin_menu_form: Ui_FormAdminMenu
+    - applications_window_open: ApplicationsPage
+    - interviews_window_open: InterviewsPage
+    - mentor_menu_open: MentorPage
+    - management_menu_open: ManagementPage
+    - login_window: LoginPage
+    + __init__()
+    + app_in()
+    + inter_in()
+    + exit_in()
+    + logpage_in()
+    + mentor_in()
+    + adminmenu_in()
+}
+
+class MentorPage {
+    - current_user
+    - form_mentor: Ui_FormMentor
+    - timer: QTimer
+    - menu_user: UserMenuPage
+    - menu_admin: AdminMenuPage
+    + __init__(current_user)
+    + write2table(a_list)
+    + search()
+    + all_app()
+    + update_table()
+    + back_menu()
+    + app_exit()
+}
+
+class ManagementPage {
+    - current_user
+    - form_management: Ui_FormManagement
+    - events
+    - menu_user: UserMenuPage
+    - menu_admin: AdminMenuPage
+    + __init__(current_user)
+    + get_calendar_events()
+    + get_credentials()
+    + send_invitations()
+    + send_message(service, user_id, message)
+    + back_menu()
+}
+
+class InterviewsPage {
+    - current_user: list
+    - form_interviews: Ui_FormInterviews
+    - menu_admin: AdminMenuPage
+    - menu_user: UserMenuPage
+    + __init__()
+    + write2table()
+    + search_name()
+    + get_submitted_projects()
+    + get_projects_arrivals()
+    + back_menu()
+    + app_exit()
+}
+
+class ApplicationsPage {
+    - current_user: list
+    - form_applications: Ui_FormApplications
+    - users: list
+    - menu_user: UserMenuPage
+    - menu_admin: AdminMenuPage
+    + __init__()
+    + write2table()
+    + search_app()
+    + write3table()
+    + app_all_app()
+    + planned_and_unscheduled()
+    + planned_mentor_app()
+    + unscheduled()
+    + commen()
+    + vits_and_applications()
+    + vit1_vit2()
+    + rep_registrations()
+    + diff_registrations()
+    + filter_applications()
+    + back_menu()
+    + app_exit()
+}
+
+Main -- LoginPage
+LoginPage -- AdminMenuPage
+LoginPage -- UserMenuPage
+UserMenuPage -- ApplicationsPage
+UserMenuPage -- InterviewsPage
+UserMenuPage -- MentorPage
+AdminMenuPage -- ApplicationsPage
+AdminMenuPage -- InterviewsPage
+AdminMenuPage -- MentorPage
+AdminMenuPage -- ManagementPage
+
+@enduml
