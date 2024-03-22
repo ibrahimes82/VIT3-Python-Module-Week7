@@ -6,7 +6,7 @@ import datetime
 import pickle
 import os.path
 
-from management_ui import Ui_FormManagement
+from UI_Files.management_ui import Ui_FormManagement
 
 # Google Calendar API'deki yetkilendirme kapsamları
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly',
@@ -46,7 +46,6 @@ class ManagementPage(QWidget):
                                               maxResults=10, singleEvents=True,
                                               orderBy='startTime').execute()
         self.events = events_result.get('items', [])  # events'i sınıf seviyesinde bir değişken olarak sakla
-        #print(self.events)
 
         # Etkinlikleri tabloya yerleştir
         self.form_management.tableWidget.setRowCount(0)  # Önceki verileri temizle
@@ -78,8 +77,8 @@ class ManagementPage(QWidget):
     def get_credentials(self):
         creds = None
         # Token dosyasını kontrol et
-        if os.path.exists('token.pickle'):
-            with open('token.pickle', 'rb') as token:
+        if os.path.exists('credentials/token.pickle'):
+            with open('credentials/token.pickle', 'rb') as token:
                 creds = pickle.load(token)
         # Yetkilendirme yoksa veya geçersizse yeniden yetkilendirme yap
         if not creds or not creds.valid:
@@ -87,10 +86,10 @@ class ManagementPage(QWidget):
                 creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    'credentials.json', SCOPES)
+                    'credentials/credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
             # Yeni yetkilendirme bilgilerini kaydet
-            with open('token.pickle', 'wb') as token:
+            with open('credentials/token.pickle', 'wb') as token:
                 pickle.dump(creds, token)
         return creds
 

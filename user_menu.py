@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QWidget, QApplication
-from user_menu_ui import Ui_FormUserMenu
+from UI_Files.user_menu_ui import Ui_FormUserMenu
 
 
 class UserMenuPage(QWidget):
@@ -47,7 +47,7 @@ class UserMenuPage(QWidget):
         self.login_window.show()
 
     def mentor_in(self):
-        from mentor_menu import MentorPage
+        from mentors import MentorPage
         self.hide()
         self.mentor_menu_open = MentorPage(self.current_user)
         self.mentor_menu_open.show()

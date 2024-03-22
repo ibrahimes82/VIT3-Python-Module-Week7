@@ -1,17 +1,16 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
-from PyQt6 import QtWidgets, QtCore
-from PyQt6.QtWidgets import QApplication, QWidget, QTableWidgetItem, QMessageBox
+from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QApplication, QMessageBox
 from PyQt6.QtWidgets import QWidget
 
 import main
-from settings_ui import Ui_FormSettings
+from UI_Files.settings_ui import Ui_FormSettings
 
 # Google Sheets API'ye erişim için izinlerin belirlenmesi
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials.from_json_keyfile_name('key.json', scope)
+credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials/key.json', scope)
 client = gspread.authorize(credentials)
-# sheet = client.open('Kullanicilar').worksheet('Form Yanıtları 1')
 
 
 class SettingsPage(QWidget):
@@ -67,7 +66,7 @@ class SettingsPage(QWidget):
             pass  # Kullanici detaylari islemleri
 
     def update_user(self, current_u):
-        users = main.connection_hub('key.json', 'Kullanicilar')
+        users = main.connection_hub('credentials/key.json', 'Kullanicilar')
         sheet = client.open('Kullanicilar').worksheet('Form Yanıtları 1')
         for i, u in enumerate(users):
             if u[0] == self.current_user[0]:

@@ -73,7 +73,7 @@
     <pixmap>pictures/werhere_logo.ico</pixmap>
    </property>
   </widget>
-  <widget class="QLabel" name="labelMentor">
+  <widget class="QLabel" name="labelMentors">
    <property name="geometry">
     <rect>
      <x>630</x>
@@ -94,7 +94,7 @@
 color: rgb(71, 84, 88);</string>
    </property>
    <property name="text">
-    <string>MENTOR MENU</string>
+    <string>MENTORS</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonGetAllApplications">

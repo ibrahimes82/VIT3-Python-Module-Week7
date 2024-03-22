@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'settings_ui.ui'
+# Form implementation generated from reading ui file 'UI_Files/settings_ui.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -14,7 +14,7 @@ class Ui_FormSettings(object):
         FormSettings.setObjectName("FormSettings")
         FormSettings.resize(337, 398)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("pictures/werhere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("UI_Files\\pictures/werhere_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         FormSettings.setWindowIcon(icon)
         FormSettings.setStyleSheet("One value - border-radius: 100px;")
         self.verticalLayout = QtWidgets.QVBoxLayout(FormSettings)

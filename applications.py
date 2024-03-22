@@ -1,10 +1,8 @@
-from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
-import gspread
 
 import main
-from applications_ui import Ui_FormApplications
+from UI_Files.applications_ui import Ui_FormApplications
 
 
 class ApplicationsPage(QWidget):
@@ -13,7 +11,7 @@ class ApplicationsPage(QWidget):
         self.current_user = current_user
         self.form_applications = Ui_FormApplications()
         self.form_applications.setupUi(self)
-        self.users = main.connection_hub('key.json', 'Basvurular')
+        self.users = main.connection_hub('credentials/key.json', 'Basvurular')
 
         self.menu_user = None
         self.menu_admin = None
@@ -112,7 +110,7 @@ class ApplicationsPage(QWidget):
 
     def rep_registrations(self):
         search_users = []
-        vit1_users = main.connection_hub('key.json', 'VIT1')
+        vit1_users = main.connection_hub('credentials/key.json', 'VIT1')
         vits_common = self.vit1_vit2()
         for user in vit1_users[1:]:
             for common_user in vits_common:

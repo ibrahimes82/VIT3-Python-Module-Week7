@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QWidget, QApplication
 
-from admin_menu_ui import Ui_FormAdminMenu
+from UI_Files.admin_menu_ui import Ui_FormAdminMenu
 
 
 class AdminMenuPage(QWidget):
@@ -53,7 +53,7 @@ class AdminMenuPage(QWidget):
         self.login_window.show()
 
     def mentor_in(self):
-        from mentor_menu import MentorPage
+        from mentors import MentorPage
         self.hide()
         self.mentor_menu_open = MentorPage(self.current_user)
         self.mentor_menu_open.show()

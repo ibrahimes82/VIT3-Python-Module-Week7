@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
 
 import main
-from interviews_ui import Ui_FormInterviews
+from UI_Files.interviews_ui import Ui_FormInterviews
 
 
 class InterviewsPage(QWidget):
@@ -12,7 +12,7 @@ class InterviewsPage(QWidget):
         self.form_interviews = Ui_FormInterviews()
         self.form_interviews.setupUi(self)
 
-        self.interviews = main.connection_hub('key.json', 'Mulakatlar')
+        self.interviews = main.connection_hub('credentials/key.json', 'Mulakatlar')
         self.menu_admin = None
         self.menu_user = None
 

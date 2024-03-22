@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
 
 import main
-from mentor_menu_ui import Ui_FormMentor
+from UI_Files.mentors_ui import Ui_FormMentor
 
 
 class MentorPage(QWidget):
@@ -13,7 +13,7 @@ class MentorPage(QWidget):
         self.form_mentor.setupUi(self)
         self.form_mentor.comboBoxFilterOptions.setPlaceholderText("Katılımcı Hakkındaki Tavsiyelere Göre Filtreleyin")
 
-        self.mentees = main.connection_hub('key.json', 'Mentor')
+        self.mentees = main.connection_hub('credentials/key.json', 'Mentor')
         self.menu_user = None
         self.menu_admin = None
 
@@ -39,9 +39,7 @@ class MentorPage(QWidget):
     def search(self):
         searched_mentees = [self.mentees[0]]
         for mentee in self.mentees[1:]:
-            if (self.form_mentor.lineEditSearch.text().lower() in mentee[
-                1].lower() or self.form_mentor.lineEditSearch.text().lower() in mentee[
-                    2].lower()) and self.form_mentor.lineEditSearch.text().lower() != '':
+            if (self.form_mentor.lineEditSearch.text().lower() in mentee[1].lower() or self.form_mentor.lineEditSearch.text().lower() in mentee[2].lower()) and self.form_mentor.lineEditSearch.text().lower() != '':
                 searched_mentees.append(mentee)
         if len(searched_mentees) > 1:
             pass
