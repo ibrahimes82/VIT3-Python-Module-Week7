@@ -18,51 +18,51 @@ class AdminMenuPage(QWidget):
         self.mentor_menu_open = None
         self.management_menu_open = None
 
-        self.admin_menu_form.toolButtonAccount.clicked.connect(self.settings_in)
-        self.admin_menu_form.pushButtonInterviews.clicked.connect(self.inter_in)
-        self.admin_menu_form.pushButtonApplications.clicked.connect(self.app_in)
-        self.admin_menu_form.pushButtonMentorMeeting.clicked.connect(self.mentor_in)
-        self.admin_menu_form.pushButtonManagement.clicked.connect(self.adminmenu_in)
-        self.admin_menu_form.pushButtonSignOut.clicked.connect(self.logpage_in)
-        self.admin_menu_form.pushButtonExit.clicked.connect(self.exit_in)
+        self.admin_menu_form.toolButtonAccount.clicked.connect(self.go_settings_page)
+        self.admin_menu_form.pushButtonInterviews.clicked.connect(self.go_interviews_page)
+        self.admin_menu_form.pushButtonApplications.clicked.connect(self.go_applications_page)
+        self.admin_menu_form.pushButtonMentorMeeting.clicked.connect(self.go_mentors_page)
+        self.admin_menu_form.pushButtonManagement.clicked.connect(self.go_management_page)
+        self.admin_menu_form.pushButtonSignOut.clicked.connect(self.goback_login_page)
+        self.admin_menu_form.pushButtonExit.clicked.connect(self.app_exit)
 
-    def settings_in(self):
+    def go_settings_page(self):
         from settings import SettingsPage
         self.settings_window_open = SettingsPage(self.current_user)
         self.settings_window_open.show()
 
-    def app_in(self):
-        from applications import ApplicationsPage
-        self.hide()
-        self.applications_window_open = ApplicationsPage(self.current_user)
-        self.applications_window_open.show()
-
-    def inter_in(self):
-        from interviews import InterviewsPage
-        self.hide()
-        self.interviews_window_open = InterviewsPage(self.current_user)
-        self.interviews_window_open.show()
-
-    def exit_in(self):
-        self.close()
-
-    def logpage_in(self):
-        from login import LoginPage
-        self.hide()
-        self.login_window = LoginPage()
-        self.login_window.show()
-
-    def mentor_in(self):
+    def go_mentors_page(self):
         from mentors import MentorPage
         self.hide()
         self.mentor_menu_open = MentorPage(self.current_user)
         self.mentor_menu_open.show()
 
-    def adminmenu_in(self):
+    def go_applications_page(self):
+        from applications import ApplicationsPage
+        self.hide()
+        self.applications_window_open = ApplicationsPage(self.current_user)
+        self.applications_window_open.show()
+
+    def go_interviews_page(self):
+        from interviews import InterviewsPage
+        self.hide()
+        self.interviews_window_open = InterviewsPage(self.current_user)
+        self.interviews_window_open.show()
+
+    def go_management_page(self):
         from management import ManagementPage
         self.close()
         self.management_menu_open = ManagementPage(self.current_user)
         self.management_menu_open.show()
+
+    def goback_login_page(self):
+        from login import LoginPage
+        self.hide()
+        self.login_window = LoginPage()
+        self.login_window.show()
+
+    def app_exit(self):
+        self.close()
 
 
 if __name__ == "__main__":

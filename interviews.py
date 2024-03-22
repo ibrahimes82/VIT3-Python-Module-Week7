@@ -36,7 +36,11 @@ class InterviewsPage(QWidget):
         if len(searched_people) > 1:  # If the searched_people variable is not empty!
             pass
         else:
-            searched_people.append(['No user found!', '-', '-'])
+            no_user = ['No User Found!']
+            [no_user.append('-') for i in range(len(self.interviews[0]) - 1)]
+            searched_people.append(no_user)
+            # searched_people.append(['No user found!', '-', '-'])
+            # Above - one line - code works as same as active code. But active code is automated for cell amount
         return main.write2table(self.form_interviews, searched_people)
 
     def get_submitted_projects(self):

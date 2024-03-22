@@ -44,7 +44,11 @@ class MentorPage(QWidget):
         if len(searched_mentees) > 1:
             pass
         else:
-            searched_mentees.append(['No User or Mentor Found.!', '-', '-', '-', '-', '-', '-', '-', ])
+            no_mentee = ['No User or Mentor Found!']
+            [no_mentee.append('-') for i in range(len(self.mentees[0]) - 1)]
+            searched_mentees.append(no_mentee)
+            # searched_mentees.append(['No User or Mentor Found.!', '-', '-', '-', '-', '-', '-', '-', ])
+            # Above - one line - code works as same as active code. But active code is automated for cell amount
         return main.write2table(self.form_mentor, searched_mentees)
 
     def get_all_applications(self):

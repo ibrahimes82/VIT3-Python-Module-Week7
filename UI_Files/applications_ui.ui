@@ -32,7 +32,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));</string>
   </property>
-  <widget class="QPushButton" name="pushButton_app_all_app">
+  <widget class="QPushButton" name="pushButtonAllApplications">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -62,7 +62,7 @@ QPushButton:hover{
     <string>All Applications</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="labelLogo">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -81,7 +81,7 @@ QPushButton:hover{
     <pixmap>pictures/werhere_logo.ico</pixmap>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_app_planned_mentor">
+  <widget class="QPushButton" name="pushButtonPlannedMeetings">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -108,10 +108,10 @@ QPushButton:hover{
 }</string>
    </property>
    <property name="text">
-    <string>Planned Mentor Meetings</string>
+    <string>Planned Meetings</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_app_unscheduled_meeting">
+  <widget class="QPushButton" name="pushButtonUnscheduledMeeting">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -138,40 +138,10 @@ QPushButton:hover{
 }</string>
    </property>
    <property name="text">
-    <string>Unscheduled M. Meetings</string>
+    <string>Unscheduled Meetings</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_app_pre_vit_control">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>360</y>
-     <width>171</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-	border-radius : 15px;
-	background-color : rgb(25, 200, 200);
-	color: rgb(255, 255, 255);
-}
-QPushButton:hover{
-	background-color: rgb(20, 135, 135);
- border: 2px solid rgb(162, 0, 0);
-}</string>
-   </property>
-   <property name="text">
-    <string>Previous VIT Control</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_app_rep_registrations">
+  <widget class="QPushButton" name="pushButtonPreviousVitCheck">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -198,10 +168,40 @@ QPushButton:hover{
 }</string>
    </property>
    <property name="text">
-    <string>Repeated Registration</string>
+    <string>Previous VIT Check</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_diff_registration">
+  <widget class="QPushButton" name="pushButtonDuplicateRegistrations">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>360</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	border-radius : 15px;
+	background-color : rgb(25, 200, 200);
+	color: rgb(255, 255, 255);
+}
+QPushButton:hover{
+	background-color: rgb(20, 135, 135);
+ border: 2px solid rgb(162, 0, 0);
+}</string>
+   </property>
+   <property name="text">
+    <string>Duplicate Registrations</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonDifferentialRegistrations">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -228,10 +228,10 @@ QPushButton:hover{
 }</string>
    </property>
    <property name="text">
-    <string>Different Registration</string>
+    <string>Differential Registrations</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_app_back_menu">
+  <widget class="QPushButton" name="pushButtonBackMenu">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -261,7 +261,7 @@ QPushButton:hover{
     <string>Back Menu</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_app_filter_app">
+  <widget class="QPushButton" name="pushButtonFilterApplications">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -288,10 +288,11 @@ QPushButton:hover{
 }</string>
    </property>
    <property name="text">
-    <string>Filter Application</string>
+    <string>Filter Applications
+(Unique)</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_app_exit">
+  <widget class="QPushButton" name="pushButtonExit">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -321,7 +322,7 @@ QPushButton:hover{
     <string>Exit</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_app_search">
+  <widget class="QPushButton" name="pushButtonSearch">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -351,7 +352,7 @@ QPushButton:hover{
     <string>Search</string>
    </property>
   </widget>
-  <widget class="QTableWidget" name="tableWidget_app">
+  <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -408,7 +409,7 @@ Situation</string>
     </property>
    </column>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_app_username">
+  <widget class="QLineEdit" name="lineEditSearch">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -455,7 +456,7 @@ QLineEdit:hover {
     <string>      Name or Surname</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="labelProjectApplications">
    <property name="geometry">
     <rect>
      <x>530</x>
@@ -479,7 +480,7 @@ color: rgb(71, 84, 88);</string>
     <string>PROJECT APPLICATIONS</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="labelPicture">
    <property name="geometry">
     <rect>
      <x>8</x>
@@ -503,18 +504,18 @@ color: rgb(71, 84, 88);</string>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>lineEdit_app_username</tabstop>
-  <tabstop>pushButton_app_search</tabstop>
-  <tabstop>pushButton_app_all_app</tabstop>
-  <tabstop>pushButton_app_planned_mentor</tabstop>
-  <tabstop>pushButton_app_unscheduled_meeting</tabstop>
-  <tabstop>pushButton_app_pre_vit_control</tabstop>
-  <tabstop>pushButton_app_rep_registrations</tabstop>
-  <tabstop>pushButton_diff_registration</tabstop>
-  <tabstop>pushButton_app_filter_app</tabstop>
-  <tabstop>tableWidget_app</tabstop>
-  <tabstop>pushButton_app_back_menu</tabstop>
-  <tabstop>pushButton_app_exit</tabstop>
+  <tabstop>lineEditSearch</tabstop>
+  <tabstop>pushButtonSearch</tabstop>
+  <tabstop>pushButtonAllApplications</tabstop>
+  <tabstop>pushButtonPlannedMeetings</tabstop>
+  <tabstop>pushButtonUnscheduledMeeting</tabstop>
+  <tabstop>pushButtonPreviousVitCheck</tabstop>
+  <tabstop>pushButtonDuplicateRegistrations</tabstop>
+  <tabstop>pushButtonDifferentialRegistrations</tabstop>
+  <tabstop>pushButtonFilterApplications</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>pushButtonBackMenu</tabstop>
+  <tabstop>pushButtonExit</tabstop>
  </tabstops>
  <resources/>
  <connections/>

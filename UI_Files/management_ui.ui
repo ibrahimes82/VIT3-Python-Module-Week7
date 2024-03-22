@@ -118,7 +118,7 @@ QPushButton:hover{
     <string>Send Mail</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="labelPicture">
    <property name="geometry">
     <rect>
      <x>10</x>
