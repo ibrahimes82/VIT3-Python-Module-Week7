@@ -11,6 +11,10 @@ class MentorPage(QWidget):
         self.current_user = current_user
         self.form_mentor = Ui_FormMentor()
         self.form_mentor.setupUi(self)
+
+        # The number written here determines the column to be sorted in the combobox below.
+        # Different filtering opportunities can be obtained by changing the application while it is running.
+        self.filtering_column = 4
         self.form_mentor.comboBoxFilterOptions.setPlaceholderText("Katılımcı Hakkındaki Tavsiyelere Göre Filtreleyin")
 
         self.mentees = main.connection_hub('credentials/key.json', 'Mentor')
@@ -26,12 +30,14 @@ class MentorPage(QWidget):
         self.form_mentor.comboBoxFilterOptions.addItems(self.filter_options)
 
     @property
-    def filter_options(self, index=4):
+    def filter_options(self):
         option_elements = []
         for row in self.mentees[1:]:
-            option_elements.append(str(row[index]).strip())
+            option_elements.append(row[self.filtering_column].strip())
         filter_options = list(set(option_elements))
         filter_options.sort()
+        # This(two rows which are below) is an issue that is inside the code, and it is in a specific language.
+        # It must be changed while updating the application for any other language
         filter_options.remove('Diger')
         filter_options.append('Diger')
         return filter_options
@@ -39,7 +45,9 @@ class MentorPage(QWidget):
     def search(self):
         searched_mentees = [self.mentees[0]]
         for mentee in self.mentees[1:]:
-            if (self.form_mentor.lineEditSearch.text().lower() in mentee[1].lower() or self.form_mentor.lineEditSearch.text().lower() in mentee[2].lower()) and self.form_mentor.lineEditSearch.text().lower() != '':
+            if (self.form_mentor.lineEditSearch.text().lower() in mentee[
+                1].lower() or self.form_mentor.lineEditSearch.text().lower() in mentee[
+                    2].lower()) and self.form_mentor.lineEditSearch.text().lower() != '':
                 searched_mentees.append(mentee)
         if len(searched_mentees) > 1:
             pass
@@ -54,12 +62,12 @@ class MentorPage(QWidget):
     def get_all_applications(self):
         main.write2table(self.form_mentor, self.mentees)
 
-    def filter_table(self, index=4):
+    def filter_table(self):
         filtered_data = [self.mentees[0]]
-        selected_item = self.form_mentor.comboBoxFilterOptions.currentText()
+        selected_item = self.form_mentor.comboBoxFilterOptions.currentText().strip()
 
         for row in self.mentees[1:]:
-            if str(row[index]).lower().strip() == selected_item.lower().strip():
+            if row[self.filtering_column].strip().lower() == selected_item.strip().lower():
                 filtered_data.append(row)
         main.write2table(self.form_mentor, filtered_data)
 
