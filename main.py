@@ -1,13 +1,24 @@
-import gspread
 from PyQt6.QtWidgets import QApplication, QTableWidgetItem
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 
-def connection_hub(credentials, table):
-    gc = gspread.service_account(filename=credentials)
-    spreadsheet = gc.open(table)
-    worksheet = spreadsheet.get_worksheet(0)
-    items = worksheet.get_all_values()
-    return items
+def connection_hub(credentials, table, worksheet_name):
+    # Google Sheets API'ya erişim için kimlik doğrulama bilgileri
+    scope = ['https://spreadsheets.google.com/feeds',
+             'https://www.googleapis.com/auth/drive']
+    creds = ServiceAccountCredentials.from_json_keyfile_name(credentials, scope)
+    client = gspread.authorize(creds)   # Kimlik doğrulama bilgileriyle oturum açma
+    worksheet = client.open(table).worksheet(worksheet_name)   # Çalışma sayfasına erişim
+    return worksheet
+
+
+# def connection_hub(credentials, table):
+#     gc = gspread.service_account(filename=credentials)
+#     spreadsheet = gc.open(table)
+#     worksheet = spreadsheet.get_worksheet(0)
+#     items = worksheet.get_all_values()
+#     return items
 
 
 def write2table(page, a_list):
@@ -34,7 +45,7 @@ def list_exclude(a_list, excluded_column_indexes):
                 continue
             # Otherwise add column to the item, which will become a row for new list
             item.append(col)
-        n_list.append(item)     # add new item(row) to the new list
+        n_list.append(item)  # add new item(row) to the new list
     return n_list
 
 
