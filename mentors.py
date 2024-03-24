@@ -17,7 +17,8 @@ class MentorPage(QWidget):
         self.filtering_column = 4
         self.form_mentor.comboBoxFilterOptions.setPlaceholderText("Katılımcı Hakkındaki Tavsiyelere Göre Filtreleyin")
 
-        self.mentees = main.connection_hub('credentials/key.json', 'Mentor')
+        self.worksheet = main.connection_hub('credentials/key.json', 'Mentor', 'Sayfa1')
+        self.mentees = self.worksheet.get_all_values()
         self.menu_user = None
         self.menu_admin = None
 

@@ -10,7 +10,8 @@ from user_menu import UserMenuPage
 class LoginPage(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.users = main.connection_hub('credentials/key.json', 'Kullanicilar')
+        self.worksheet = main.connection_hub('credentials/key.json', 'Kullanicilar', 'Form Yanıtları 1')
+        self.users = self.worksheet.get_all_values()
         self.form_login = Ui_MainWindow()
         self.setWindowFlags(QtCore.Qt.WindowType.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)

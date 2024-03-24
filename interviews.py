@@ -12,7 +12,8 @@ class InterviewsPage(QWidget):
         self.form_interviews = Ui_FormInterviews()
         self.form_interviews.setupUi(self)
 
-        self.interviews = main.connection_hub('credentials/key.json', 'Mulakatlar')
+        self.worksheet = main.connection_hub('credentials/key.json', 'Mulakatlar', 'Sayfa1')
+        self.interviews = self.worksheet.get_all_values()
         self.menu_admin = None
         self.menu_user = None
 

@@ -9,15 +9,19 @@ class ApplicationsPage(QWidget):
     def __init__(self, current_user) -> None:
         super().__init__()
         self.current_user = current_user
+        self.worksheet = None
+        self.VIT1 = None
+        self.VIT2 = None
         self.form_applications = Ui_FormApplications()
         self.form_applications.setupUi(self)
-        self.applications = main.connection_hub('credentials/key.json', 'Basvurular')
+        self.worksheet = main.connection_hub('credentials/key.json', 'Basvurular', 'Sayfa1')
+        self.applications = self.worksheet.get_all_values()
 
         #   This is a special code list manipulation for "total applications"
         #   You can change the wanted columns for tableWidget here
         #
         #
-        excluding_list = [x for x in range(21, 27)]     # Unwanted columns
+        excluding_list = [x for x in range(21, 27)]  # Unwanted columns
         new_list = main.list_exclude(list(self.applications), excluding_list)
         self.applications = new_list
         #
@@ -96,56 +100,74 @@ class ApplicationsPage(QWidget):
         main.write2table(self.form_applications, duplicate_list)
 
     def app_previous_vits_check(self):
-        pass
+        excluding_list = [x for x in range(21, 27)]  # Unwanted columns
+        self.worksheet = main.connection_hub('credentials/key.json', 'VIT1', 'Sayfa1')
+        self.VIT1 = self.worksheet.get_all_values()
+        new_vit1 = main.list_exclude(list(self.VIT1), excluding_list)
+        self.VIT1 = new_vit1[1:]
+        self.worksheet = main.connection_hub('credentials/key.json', 'VIT2', 'Sayfa1')
+        self.VIT2 = self.worksheet.get_all_values()
+        new_vit2 = main.list_exclude(list(self.VIT2), excluding_list)
+        self.VIT2 = new_vit2[1:]
 
-    # def common(self):
-    #     applications = {[application[1], application[2]] for application in self.applications[1:]}
-    #     vits1 = {user[1] for user in main.connection_hub('credentials/key.json', 'VIT1')}
-    #     vits2 = {user[1] for user in main.connection_hub('credentials/key.json', 'VIT2')}
-    #     common_users = [user for user in applications if user in vits1 and user in vits2]
-    #     return common_users
-    #
-    # def vits_and_applications(self):
-    #     search_users = []
-    #     common_users = self.common()
-    #     for user in self.applications[1:]:
-    #         for common_user in common_users:
-    #             if common_user in user[1]:
-    #                 search_users.append(user)
-    #                 break
-    #     if search_users:
-    #         return self.list_exclude(search_users, 7)
-    #     else:
-    #
-    #         return main.write2table(self.form_applications,
-    #                                 [['Kullanıcı veya Mentor Bulunamadı!', '-', '-', '-', '-', '-', '-', '-']])
-    #
-    # def vit1_vit2(self):
-    #     vits_common = []
-    #     vits1 = {user[1] for user in main.connection_hub('credentials/key.json', 'VIT1')}
-    #     vits2 = {user[1] for user in main.connection_hub('credentials/key.json', 'VIT2')}
-    #     vits_common = [user for user in vits1 if user in vits2]
-    #     return vits_common
-    #
-    # def rep_registrations(self):
-    #     search_users = []
-    #     vit1_users = main.connection_hub('credentials/key.json', 'VIT1')
-    #     vits_common = self.vit1_vit2()
-    #     for user in vit1_users[1:]:
-    #         for common_user in vits_common:
-    #             if common_user in user[1]:
-    #                 search_users.append(user)
-    #                 break
-    #     if search_users:
-    #         return self.list_exclude(search_users, 7)
-    #     else:
-    #
-    #         return main.write2table(self.form_applications,
-    #                                 [['Kullanıcı veya Mentor Bulunamadı!', '-', '-', '-', '-', '-', '-', '-']])
+        double_applicants = [self.applications[0]]
+        for user in self.VIT1:
+            if self.find_same(self.applications, user):
+                double_applicants.append(user)
+            elif self.find_same(self.VIT2, user):
+                double_applicants.append(user)
+            else:
+                continue
+
+        for user in self.VIT2:
+            if self.find_same(self.applications, user):
+                double_applicants.append(user)
+###############################
+        data = []
+        newlist = [self.applications[0]]
+        for row in double_applicants[1:]:
+            data.append(row[1])
+        data = sorted(data)
+        for d in data:
+            for i in double_applicants[1:]:
+                if d == i[1]:
+                    newlist.append(i)
+
+        if len(newlist) > 1:  # If the searched_people variable is not empty!
+            pass
+        else:
+            no_application = ['There is no double applicant!']
+            [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
+            newlist.append(no_application)
+            # searched_applications.append(['No User or Mentor Found!', '-', '-', '-', '-', '-', '-', '-', ])
+            # Above - one line - code works as same as active code. But active code is automated for cell amount
+        return main.write2table(self.form_applications, newlist)
+
+        # if len(double_applicants) > 1:  # If the searched_people variable is not empty!
+        #     pass
+        # else:
+        #     no_application = ['There is no double applicant!']
+        #     [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
+        #     double_applicants.append(no_application)
+        #     # searched_applications.append(['No User or Mentor Found!', '-', '-', '-', '-', '-', '-', '-', ])
+        #     # Above - one line - code works as same as active code. But active code is automated for cell amount
+        # return main.write2table(self.form_applications, double_applicants)
+
+    @staticmethod
+    def find_same(a_list, element):
+        for i in a_list:
+            if element[1] in i[1] and element[2] in i[2]:
+                return True
+        else:
+            return False
 
     def app_differential_registrations(self):
-        vit1_users = main.connection_hub('credentials/key.json', 'VIT1')
-        vit2_users = main.connection_hub('credentials/key.json', 'VIT2')
+        self.worksheet = main.connection_hub('credentials/key.json', 'VIT1', 'Sayfa1')
+        self.VIT1 = self.worksheet.get_all_values()
+        vit1_users = self.worksheet.get_all_values()
+        self.worksheet = main.connection_hub('credentials/key.json', 'VIT2', 'Sayfa1')
+        self.VIT2 = self.worksheet.get_all_values()
+        vit2_users = self.worksheet.get_all_values()
 
         differential_users = [vit1_users[0]]
         for user1 in vit1_users:
