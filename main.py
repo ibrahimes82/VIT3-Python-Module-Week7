@@ -13,14 +13,6 @@ def connection_hub(credentials, table, worksheet_name):
     return worksheet
 
 
-# def connection_hub(credentials, table):
-#     gc = gspread.service_account(filename=credentials)
-#     spreadsheet = gc.open(table)
-#     worksheet = spreadsheet.get_worksheet(0)
-#     items = worksheet.get_all_values()
-#     return items
-
-
 def write2table(page, a_list):
     table_widget = page.tableWidget
     table_widget.clearContents()  # Clear table
