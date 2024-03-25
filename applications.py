@@ -209,10 +209,10 @@ class ApplicationsPage(QWidget):
         if len(differential_users) > 1:  # If the searched_people variable is not empty!
             pass
         else:
-            no_application = ['There is no double applicant!']
+            no_application = ['There is no differential applicant!']
             [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
             differential_users.append(no_application)
-            # sorted_list.append(['No User or Mentor Found!', '-', '-', '-', '-', '-', '-', '-', ])
+            # differential_users.append(['There is no differential applicant!', '-', '-', '-', '-', '-', '-', '-', ])
             # Above - one line - code works as same as active code. But active code is automated for cell amount
         return main.write2table(self.form_applications, differential_users)
 
