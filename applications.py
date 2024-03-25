@@ -217,14 +217,21 @@ class ApplicationsPage(QWidget):
         return main.write2table(self.form_applications, differential_users)
 
     def app_filter_applications(self):
-        applications = self.applications[1:]
+        filtered_unique_applications = [self.applications[0]]
         unique_names = set()
-        filtered_applications = []
-        for application in applications:
-            if application[1] not in unique_names:
-                filtered_applications.append(application)
-                unique_names.add(application[1])
-        main.write2table(self.form_applications, filtered_applications)
+        for application in self.applications[1:]:
+            if application[1].strip().lower() not in unique_names:
+                filtered_unique_applications.append(application)
+                unique_names.add(application[1].strip().lower())
+        if len(filtered_unique_applications) > 1:  # If the filtered_unique_applications variable is not empty!
+            pass
+        else:
+            no_application = ['There is no application!']
+            [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
+            filtered_unique_applications.append(no_application)
+            # filtered_unique_applications.append(['There is no application!', '-', '-', '-', '-', '-', '-', '-', ])
+            # Above - one line - code works as same as active code. But active code is automated for cell amount
+        return main.write2table(self.form_applications, filtered_unique_applications)
 
     def back_menu(self):
         if self.current_user[2] == "admin":
