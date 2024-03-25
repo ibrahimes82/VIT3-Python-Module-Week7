@@ -21,8 +21,8 @@ class ApplicationsPage(QWidget):
         #   You can change the wanted columns for tableWidget here
         #
         #
-        excluding_list = [x for x in range(21, 27)]  # Unwanted columns
-        new_list = main.list_exclude(list(self.applications), excluding_list)
+        self.excluding_list = [x for x in range(21, 27)]  # Unwanted columns
+        new_list = main.list_exclude(list(self.applications), self.excluding_list)
         self.applications = new_list
         #
         #
@@ -36,7 +36,7 @@ class ApplicationsPage(QWidget):
         self.form_applications.pushButtonAllApplications.clicked.connect(self.app_all_applications)
         self.form_applications.pushButtonPlannedMeetings.clicked.connect(self.app_planned_meetings)
         self.form_applications.pushButtonUnscheduledMeeting.clicked.connect(self.app_unscheduled_meetings)
-        self.form_applications.pushButtonPreviousVitCheck.clicked.connect(self.app_previous_vits_check)
+        self.form_applications.pushButtonPreviousVitCheck.clicked.connect(self.app_previous_application_check)
         self.form_applications.pushButtonDuplicateRegistrations.clicked.connect(self.app_duplicate_records)
         self.form_applications.pushButtonDifferentialRegistrations.clicked.connect(self.app_differential_registrations)
         self.form_applications.pushButtonFilterApplications.clicked.connect(self.app_filter_applications)
@@ -46,7 +46,8 @@ class ApplicationsPage(QWidget):
     def app_search(self):
         searched_applications = [self.applications[0]]
         for application in self.applications[1:]:
-            if self.form_applications.lineEditSearch.text().lower() in application[1].lower() and self.form_applications.lineEditSearch.text().lower() != '':
+            if self.form_applications.lineEditSearch.text().lower() in \
+                    application[1].lower() and self.form_applications.lineEditSearch.text().lower() != '':
                 searched_applications.append(application)
 
         # Make empty the search area
@@ -66,28 +67,39 @@ class ApplicationsPage(QWidget):
         main.write2table(self.form_applications, self.applications)
 
     # This method is for next two method
-    def app_column_checker(self, text, col):
+    @staticmethod
+    def app_column_checker(a_list, text, col):
         searched_applications = []
-        for application in self.applications[1:]:
+        for application in a_list[1:]:
             if text in application[col]:
                 searched_applications.append(application)
         return searched_applications
 
     def app_planned_meetings(self):
-        planned_applications = self.app_column_checker("OK", 20)
-        if planned_applications:
-            main.write2table(self.form_applications, planned_applications)
+        planned_applications = [self.applications[0]]
+        planned_applications.extend(self.app_column_checker(self.applications, "OK", 20))
+        if len(planned_applications) > 1:  # If the unscheduled_applications variable is not empty!
+            pass
         else:
-            return main.write2table(self.form_applications,
-                                    [['No User or Mentor Found.!', '-', '-', '-', '-', '-', '-', '-', ]], )
+            no_application = ['There is no planned meetings!']
+            [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
+            planned_applications.append(no_application)
+            # planned_applications.append(['There is no planned meetings!', '-', '-', '-', '-', '-', '-', '-', ])
+            # Above - one line - code works as same as active code. But active code is automated for cell amount
+        return main.write2table(self.form_applications, planned_applications)
 
     def app_unscheduled_meetings(self):
-        unscheduled_applications = self.app_column_checker("ATANMADI", 20)
-        if unscheduled_applications:
-            main.write2table(self.form_applications, unscheduled_applications)
+        unscheduled_applications = [self.applications[0]]
+        unscheduled_applications.extend(self.app_column_checker(self.applications, "ATANMADI", 20))
+        if len(unscheduled_applications) > 1:  # If the unscheduled_applications variable is not empty!
+            pass
         else:
-            return main.write2table(self.form_applications,
-                                    [['No User or Mentor Found.!', '-', '-', '-', '-', '-', '-', '-', ]], )
+            no_application = ['There is no unscheduled meetings!']
+            [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
+            unscheduled_applications.append(no_application)
+            # unscheduled_applications.append(['There is no unscheduled meetings!', '-', '-', '-', '-', '-', '-', '-', ])
+            # Above - one line - code works as same as active code. But active code is automated for cell amount
+        return main.write2table(self.form_applications, unscheduled_applications)
 
     def app_duplicate_records(self):
         unique_list = []
@@ -99,67 +111,75 @@ class ApplicationsPage(QWidget):
                 duplicate_list.append(application)
         main.write2table(self.form_applications, duplicate_list)
 
-    def app_previous_vits_check(self):
-        excluding_list = [x for x in range(21, 27)]  # Unwanted columns
+    # This method will be used in next method only
+    # This method finds common elements in two lists with given properties
+    @staticmethod
+    def find_common_elements(nested_list1, nested_list2):
+        common_elements = []
+        for sublist1 in nested_list1:
+            for sublist2 in nested_list2:
+                if (sublist1[1].strip().lower() in sublist2[1].strip().lower() or sublist2[1].strip().lower() in
+                        sublist1[1].strip().lower() or sublist1[2].strip().lower() == sublist2[2].strip().lower()):
+                    common_elements.append(sublist1)
+                    common_elements.append(sublist2)
+        return common_elements
+
+    # !!! Explanations for program user, not for developers: This method(below method with above method's help)
+    # finds users that apply with the same email or the same name before
+    def app_previous_application_check(self):
         self.worksheet = main.connection_hub('credentials/key.json', 'VIT1', 'Sayfa1')
         self.VIT1 = self.worksheet.get_all_values()
-        new_vit1 = main.list_exclude(list(self.VIT1), excluding_list)
-        self.VIT1 = new_vit1[1:]
+        self.VIT1 = main.list_exclude(list(self.VIT1), self.excluding_list)
         self.worksheet = main.connection_hub('credentials/key.json', 'VIT2', 'Sayfa1')
         self.VIT2 = self.worksheet.get_all_values()
-        new_vit2 = main.list_exclude(list(self.VIT2), excluding_list)
-        self.VIT2 = new_vit2[1:]
+        self.VIT2 = main.list_exclude(list(self.VIT2), self.excluding_list)
 
-        double_applicants = [self.applications[0]]
-        for user in self.VIT1:
-            if self.find_same(self.applications, user):
-                double_applicants.append(user)
-            elif self.find_same(self.VIT2, user):
-                double_applicants.append(user)
-            else:
-                continue
+        double_applicants = [self.applications[0]]  # Adding headers to the list
 
-        for user in self.VIT2:
-            if self.find_same(self.applications, user):
-                double_applicants.append(user)
-###############################
-        data = []
-        newlist = [self.applications[0]]
-        for row in double_applicants[1:]:
-            data.append(row[1])
-        data = sorted(data)
-        for d in data:
-            for i in double_applicants[1:]:
-                if d == i[1]:
-                    newlist.append(i)
+        double_applicants.extend(self.find_common_elements(self.VIT1[1:], self.VIT2[1:]))
+        double_applicants.extend(self.find_common_elements(self.VIT1[1:], self.applications[1:]))
+        double_applicants.extend(self.find_common_elements(self.VIT2[1:], self.applications[1:]))
 
-        if len(newlist) > 1:  # If the searched_people variable is not empty!
+        unique_list = []
+        [unique_list.append(x) for x in double_applicants if x not in unique_list]
+        double_applicants = unique_list
+
+        # These codes(below) are my first codes. I improved new codes above later with help of chatgpt.
+        #
+        # for user in self.VIT1:
+        #     if self.find_same(self.applications, user):
+        #         double_applicants.append(user)
+        #     elif self.find_same(self.VIT2, user):
+        #         double_applicants.append(user)
+        #     else:
+        #         continue
+        #
+        # for user in self.VIT2:
+        #     if self.find_same(self.applications, user):
+        #         double_applicants.append(user)
+        #
+        #
+        # @staticmethod
+        # def find_same(a_list, element):
+        #     for i in a_list:
+        #         if element[1] in i[1] and element[2] in i[2]:
+        #             return True
+        #     else:
+        #         return False
+
+        # The code below reorders the list according to the data in the first index of the elements of the relevant
+        # nested list.
+        sorted_list = sorted(double_applicants, key=lambda x: x[1].lower())
+
+        if len(sorted_list) > 1:  # If the searched_people variable is not empty!
             pass
         else:
             no_application = ['There is no double applicant!']
             [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
-            newlist.append(no_application)
-            # searched_applications.append(['No User or Mentor Found!', '-', '-', '-', '-', '-', '-', '-', ])
+            sorted_list.append(no_application)
+            # sorted_list.append(['No User or Mentor Found!', '-', '-', '-', '-', '-', '-', '-', ])
             # Above - one line - code works as same as active code. But active code is automated for cell amount
-        return main.write2table(self.form_applications, newlist)
-
-        # if len(double_applicants) > 1:  # If the searched_people variable is not empty!
-        #     pass
-        # else:
-        #     no_application = ['There is no double applicant!']
-        #     [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
-        #     double_applicants.append(no_application)
-        #     # searched_applications.append(['No User or Mentor Found!', '-', '-', '-', '-', '-', '-', '-', ])
-        #     # Above - one line - code works as same as active code. But active code is automated for cell amount
-        # return main.write2table(self.form_applications, double_applicants)
-
-    @staticmethod
-    def find_same(a_list, element):
-        for i in a_list:
-            if element[1] in i[1] and element[2] in i[2]:
-                return True
-        else:
-            return False
+        return main.write2table(self.form_applications, sorted_list)
 
     def app_differential_registrations(self):
         self.worksheet = main.connection_hub('credentials/key.json', 'VIT1', 'Sayfa1')
