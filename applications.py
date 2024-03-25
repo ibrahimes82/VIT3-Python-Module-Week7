@@ -97,7 +97,7 @@ class ApplicationsPage(QWidget):
             no_application = ['There is no unscheduled meetings!']
             [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
             unscheduled_applications.append(no_application)
-            # unscheduled_applications.append(['There is no unscheduled meetings!', '-', '-', '-', '-', '-', '-', '-', ])
+            # unscheduled_applications.append(['There is no unscheduled meetings!', '-', '-', '-', '-', '-', '-', ])
             # Above - one line - code works as same as active code. But active code is automated for cell amount
         return main.write2table(self.form_applications, unscheduled_applications)
 
@@ -184,31 +184,37 @@ class ApplicationsPage(QWidget):
     def app_differential_registrations(self):
         self.worksheet = main.connection_hub('credentials/key.json', 'VIT1', 'Sayfa1')
         self.VIT1 = self.worksheet.get_all_values()
-        vit1_users = self.worksheet.get_all_values()
         self.worksheet = main.connection_hub('credentials/key.json', 'VIT2', 'Sayfa1')
         self.VIT2 = self.worksheet.get_all_values()
-        vit2_users = self.worksheet.get_all_values()
 
-        differential_users = [vit1_users[0]]
-        for user1 in vit1_users:
+        differential_users = [self.applications[0]]
+        for user1 in self.VIT1[1:]:
             found = False
-            for user2 in vit2_users:
-                if user1[1] == user2[1]:
+            for user2 in self.VIT2[1:]:
+                if user1[1] in user2[1]:
                     found = True
                     break
             if not found:
                 differential_users.append(user1)
 
-        for user2 in vit2_users:
+        for user2 in self.VIT2:
             found = False
-            for user1 in vit1_users:
-                if user1[1] == user2[1]:
+            for user1 in self.VIT1:
+                if user2[1] in user1[1]:
                     found = True
                     break
             if not found:
                 differential_users.append(user2)
 
-        main.write2table(self.form_applications, differential_users)
+        if len(differential_users) > 1:  # If the searched_people variable is not empty!
+            pass
+        else:
+            no_application = ['There is no double applicant!']
+            [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
+            differential_users.append(no_application)
+            # sorted_list.append(['No User or Mentor Found!', '-', '-', '-', '-', '-', '-', '-', ])
+            # Above - one line - code works as same as active code. But active code is automated for cell amount
+        return main.write2table(self.form_applications, differential_users)
 
     def app_filter_applications(self):
         applications = self.applications[1:]
