@@ -8,8 +8,8 @@ def connection_hub(credentials, table, worksheet_name):
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
     creds = ServiceAccountCredentials.from_json_keyfile_name(credentials, scope)
-    client = gspread.authorize(creds)   # Kimlik doğrulama bilgileriyle oturum açma
-    worksheet = client.open(table).worksheet(worksheet_name)   # Çalışma sayfasına erişim
+    client = gspread.authorize(creds)  # Kimlik doğrulama bilgileriyle oturum açma
+    worksheet = client.open(table).worksheet(worksheet_name)  # Çalışma sayfasına erişim
     return worksheet
 
 
