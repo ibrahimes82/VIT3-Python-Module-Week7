@@ -66,7 +66,7 @@ class InterviewsPage(QWidget):
             self.menu_admin = AdminMenuPage(self.current_user)
             self.menu_admin.show()
         else:
-            from user_menu import UserMenuPage
+            from menu import UserMenuPage
             self.hide()
             self.menu_user = UserMenuPage(self.current_user)
             self.menu_user.show()

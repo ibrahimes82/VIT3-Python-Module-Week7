@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QApplication
 
-from user_menu import UserMenuPage
+from menu import UserMenuPage
 
 
 class AdminMenuPage(UserMenuPage):  # A new interface management class was created by inheritance

@@ -1,5 +1,5 @@
 from PyQt6.QtWidgets import QWidget, QApplication
-from UI_Files.user_menu_ui import Ui_FormUserMenu
+from UI_Files.menu_ui import Ui_FormUserMenu
 
 
 class UserMenuPage(QWidget):

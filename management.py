@@ -121,7 +121,7 @@ class ManagementPage(QWidget):
 
     def back_menu(self):
         if self.current_user[2] != "admin":
-            from user_menu import UserMenuPage
+            from menu import UserMenuPage
             self.hide()
             self.form_management.menu_user = UserMenuPage(self.current_user)
             self.form_management.menu_user.show()

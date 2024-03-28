@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QMainWindow, QLineEdit
 import main
 from UI_Files.login_ui import Ui_MainWindow
 from admin_menu import AdminMenuPage
-from user_menu import UserMenuPage
+from menu import UserMenuPage
 
 
 class LoginPage(QMainWindow):

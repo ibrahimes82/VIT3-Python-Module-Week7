@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'UI_Files/user_menu_ui.ui'
+# Form implementation generated from reading ui file 'UI_Files/menu_ui.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -219,7 +219,7 @@ class Ui_FormUserMenu(object):
 
     def retranslateUi(self, FormUserMenu):
         _translate = QtCore.QCoreApplication.translate
-        FormUserMenu.setWindowTitle(_translate("FormUserMenu", "USER MENU"))
+        FormUserMenu.setWindowTitle(_translate("FormUserMenu", "MENU"))
         self.pushButtonApplications.setText(_translate("FormUserMenu", "Applications"))
         self.pushButtonInterviews.setText(_translate("FormUserMenu", "Interviews"))
         self.pushButtonExit.setText(_translate("FormUserMenu", "Exit"))
