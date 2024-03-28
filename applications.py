@@ -16,7 +16,6 @@ class ApplicationsPage(QWidget):
         self.form_applications.setupUi(self)
         self.worksheet = main.connection_hub('credentials/key.json', 'Basvurular', 'Sayfa1')
         self.applications = self.worksheet.get_all_values()
-        main.write2table(self.form_applications, [self.applications[0]])    # This code updates the tableWidget headers
 
         #   This is a special code list manipulation for "total applications"
         #   You can change the wanted columns for tableWidget here
@@ -28,7 +27,8 @@ class ApplicationsPage(QWidget):
         #
         #
         #
-        #
+        # This code updates the tableWidget headers
+        main.write2table(self.form_applications, main.list_exclude([self.applications[0]], self.excluding_list))
 
         self.menu_user = None
         self.menu_admin = None
