@@ -41,6 +41,21 @@ def list_exclude(a_list, excluded_column_indexes):
     return n_list
 
 
+def filter_active_options(a_list, filtering_column):
+    option_elements = []
+    for row in a_list[1:]:
+        option_elements.append(row[filtering_column].strip())
+    filter_options = list(set(option_elements))
+
+    if filter_options[0].isdigit():
+        filter_options = sorted(filter_options, key=int)
+    else:
+        filter_options.sort()
+    # This(two rows which are below) is an issue that is inside the code, and it is in a specific language.
+    # It must be changed while updating the application for any other language
+    return filter_options
+
+
 if __name__ == '__main__':
     from login import LoginPage
 
