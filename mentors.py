@@ -49,9 +49,9 @@ class MentorPage(QWidget):
     def search(self):
         searched_mentees = [self.mentees[0]]
         for mentee in self.mentees[1:]:
-            if (self.form_mentor.lineEditSearch.text().lower() in mentee[
-                1].lower() or self.form_mentor.lineEditSearch.text().lower() in mentee[
-                    2].lower()) and self.form_mentor.lineEditSearch.text().lower() != '':
+            if ((self.form_mentor.lineEditSearch.text().lower() in mentee[1].lower()
+                or self.form_mentor.lineEditSearch.text().lower() in mentee[2].lower())
+                    and self.form_mentor.lineEditSearch.text().lower() != ''):
                 searched_mentees.append(mentee)
         if len(searched_mentees) > 1:
             pass
