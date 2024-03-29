@@ -47,8 +47,8 @@ class ApplicationsPage(QWidget):
     def app_search(self):
         searched_applications = [self.applications[0]]
         for application in self.applications[1:]:
-            if self.form_applications.lineEditSearch.text().lower() in \
-                    application[1].lower() and self.form_applications.lineEditSearch.text().lower() != '':
+            if (self.form_applications.lineEditSearch.text().split().lower() in application[1].split().lower()
+                    and self.form_applications.lineEditSearch.text().split().lower() != ''):
                 searched_applications.append(application)
 
         # Make empty the search area
