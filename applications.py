@@ -68,7 +68,7 @@ class ApplicationsPage(QWidget):
         main.write2table(self.form_applications, self.applications)
 
     # This method is for next two method
-    @staticmethod
+    @staticmethod  # This method is used with next two method together
     def app_column_checker(a_list, text, col):
         searched_applications = []
         for application in a_list[1:]:
@@ -79,7 +79,7 @@ class ApplicationsPage(QWidget):
     def app_planned_meetings(self):
         planned_applications = [self.applications[0]]
         planned_applications.extend(self.app_column_checker(self.applications, "OK", 20))
-        if len(planned_applications) > 1:  # If the unscheduled_applications variable is not empty!
+        if len(planned_applications) > 1:  # If the planned_applications variable is not empty!
             pass
         else:
             no_application = ['There is no planned meetings!']
@@ -103,14 +103,23 @@ class ApplicationsPage(QWidget):
         return main.write2table(self.form_applications, unscheduled_applications)
 
     def app_duplicate_records(self):
-        unique_list = []
         duplicate_list = [self.applications[0]]
-        for application in self.applications[1:]:
-            if application not in unique_list:
-                unique_list.append(application)
-            else:
-                duplicate_list.append(application)
-        main.write2table(self.form_applications, duplicate_list)
+
+        for i in range(len(self.applications[1:])):
+            for j in range(i + 1, len(self.applications[1:])):
+                if (self.applications[1:][i][1] == self.applications[1:][j][1]
+                        or self.applications[1:][i][2] == self.applications[1:][j][2]):
+                    duplicate_list.append(self.applications[1:][i])
+                    duplicate_list.append(self.applications[1:][j])
+        if len(duplicate_list) > 1:  # If the duplicate_list variable is not empty!
+            pass
+        else:
+            no_application = ['There is no double applicant!']
+            [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
+            duplicate_list.append(no_application)
+            # duplicate_list.append(['There is no double applicant!', '-', '-', '-', '-', '-', '-', '-', ])
+            # Above - one line - code works as same as active code. But active code is automated for cell amount
+        return main.write2table(self.form_applications, duplicate_list)
 
     # This method will be used in next method only
     # This method finds common elements in two lists with given properties
@@ -182,13 +191,18 @@ class ApplicationsPage(QWidget):
             # Above - one line - code works as same as active code. But active code is automated for cell amount
         return main.write2table(self.form_applications, sorted_list)
 
+    # Bu method icin (asagidaki) istenen seyin cok gerekli olup olmadigi konusunda emin degilim. Farkli kayitlar
+    # isminde bir method yazacaksak bence bu soyle calismaliydi. Misal bir kisi (adi ayni olacak, sonucta resmi ve
+    # hukuki bir kayit durumu soz konusu.) birinci mail adresiyle kayit olmus. Ama emin olamamis diger bir mail
+    # adresiyle bir kez daha kaydolmus. Yani bence yazacagimiz method bu kisileri alip getirmeliydi... (Uygulamada bu
+    # ne kadar gerekli, isinize yarar, bilmiyorum tabi ki)
     def app_differential_registrations(self):
         self.worksheet = main.connection_hub('credentials/key.json', 'VIT1', 'Sayfa1')
         self.VIT1 = self.worksheet.get_all_values()
         self.worksheet = main.connection_hub('credentials/key.json', 'VIT2', 'Sayfa1')
         self.VIT2 = self.worksheet.get_all_values()
 
-        differential_users = [self.applications[0]]
+        differential_users = [self.VIT1[0]]
         for user1 in self.VIT1[1:]:
             found = False
             for user2 in self.VIT2[1:]:
