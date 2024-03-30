@@ -1,5 +1,8 @@
-from PyQt6.QtWidgets import *
-from PyQt6.QtWidgets import QWidget
+import sys
+
+from PyQt6.QtCore import QPoint
+from PyQt6.QtWidgets import QWidget, QApplication, QToolTip, QTableWidget, QTableWidgetItem
+from PyQt6.QtGui import QFont, QMouseEvent
 
 import main
 from UI_Files.mentors_ui import Ui_FormMentor
@@ -19,7 +22,7 @@ class MentorPage(QWidget):
 
         self.worksheet = main.connection_hub('credentials/key.json', 'Mentor', 'Sayfa1')
         self.mentees = self.worksheet.get_all_values()
-        main.write2table(self.form_mentor, [self.mentees[0]])    # This code updates the tableWidget headers
+        main.write2table(self.form_mentor, [self.mentees[0]])  # This code updates the tableWidget headers
         self.menu_user = None
         self.menu_admin = None
 
@@ -34,10 +37,32 @@ class MentorPage(QWidget):
         # Activity code to offer new filtering options when you click on the titles
         self.form_mentor.tableWidget.horizontalHeader().sectionClicked.connect(self.on_header_clicked)
 
+        self.form_mentor.tableWidget.cellClicked.connect(self.on_item_clicked)
+        # self.form_mentor.tableWidget.cellPressed.connect(self.on_item_clicked)
+        self.form_mentor.tableWidget.clicked.connect(self.on_item_clicked)
+        # self.form_mentor.tableWidget.itemClicked.connect(self.on_item_clicked)
+
+        # self.setMouseTracking(True)
+        # self.setMouseTracking(True)
+        # self.form_mentor.tableWidget.hasMouseTracking()
+
+    def mouseMoveEvent(self, event):
+        item = self.form_mentor.tableWidget.currentItem()
+        if item:
+            QToolTip.setFont(QFont("SansSerif", 10))
+            QToolTip.showText(self.mapToGlobal(event.pos()), item.text(), self)
+
     # This code is for cell clicking
-    # def on_item_clicked(self, item):
-    #     column_id = item.column()
-    #     QMessageBox.information(self, "Column Clicked", f"You clicked on column {column_id + 1}")
+    def on_item_clicked(self, event):
+        item = self.form_mentor.tableWidget.currentItem()
+        if item:
+            QToolTip.setFont(QFont("SansSerif", 10))
+            item.setToolTip(item.text())
+            # QToolTip.showText(self.mapToGlobal(event.pos()), item.text(), self)
+
+        # print(it)
+        # it.QToolTip.showText('Insert')
+        # self.form_mentor.tableWidget.onHovered()
 
     # This code is for header clicking
     def on_header_clicked(self, logical_index):
@@ -46,11 +71,21 @@ class MentorPage(QWidget):
         self.form_mentor.comboBoxFilterOptions.setPlaceholderText("")
         self.form_mentor.comboBoxFilterOptions.addItems(main.filter_active_options(self.mentees, logical_index))
 
+    # def mouseMoveEvent(self, event):
+    #     item = self.itemAt(event.pos())
+    #     if item:
+    #         QToolTip.setFont(QFont("SansSerif", 10))
+    #         QToolTip.showText(self.mapToGlobal(event.pos()), item.text(), self)
+    # def mouseMoveEvent(self, event):
+    #     QToolTip.setFont(QFont('SansSerif', 10))
+    #     it = self.form_mentor.tableWidget.item(event, self.form_mentor.tableWidget.currentItem().column())
+    #     it.setToolTip('This is a <b>QPushButton</b> widget')
+
     def search(self):
         searched_mentees = [self.mentees[0]]
         for mentee in self.mentees[1:]:
             if ((self.form_mentor.lineEditSearch.text().lower() in mentee[1].lower()
-                or self.form_mentor.lineEditSearch.text().lower() in mentee[2].lower())
+                 or self.form_mentor.lineEditSearch.text().lower() in mentee[2].lower())
                     and self.form_mentor.lineEditSearch.text().lower() != ''):
                 searched_mentees.append(mentee)
         if len(searched_mentees) > 1:
