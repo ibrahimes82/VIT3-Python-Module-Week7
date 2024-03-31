@@ -1,3 +1,4 @@
+from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
 
@@ -25,11 +26,24 @@ class InterviewsPage(QWidget):
         self.form_interviews.pushButtonBackMenu.clicked.connect(self.back_menu)
         self.form_interviews.pushButtonExit.clicked.connect(self.app_exit)
 
+        # Activity code to offer new filtering options when you click on the titles
+        # self.form_interviews.tableWidget.horizontalHeader().sectionClicked.connect(self.on_header_clicked)
+
+        # Connect the cellEntered signal to the on_cell_entered method
+        self.form_interviews.tableWidget.cellEntered.connect(self.on_cell_entered)
+
+        # Connect the cellEntered signal to the on_cell_entered method
+        self.form_interviews.tableWidget.cellClicked.connect(self.on_cell_clicked)
+
+        # This code enables mouse tracking on tableWidget
+        self.form_interviews.tableWidget.setMouseTracking(True)
+
     def search_name(self):
         searched_people = [self.interviews[0]]
         for person in self.interviews[1:]:
             # If the text in the textbox appears within one of the names in the list AND is not empty at the same time!
-            if self.form_interviews.lineEditUsername.text().lower() in str(person[0]).lower() and self.form_interviews.lineEditUsername.text() != '':
+            if (self.form_interviews.lineEditUsername.text().lower() in str(person[0]).lower()
+                    and self.form_interviews.lineEditUsername.text() != ''):
                 searched_people.append(person)
 
         # Make empty the search area
@@ -73,6 +87,42 @@ class InterviewsPage(QWidget):
 
     def app_exit(self):
         self.close()
+
+# .....................................................................................................................#
+# ............................................ PRESENTATION CODES START ...............................................#
+# .....................................................................................................................#
+
+    # This code is written to make the contents appear briefly when hovering over the cell.
+    def on_cell_entered(self, row, column):
+        # Get the text of the cell at the specified row and column
+        item_text = self.form_interviews.tableWidget.item(row, column).text()
+
+        # Show a tooltip with the cell text
+        tooltip = self.form_interviews.tableWidget.viewport().mapToGlobal(
+            self.form_interviews.tableWidget.visualItemRect(
+                self.form_interviews.tableWidget.item(row, column)).topLeft())
+        QToolTip.setFont(QFont("SansSerif", 10))
+        QToolTip.showText(tooltip, item_text)
+
+    # This code is for cell clicking
+    # If you want to show a persistent tooltip with the cell text. You need to use this code.
+    # I coded it for 'on_cell_clicked' method
+    def on_cell_clicked(self, row, column):
+        # Get the text of the clicked cell
+        item_text = self.form_interviews.tableWidget.item(row, column).text()
+
+        # Show a persistent tooltip with the cell text
+        tooltip = self.form_interviews.tableWidget.viewport().mapToGlobal(
+            self.form_interviews.tableWidget.visualItemRect(
+                self.form_interviews.tableWidget.item(row, column)).topLeft())
+        QToolTip.setFont(QFont("SansSerif", 10))
+        QToolTip.showText(tooltip, item_text, self.form_interviews.tableWidget)
+
+    # This code is for header clicking
+    # def on_header_clicked(self):
+
+
+# ........................................... Presentation Codes END ..................................................#
 
 
 if __name__ == "__main__":
