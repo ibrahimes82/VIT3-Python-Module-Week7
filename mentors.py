@@ -1,8 +1,5 @@
-import sys
-
-from PyQt6.QtCore import QPoint
-from PyQt6.QtWidgets import QWidget, QApplication, QToolTip, QTableWidget, QTableWidgetItem
-from PyQt6.QtGui import QFont, QMouseEvent
+from PyQt6.QtWidgets import QWidget, QApplication, QToolTip
+from PyQt6.QtGui import QFont
 
 import main
 from UI_Files.mentors_ui import Ui_FormMentor
@@ -35,51 +32,16 @@ class MentorPage(QWidget):
         self.form_mentor.comboBoxFilterOptions.addItems(main.filter_active_options(self.mentees, self.filtering_column))
 
         # Activity code to offer new filtering options when you click on the titles
-        self.form_mentor.tableWidget.horizontalHeader().sectionClicked.connect(self.on_header_clicked)
+        self.form_mentor.tableWidget.horizontalHeader().sectionDoubleClicked.connect(self.on_header_double_clicked)
 
-        self.form_mentor.tableWidget.cellClicked.connect(self.on_item_clicked)
-        # self.form_mentor.tableWidget.cellPressed.connect(self.on_item_clicked)
-        self.form_mentor.tableWidget.clicked.connect(self.on_item_clicked)
-        # self.form_mentor.tableWidget.itemClicked.connect(self.on_item_clicked)
+        # Connect the cellEntered signal to the on_cell_entered method
+        self.form_mentor.tableWidget.cellEntered.connect(self.on_cell_entered)
 
-        # self.setMouseTracking(True)
-        # self.setMouseTracking(True)
-        # self.form_mentor.tableWidget.hasMouseTracking()
+        # Connect the cellEntered signal to the on_cell_entered method
+        self.form_mentor.tableWidget.cellClicked.connect(self.on_cell_clicked)
 
-    def mouseMoveEvent(self, event):
-        item = self.form_mentor.tableWidget.currentItem()
-        if item:
-            QToolTip.setFont(QFont("SansSerif", 10))
-            QToolTip.showText(self.mapToGlobal(event.pos()), item.text(), self)
-
-    # This code is for cell clicking
-    def on_item_clicked(self, event):
-        item = self.form_mentor.tableWidget.currentItem()
-        if item:
-            QToolTip.setFont(QFont("SansSerif", 10))
-            item.setToolTip(item.text())
-            # QToolTip.showText(self.mapToGlobal(event.pos()), item.text(), self)
-
-        # print(it)
-        # it.QToolTip.showText('Insert')
-        # self.form_mentor.tableWidget.onHovered()
-
-    # This code is for header clicking
-    def on_header_clicked(self, logical_index):
-        self.form_mentor.comboBoxFilterOptions.clear()
-        self.filtering_column = logical_index
-        self.form_mentor.comboBoxFilterOptions.setPlaceholderText("")
-        self.form_mentor.comboBoxFilterOptions.addItems(main.filter_active_options(self.mentees, logical_index))
-
-    # def mouseMoveEvent(self, event):
-    #     item = self.itemAt(event.pos())
-    #     if item:
-    #         QToolTip.setFont(QFont("SansSerif", 10))
-    #         QToolTip.showText(self.mapToGlobal(event.pos()), item.text(), self)
-    # def mouseMoveEvent(self, event):
-    #     QToolTip.setFont(QFont('SansSerif', 10))
-    #     it = self.form_mentor.tableWidget.item(event, self.form_mentor.tableWidget.currentItem().column())
-    #     it.setToolTip('This is a <b>QPushButton</b> widget')
+        # This code enables mouse tracking on tableWidget
+        self.form_mentor.tableWidget.setMouseTracking(True)
 
     def search(self):
         searched_mentees = [self.mentees[0]]
@@ -146,6 +108,44 @@ class MentorPage(QWidget):
 
     def app_exit(self):
         self.close()
+
+# .....................................................................................................................#
+# ............................................ PRESENTATION CODES START ...............................................#
+# .....................................................................................................................#
+
+    # This code is written to make the contents appear briefly when hovering over the cell.
+    def on_cell_entered(self, row, column):
+        # Get the text of the cell at the specified row and column
+        item_text = self.form_mentor.tableWidget.item(row, column).text()
+
+        # Show a tooltip with the cell text
+        tooltip = self.form_mentor.tableWidget.viewport().mapToGlobal(
+            self.form_mentor.tableWidget.visualItemRect(self.form_mentor.tableWidget.item(row, column)).topLeft())
+        QToolTip.setFont(QFont("SansSerif", 10))
+        QToolTip.showText(tooltip, item_text)
+
+    # This code is for cell clicking
+    # If you want to show a persistent tooltip with the cell text. You need to use this code.
+    # I coded it for 'on_cell_clicked' method
+    def on_cell_clicked(self, row, column):
+        # Get the text of the clicked cell
+        item_text = self.form_mentor.tableWidget.item(row, column).text()
+
+        # Show a persistent tooltip with the cell text
+        tooltip = self.form_mentor.tableWidget.viewport().mapToGlobal(
+            self.form_mentor.tableWidget.visualItemRect(self.form_mentor.tableWidget.item(row, column)).topLeft())
+        QToolTip.setFont(QFont("SansSerif", 10))
+        QToolTip.showText(tooltip, item_text, self.form_mentor.tableWidget)
+
+    # This code is for header clicking
+    def on_header_double_clicked(self, logical_index):
+        self.form_mentor.comboBoxFilterOptions.clear()
+        self.filtering_column = logical_index
+        self.form_mentor.comboBoxFilterOptions.setPlaceholderText("")
+        self.form_mentor.comboBoxFilterOptions.addItems(main.filter_active_options(self.mentees, logical_index))
+
+
+# ........................................... Presentation Codes END ..................................................#
 
 
 if __name__ == "__main__":
