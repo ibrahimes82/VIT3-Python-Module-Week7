@@ -1,5 +1,5 @@
-from PyQt6.QtWidgets import *
-from PyQt6.QtWidgets import QWidget
+from PyQt6.QtGui import QFont
+from PyQt6.QtWidgets import QWidget, QApplication, QToolTip, QTableWidget, QTableWidgetItem
 
 import main
 from UI_Files.applications_ui import Ui_FormApplications
@@ -43,6 +43,18 @@ class ApplicationsPage(QWidget):
         self.form_applications.pushButtonFilterApplications.clicked.connect(self.app_filter_applications)
         self.form_applications.pushButtonBackMenu.clicked.connect(self.back_menu)
         self.form_applications.pushButtonExit.clicked.connect(self.app_exit)
+
+        # Activity code to offer new filtering options when you click on the titles
+        # self.form_applications.tableWidget.horizontalHeader().sectionClicked.connect(self.on_header_clicked)
+
+        # Connect the cellEntered signal to the on_cell_entered method
+        self.form_applications.tableWidget.cellEntered.connect(self.on_cell_entered)
+
+        # Connect the cellEntered signal to the on_cell_entered method
+        self.form_applications.tableWidget.cellClicked.connect(self.on_cell_clicked)
+
+        # This code enables mouse tracking on tableWidget
+        self.form_applications.tableWidget.setMouseTracking(True)
 
     def app_search(self):
         searched_applications = [self.applications[0]]
@@ -262,6 +274,44 @@ class ApplicationsPage(QWidget):
 
     def app_exit(self):
         self.close()
+
+# .....................................................................................................................#
+# ............................................ PRESENTATION CODES START ...............................................#
+# .....................................................................................................................#
+
+    # This code is written to make the contents appear briefly when hovering over the cell.
+    def on_cell_entered(self, row, column):
+        # Get the text of the cell at the specified row and column
+        item_text = self.form_applications.tableWidget.item(row, column).text()
+
+        # Show a tooltip with the cell text
+        tooltip = self.form_applications.tableWidget.viewport().mapToGlobal(
+            self.form_applications.tableWidget.visualItemRect(
+                self.form_applications.tableWidget.item(row, column)).topLeft())
+        QToolTip.setFont(QFont("SansSerif", 10))
+        QToolTip.showText(tooltip, item_text)
+
+        # This code is for cell clicking
+        # If you want to show a persistent tooltip with the cell text. You need to use this code.
+        # I coded it for 'on_cell_clicked' method
+
+    def on_cell_clicked(self, row, column):
+        # Get the text of the clicked cell
+        item_text = self.form_applications.tableWidget.item(row, column).text()
+
+        # Show a persistent tooltip with the cell text
+        tooltip = self.form_applications.tableWidget.viewport().mapToGlobal(
+            self.form_applications.tableWidget.visualItemRect(
+                self.form_applications.tableWidget.item(row, column)).topLeft())
+        QToolTip.setFont(QFont("SansSerif", 10))
+        QToolTip.showText(tooltip, item_text, self.form_applications.tableWidget)
+
+        # This code is for header clicking
+
+    # def on_header_clicked(self)
+
+
+# ........................................... Presentation Codes END ..................................................#
 
 
 if __name__ == "__main__":
