@@ -35,7 +35,7 @@ def list_exclude(a_list, excluded_column_indexes):
             # don't add anything to item
             if j in excluded_column_indexes:
                 continue
-            # Otherwise add column to the item, which will become a row for new list
+            # Otherwise add col to the item, which will become a row for new list
             item.append(col)
         n_list.append(item)  # add new item(row) to the new list
     return n_list
@@ -51,8 +51,6 @@ def filter_active_options(a_list, filtering_column):
         filter_options = sorted(filter_options, key=int)
     else:
         filter_options.sort()
-    # This(two rows which are below) is an issue that is inside the code, and it is in a specific language.
-    # It must be changed while updating the application for any other language
     return filter_options
 
 
