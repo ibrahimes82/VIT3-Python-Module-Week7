@@ -4,12 +4,12 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 
 def connection_hub(credentials, table, worksheet_name):
-    # Google Sheets API'ya erişim için kimlik doğrulama bilgileri
+    # Authentication information for accessing the Google Sheets API
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
     creds = ServiceAccountCredentials.from_json_keyfile_name(credentials, scope)
-    client = gspread.authorize(creds)  # Kimlik doğrulama bilgileriyle oturum açma
-    worksheet = client.open(table).worksheet(worksheet_name)  # Çalışma sayfasına erişim
+    client = gspread.authorize(creds)  # Sign in with authentication credentials
+    worksheet = client.open(table).worksheet(worksheet_name)  # Access the worksheet
     return worksheet
 
 
