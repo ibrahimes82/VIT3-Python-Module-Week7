@@ -21,7 +21,7 @@ def write2table(page, a_list):
     table_widget.setRowCount(len(a_list[1:]))  # Fill in the table
     for i, row in enumerate(a_list[1:]):
         for j, col in enumerate(row):
-            item = QTableWidgetItem(str(col))
+            item = QTableWidgetItem(str(col).strip())   # with strip() method, we make maintenance to the data.
             table_widget.setItem(i, j, item)
     return True
 
