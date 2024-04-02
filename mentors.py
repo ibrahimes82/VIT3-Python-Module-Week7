@@ -12,8 +12,9 @@ class MentorPage(QWidget):
         self.form_mentor = Ui_FormMentor()
         self.form_mentor.setupUi(self)
 
-        # The number written here determines the column to be sorted in the combobox below.
-        # Different filtering opportunities can be obtained by changing the application while it is running.
+        # The number written here determines the column to be sorted in the combobox below at the app beginning.
+        # However, different filtering opportunities can be obtained by double-clicking to the headers while the
+        # application is running.
         self.filtering_column = 4
         self.form_mentor.comboBoxFilterOptions.setPlaceholderText("Katılımcı Hakkındaki Tavsiyelere Göre Filtreleyin")
 
@@ -144,6 +145,7 @@ class MentorPage(QWidget):
     def on_header_clicked(self, logical_index):
         # Sort the table based on the clicked column
         self.form_mentor.tableWidget.sortItems(logical_index)
+        print(logical_index)
 
     # This code is for header double-clicking. Activity code to offer new filtering options when you click on the titles
     def on_header_double_clicked(self, logical_index):
