@@ -38,7 +38,7 @@ class InterviewsPage(QWidget):
         # Connect the header's sectionClicked signal to the on_header_clicked method
         self.form_interviews.tableWidget.horizontalHeader().sectionClicked.connect(self.on_header_clicked)
 
-        # This code enables mouse tracking on tableWidget
+        # This code enables mouse tracking on tableWidget. It is needed for all mouse activity options above!
         self.form_interviews.tableWidget.setMouseTracking(True)
 
     def search_name(self):

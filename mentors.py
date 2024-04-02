@@ -31,9 +31,6 @@ class MentorPage(QWidget):
         self.form_mentor.pushButtonExit.clicked.connect(self.app_exit)
         self.form_mentor.comboBoxFilterOptions.addItems(main.filter_active_options(self.mentees, self.filtering_column))
 
-        # Activity code to offer new filtering options when you click on the titles
-        self.form_mentor.tableWidget.horizontalHeader().sectionDoubleClicked.connect(self.on_header_double_clicked)
-
         # Connect the cellEntered signal to the on_cell_entered method
         self.form_mentor.tableWidget.cellEntered.connect(self.on_cell_entered)
 
@@ -43,7 +40,10 @@ class MentorPage(QWidget):
         # Connect the header's sectionClicked signal to the on_header_clicked method
         self.form_mentor.tableWidget.horizontalHeader().sectionClicked.connect(self.on_header_clicked)
 
-        # This code enables mouse tracking on tableWidget
+        # Connect the header's sectionDoubleClicked signal to the on_header_double_clicked method
+        self.form_mentor.tableWidget.horizontalHeader().sectionDoubleClicked.connect(self.on_header_double_clicked)
+
+        # This code enables mouse tracking on tableWidget. It is needed for all mouse activity options above!
         self.form_mentor.tableWidget.setMouseTracking(True)
 
     def search(self):
@@ -145,7 +145,7 @@ class MentorPage(QWidget):
         # Sort the table based on the clicked column
         self.form_mentor.tableWidget.sortItems(logical_index)
 
-    # This code is for header clicking
+    # This code is for header double-clicking. Activity code to offer new filtering options when you click on the titles
     def on_header_double_clicked(self, logical_index):
         self.form_mentor.comboBoxFilterOptions.clear()
         self.filtering_column = logical_index
