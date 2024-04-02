@@ -40,6 +40,9 @@ class MentorPage(QWidget):
         # Connect the cellEntered signal to the on_cell_entered method
         self.form_mentor.tableWidget.cellClicked.connect(self.on_cell_clicked)
 
+        # Connect the header's sectionClicked signal to the on_header_clicked method
+        self.form_mentor.tableWidget.horizontalHeader().sectionClicked.connect(self.on_header_clicked)
+
         # This code enables mouse tracking on tableWidget
         self.form_mentor.tableWidget.setMouseTracking(True)
 
@@ -136,6 +139,11 @@ class MentorPage(QWidget):
             self.form_mentor.tableWidget.visualItemRect(self.form_mentor.tableWidget.item(row, column)).topLeft())
         QToolTip.setFont(QFont("SansSerif", 10))
         QToolTip.showText(tooltip, item_text, self.form_mentor.tableWidget)
+
+    # This code is for header clicking. This method sorts the data based on the column that was clicked
+    def on_header_clicked(self, logical_index):
+        # Sort the table based on the clicked column
+        self.form_mentor.tableWidget.sortItems(logical_index)
 
     # This code is for header clicking
     def on_header_double_clicked(self, logical_index):
