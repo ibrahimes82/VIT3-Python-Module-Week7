@@ -1,3 +1,6 @@
+from datetime import datetime
+
+from PyQt6.QtCore import Qt, QDateTime
 from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QWidget
@@ -9,7 +12,8 @@ from UI_Files.interviews_ui import Ui_FormInterviews
 class InterviewsPage(QWidget):
     def __init__(self, current_user):
         super().__init__()
-        self.current_user = current_user
+        self.current_user = current_user  # Variable name is absolutely perfect for why it is here
+        self.sort_order = {}  # Dictionary to keep track of sort order for each column
         self.form_interviews = Ui_FormInterviews()
         self.form_interviews.setupUi(self)
 
@@ -123,8 +127,20 @@ class InterviewsPage(QWidget):
 
     # This code is for header clicking. This method sorts the data based on the column that was clicked
     def on_header_clicked(self, logical_index):
-        # Sort the table based on the clicked column
-        self.form_interviews.tableWidget.sortItems(logical_index)
+        # Get the current sort order for the clicked column
+        current_order = self.sort_order.get(logical_index, None)
+
+        # Toggle between ascending and descending order
+        if current_order == Qt.SortOrder.AscendingOrder:
+            new_order = Qt.SortOrder.DescendingOrder
+        else:
+            new_order = Qt.SortOrder.AscendingOrder
+
+        # Update the sort order dictionary
+        self.sort_order[logical_index] = new_order
+
+        # Sort the table based on the clicked column and the new sort order
+        self.form_interviews.tableWidget.sortItems(logical_index, order=new_order)
 
 
 # ........................................... Presentation Codes END ..................................................#

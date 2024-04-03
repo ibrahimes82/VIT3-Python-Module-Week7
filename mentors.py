@@ -1,3 +1,6 @@
+from datetime import datetime
+
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QApplication, QToolTip
 from PyQt6.QtGui import QFont
 
@@ -8,7 +11,8 @@ from UI_Files.mentors_ui import Ui_FormMentor
 class MentorPage(QWidget):
     def __init__(self, current_user) -> None:
         super().__init__()
-        self.current_user = current_user
+        self.current_user = current_user  # Variable name is absolutely perfect for why it is here
+        self.sort_order = {}  # Dictionary to keep track of sort order for each column
         self.form_mentor = Ui_FormMentor()
         self.form_mentor.setupUi(self)
 
@@ -113,9 +117,9 @@ class MentorPage(QWidget):
     def app_exit(self):
         self.close()
 
-# .....................................................................................................................#
-# ............................................ PRESENTATION CODES START ...............................................#
-# .....................................................................................................................#
+    # .................................................................................................................#
+    # ........................................ PRESENTATION CODES START ...............................................#
+    # .................................................................................................................#
 
     # This code is written to make the contents appear briefly when hovering over the cell.
     def on_cell_entered(self, row, column):
@@ -143,9 +147,20 @@ class MentorPage(QWidget):
 
     # This code is for header clicking. This method sorts the data based on the column that was clicked
     def on_header_clicked(self, logical_index):
-        # Sort the table based on the clicked column
-        self.form_mentor.tableWidget.sortItems(logical_index)
-        print(logical_index)
+        # Get the current sort order for the clicked column
+        current_order = self.sort_order.get(logical_index, None)
+
+        # Toggle between ascending and descending order
+        if current_order == Qt.SortOrder.AscendingOrder:
+            new_order = Qt.SortOrder.DescendingOrder
+        else:
+            new_order = Qt.SortOrder.AscendingOrder
+
+        # Update the sort order dictionary
+        self.sort_order[logical_index] = new_order
+
+        # Sort the table based on the clicked column and the new sort order
+        self.form_mentor.tableWidget.sortItems(logical_index, order=new_order)
 
     # This code is for header double-clicking. Activity code to offer new filtering options when you click on the titles
     def on_header_double_clicked(self, logical_index):
