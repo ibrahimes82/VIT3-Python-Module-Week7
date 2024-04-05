@@ -19,6 +19,9 @@ class InterviewsPage(QWidget):
 
         self.worksheet = main.connection_hub('credentials/key.json', 'Mulakatlar', 'Sayfa1')
         self.interviews = self.worksheet.get_all_values()
+        # Rebuilds the list based on the data type of the cells.
+        self.interviews = main.remake_it_with_types(self.interviews)
+
         main.write2table(self.form_interviews, [self.interviews[0]])  # This code updates the tableWidget headers
         self.menu_admin = None
         self.menu_user = None
