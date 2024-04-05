@@ -20,6 +20,8 @@ class ApplicationsPage(QWidget):
         self.form_applications.setupUi(self)
         self.worksheet = main.connection_hub('credentials/key.json', 'Basvurular', 'Sayfa1')
         self.applications = self.worksheet.get_all_values()
+        # Rebuilds the list based on the data type of the cells.
+        self.applications = main.remake_it_with_types(self.applications)
 
         #   This is a special code list manipulation for "total applications"
         #   You can change the wanted columns for tableWidget here
