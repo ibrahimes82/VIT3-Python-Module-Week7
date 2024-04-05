@@ -137,6 +137,7 @@ class Ui_FormMentor(object):
         self.pushButtonSearch.setObjectName("pushButtonSearch")
         self.tableWidget = QtWidgets.QTableWidget(parent=FormMentor)
         self.tableWidget.setGeometry(QtCore.QRect(230, 170, 921, 341))
+        self.tableWidget.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.tableWidget.setStyleSheet("background-color: rgba(0, 0, 0,0%);")
         self.tableWidget.setAutoScrollMargin(16)
         self.tableWidget.setObjectName("tableWidget")
