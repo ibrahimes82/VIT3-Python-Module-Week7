@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QApplication, QToolTip
 from PyQt6.QtGui import QFont
@@ -24,6 +22,8 @@ class MentorPage(QWidget):
 
         self.worksheet = main.connection_hub('credentials/key.json', 'Mentor', 'Sayfa1')
         self.mentees = self.worksheet.get_all_values()
+        self.mentees = main.remake_it_with_types(self.mentees)  # Rebuilds the list based on the data type of the cells.
+
         main.write2table(self.form_mentor, [self.mentees[0]])  # This code updates the tableWidget headers
         self.menu_user = None
         self.menu_admin = None
@@ -158,16 +158,16 @@ class MentorPage(QWidget):
 
         # Update the sort order dictionary
         self.sort_order[logical_index] = new_order
-
         # Sort the table based on the clicked column and the new sort order
         self.form_mentor.tableWidget.sortItems(logical_index, order=new_order)
 
     # This code is for header double-clicking. Activity code to offer new filtering options when you click on the titles
     def on_header_double_clicked(self, logical_index):
-        self.form_mentor.comboBoxFilterOptions.clear()
-        self.filtering_column = logical_index
-        self.form_mentor.comboBoxFilterOptions.setPlaceholderText("")
-        self.form_mentor.comboBoxFilterOptions.addItems(main.filter_active_options(self.mentees, logical_index))
+        if type(self.mentees[1][logical_index]) is str:
+            self.form_mentor.comboBoxFilterOptions.clear()
+            self.filtering_column = logical_index
+            self.form_mentor.comboBoxFilterOptions.setPlaceholderText("")
+            self.form_mentor.comboBoxFilterOptions.addItems(main.filter_active_options(self.mentees, logical_index))
 
 
 # ........................................... Presentation Codes END ..................................................#
