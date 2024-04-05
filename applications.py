@@ -1,8 +1,6 @@
-from datetime import datetime
-
-from PyQt6.QtCore import Qt, QDateTime
+from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QFont
-from PyQt6.QtWidgets import QWidget, QApplication, QToolTip, QTableWidget, QTableWidgetItem
+from PyQt6.QtWidgets import QWidget, QApplication, QToolTip
 
 import main
 from UI_Files.applications_ui import Ui_FormApplications

@@ -1,8 +1,9 @@
 from PyQt6 import QtWidgets, QtCore
 from PyQt6.QtWidgets import QApplication, QTableWidgetItem
 from datetime import datetime
-import gspread, re
+import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import re
 
 
 # Class that allows operations to be performed by converting the type of data held in TableWidget cells to integer,
@@ -34,11 +35,9 @@ def write2table(page, a_list):
             # with strip() method, we make maintenance to the data.
             # (If it is not made by "remake_it_with_types" function)
             item = QTableWidgetItem(str(col).strip())
-            # print(is_valid_date_format(item.text()))
-            if item.text().isdigit():  #
-                text = item.text()
-                # print(type(text))  #
-                item = NumericItem(text)  # An example of a tableWidget class defined at the top of this page
+            if item.text().isdigit():       #
+                text = item.text()          #
+                item = NumericItem(text)    # An example of a tableWidget class defined at the top of this page
             item.setData(QtCore.Qt.ItemDataRole.UserRole, col)
             table_widget.setItem(i, j, item)
     return True
@@ -95,12 +94,10 @@ def remake_it_with_types(a_list):
                 item = int(item)
             elif is_valid_date_format(item):
                 item = datetime.strptime(item, "%d.%m.%Y")
-                # item = item.strftime("%Y.%m.%d")
-                # print(item)
+                item = item.strftime("%Y/%m/%d")  # Activate it if u want to print datetime data in the format you want.
             n_row.append(item)
         n_list.append(n_row)
         n_row = []
-    # print(n_list)
     return n_list
 
 
