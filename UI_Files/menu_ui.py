@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'UI_Files/user_menu_ui.ui'
+# Form implementation generated from reading ui file 'UI_Files/menu_ui.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -179,6 +179,36 @@ class Ui_FormUserMenu(object):
         self.toolButtonAccount.setText("")
         self.toolButtonAccount.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonFollowStyle)
         self.toolButtonAccount.setObjectName("toolButtonAccount")
+        self.pushButtonManagement = QtWidgets.QPushButton(parent=FormUserMenu)
+        self.pushButtonManagement.setGeometry(QtCore.QRect(210, 250, 81, 81))
+        self.pushButtonManagement.setMinimumSize(QtCore.QSize(81, 81))
+        self.pushButtonManagement.setMaximumSize(QtCore.QSize(81, 81))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(8)
+        font.setBold(True)
+        self.pushButtonManagement.setFont(font)
+        self.pushButtonManagement.setStyleSheet("QPushButton{\n"
+"    border-radius : 37px;\n"
+"    background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 123, 0, 255), stop:1 rgba(0, 255, 255, 255));\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"QPushButton:hover{\n"
+"    \n"
+"    background-color: rgb(0, 170, 28);\n"
+"}\n"
+"")
+        self.pushButtonManagement.setObjectName("pushButtonManagement")
+        self.labelPicMenu.raise_()
+        self.labelUsers.raise_()
+        self.pushButtonManagement.raise_()
+        self.labelLogo.raise_()
+        self.pushButtonApplications.raise_()
+        self.pushButtonInterviews.raise_()
+        self.pushButtonExit.raise_()
+        self.pushButtonSignOut.raise_()
+        self.pushButtonMentorMeeting.raise_()
+        self.frameCurrentUser.raise_()
 
         self.retranslateUi(FormUserMenu)
         QtCore.QMetaObject.connectSlotsByName(FormUserMenu)
@@ -189,7 +219,7 @@ class Ui_FormUserMenu(object):
 
     def retranslateUi(self, FormUserMenu):
         _translate = QtCore.QCoreApplication.translate
-        FormUserMenu.setWindowTitle(_translate("FormUserMenu", "USER MENU"))
+        FormUserMenu.setWindowTitle(_translate("FormUserMenu", "MENU"))
         self.pushButtonApplications.setText(_translate("FormUserMenu", "Applications"))
         self.pushButtonInterviews.setText(_translate("FormUserMenu", "Interviews"))
         self.pushButtonExit.setText(_translate("FormUserMenu", "Exit"))
@@ -197,6 +227,7 @@ class Ui_FormUserMenu(object):
         self.pushButtonMentorMeeting.setText(_translate("FormUserMenu", "Mentor\n"
 "Meeting"))
         self.labelCurrentUser.setText(_translate("FormUserMenu", "Account"))
+        self.pushButtonManagement.setText(_translate("FormUserMenu", "Management"))
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FormAdminMenu</class>
- <widget class="QWidget" name="FormAdminMenu">
+ <class>FormUserMenu</class>
+ <widget class="QWidget" name="FormUserMenu">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>ADMIN MENU</string>
+   <string>MENU</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -40,6 +40,13 @@
      <width>261</width>
      <height>101</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>8</pointsize>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="styleSheet">
     <string notr="true">background-color: rgba(0, 0, 0,0%);</string>
@@ -78,50 +85,6 @@
    </property>
    <property name="scaledContents">
     <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButtonExit">
-   <property name="geometry">
-    <rect>
-     <x>278</x>
-     <y>341</y>
-     <width>75</width>
-     <height>75</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>75</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>75</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>8</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-	border-radius : 37px;
-	background-color: rgb(243, 199, 65);
-	color: rgb(255, 255, 255);
-}
-QPushButton:hover{
-	
-	background-color: rgb(162, 132, 43);
-}
-</string>
-   </property>
-   <property name="text">
-    <string>Exit</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButtonApplications">
@@ -170,6 +133,294 @@ QPushButton:hover{
     <string>Applications</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButtonInterviews">
+   <property name="geometry">
+    <rect>
+     <x>318</x>
+     <y>223</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>8</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	border-radius : 37px;
+	background-color: rgb(0, 108, 143);
+	color: rgb(255, 255, 255);
+}
+QPushButton:hover{
+	
+	background-color: rgb(0, 196, 255);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Interviews</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonExit">
+   <property name="geometry">
+    <rect>
+     <x>278</x>
+     <y>341</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>8</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	border-radius : 37px;
+	background-color: rgb(243, 199, 65);
+	color: rgb(255, 255, 255);
+}
+QPushButton:hover{
+	
+	background-color: rgb(162, 132, 43);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonSignOut">
+   <property name="geometry">
+    <rect>
+     <x>149</x>
+     <y>341</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>8</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	border-radius : 37px;
+	background-color: rgb(255, 140, 61);
+	color: rgb(255, 255, 255);
+}
+QPushButton:hover{
+	
+	background-color: rgb(170, 92, 41);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Sign Out</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonMentorMeeting">
+   <property name="geometry">
+    <rect>
+     <x>107</x>
+     <y>224</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>75</width>
+     <height>75</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>8</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	border-radius : 37px;
+	background-color: rgb(255, 109, 102);
+	color: rgb(255, 255, 255);
+}
+QPushButton:hover{
+	background-color: rgb(173, 73, 69);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Mentor
+Meeting</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelUsers">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>245</y>
+     <width>100</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>100</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>100</width>
+     <height>100</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>8</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(0, 0, 0,0%);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>pictures/user_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frameCurrentUser">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>0</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="labelCurrentUserPic">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="pixmap">
+     <pixmap>pictures/werhere_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelCurrentUser">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Account</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonAccount">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);
+background-image:/src_/werhere_icon.png;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonFollowStyle</enum>
+    </property>
+   </widget>
+  </widget>
   <widget class="QPushButton" name="pushButtonManagement">
    <property name="geometry">
     <rect>
@@ -214,209 +465,16 @@ QPushButton:hover{
     <string>Management</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonMentorMeeting">
-   <property name="geometry">
-    <rect>
-     <x>106</x>
-     <y>224</y>
-     <width>75</width>
-     <height>75</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>75</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>75</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>8</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-	border-radius : 37px;
-	background-color: rgb(255, 109, 102);
-	color: rgb(255, 255, 255);
-}
-QPushButton:hover{
-	background-color: rgb(195, 82, 78);
-}
-</string>
-   </property>
-   <property name="text">
-    <string>Mentor 
-Meeting</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButtonSignOut">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>342</y>
-     <width>75</width>
-     <height>75</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>75</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>75</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>8</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-	border-radius : 37px;
-	background-color: rgb(255, 140, 61);
-	color: rgb(255, 255, 255);
-}
-QPushButton:hover{
-	background-color: rgb(184, 100, 44);
-}
-</string>
-   </property>
-   <property name="text">
-    <string>Sign Out</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButtonInterviews">
-   <property name="geometry">
-    <rect>
-     <x>319</x>
-     <y>223</y>
-     <width>75</width>
-     <height>75</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>75</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>75</width>
-     <height>75</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>8</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-	border-radius : 37px;
-	background-color: rgb(0, 108, 143);
-	color: rgb(255, 255, 255);
-}
-QPushButton:hover{
-	background-color: rgb(0, 152, 198);
-}
-</string>
-   </property>
-   <property name="text">
-    <string>Interviews</string>
-   </property>
-  </widget>
-  <widget class="QFrame" name="frameCurrentUser">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>0</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgba(0, 0, 0, 0);</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-   <widget class="QLabel" name="labelCurrentUserPic">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>0</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>pictures/werhere_icon.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="toolButtonAccount">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>0</y>
-      <width>31</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="toolButtonStyle">
-     <enum>Qt::ToolButtonFollowStyle</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="labelCurrentUser">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>51</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Account</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </widget>
+  <zorder>labelPicMenu</zorder>
+  <zorder>labelUsers</zorder>
+  <zorder>pushButtonManagement</zorder>
+  <zorder>labelLogo</zorder>
+  <zorder>pushButtonApplications</zorder>
+  <zorder>pushButtonInterviews</zorder>
+  <zorder>pushButtonExit</zorder>
+  <zorder>pushButtonSignOut</zorder>
+  <zorder>pushButtonMentorMeeting</zorder>
+  <zorder>frameCurrentUser</zorder>
  </widget>
  <tabstops>
   <tabstop>pushButtonExit</tabstop>
@@ -424,7 +482,6 @@ QPushButton:hover{
   <tabstop>pushButtonMentorMeeting</tabstop>
   <tabstop>pushButtonApplications</tabstop>
   <tabstop>pushButtonInterviews</tabstop>
-  <tabstop>pushButtonManagement</tabstop>
  </tabstops>
  <resources/>
  <connections/>

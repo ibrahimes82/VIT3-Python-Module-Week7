@@ -1,13 +1,27 @@
-import gspread
+from PyQt6 import QtWidgets, QtCore
 from PyQt6.QtWidgets import QApplication, QTableWidgetItem
+from datetime import datetime
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+import re
 
 
-def connection_hub(credentials, table):
-    gc = gspread.service_account(filename=credentials)
-    spreadsheet = gc.open(table)
-    worksheet = spreadsheet.get_worksheet(0)
-    items = worksheet.get_all_values()
-    return items
+# Class that allows operations to be performed by converting the type of data held in TableWidget cells to integer,
+# which is its original type in string.
+class NumericItem(QtWidgets.QTableWidgetItem):
+    def __lt__(self, other):
+        return (self.data(QtCore.Qt.ItemDataRole.UserRole) <
+                other.data(QtCore.Qt.ItemDataRole.UserRole))
+
+
+def connection_hub(credentials, table, worksheet_name):
+    # Authentication information for accessing the Google Sheets API
+    scope = ['https://spreadsheets.google.com/feeds',
+             'https://www.googleapis.com/auth/drive']
+    creds = ServiceAccountCredentials.from_json_keyfile_name(credentials, scope)
+    client = gspread.authorize(creds)  # Sign in with authentication credentials
+    worksheet = client.open(table).worksheet(worksheet_name)  # Access the worksheet
+    return worksheet
 
 
 def write2table(page, a_list):
@@ -18,7 +32,13 @@ def write2table(page, a_list):
     table_widget.setRowCount(len(a_list[1:]))  # Fill in the table
     for i, row in enumerate(a_list[1:]):
         for j, col in enumerate(row):
-            item = QTableWidgetItem(str(col))
+            # with strip() method, we make maintenance to the data.
+            # (If it is not made by "remake_it_with_types" function)
+            item = QTableWidgetItem(str(col).strip())
+            if item.text().isdigit():       #
+                text = item.text()          #
+                item = NumericItem(text)    # An example of a tableWidget class defined at the top of this page
+            item.setData(QtCore.Qt.ItemDataRole.UserRole, col)
             table_widget.setItem(i, j, item)
     return True
 
@@ -32,10 +52,84 @@ def list_exclude(a_list, excluded_column_indexes):
             # don't add anything to item
             if j in excluded_column_indexes:
                 continue
-            # Otherwise add column to the item, which will become a row for new list
+            # Otherwise add col to the item, which will become a row for new list
             item.append(col)
-        n_list.append(item)     # add new item(row) to the new list
+        n_list.append(item)  # add new item(row) to the new list
     return n_list
+
+
+def filter_active_options(a_list, filtering_column):
+    option_elements = []
+    for row in a_list[1:]:
+        option_elements.append(row[filtering_column].strip())
+    filter_options = list(set(option_elements))
+
+    if filter_options[0].isdigit():
+        filter_options = sorted(filter_options, key=int)
+    else:
+        filter_options.sort()
+    return filter_options
+
+
+def rearrange_the_list(a_list, column):
+    data_list = []
+
+    for row in a_list[1:]:
+        if str(row[column]).isdigit():
+            row[column] = int(row[column])
+        data_list.append(row)
+
+    rearranged_list = sorted(data_list, key=lambda x: x[column])
+    rearranged_list.insert(0, a_list[0])
+    return rearranged_list
+
+
+def remake_it_with_types(a_list):
+    n_list = [a_list[0]]
+    n_row = []
+    for i, row in enumerate(a_list[1:]):
+        for j, col in enumerate(row):
+            item = str(col).strip()  # with strip() method, we make maintenance to the data.
+            if item.isdigit():
+                item = int(item)
+            elif is_valid_date_format(item):
+                item = datetime.strptime(item, "%d.%m.%Y")
+                item = item.strftime("%Y/%m/%d")  # Activate it if u want to print datetime data in the format you want.
+            n_row.append(item)
+        n_list.append(n_row)
+        n_row = []
+    return n_list
+
+
+# This function is a datetime checker function. It checks a string value is datetime or not.
+def is_valid_date_format(date_str):
+    formats = [r'^\d{2}[./-]\d{2}[./-]\d{4}$',
+               r'^\d{4}[./-]\d{2}[./-]\d{2}$',
+               r'^\d{2}[./-]\d{2}[./-]\d{4} \d{2}[:.]\d{2}[:.]\d{2}$',
+               r'^\d{4}[./-]\d{2}[./-]\d{2} \d{2}[:.]\d{2}[:.]\d{2}$',
+
+               # r'^\d{1}[.-/]\d{2}[.-/]\d{4}$',
+               # r'^\d{2}[.-/]\d{1}[.-/]\d{4}$',
+               # r'^\d{1}[.-/]\d{1}[.-/]\d{4}$',
+               #
+               # r'^\d{4}[.-/]\d{2}[.-/]\d{1}$',
+               # r'^\d{4}[.-/]\d{1}[.-/]\d{2}$',
+               # r'^\d{4}[.-/]\d{1}[.-/]\d{1}$',
+               #
+               # r'^\d{1}[.-/]\d{2}[.-/]\d{4} \d{2}[:.]\d{2}[:.]\d{2}$',
+               # r'^\d{2}[.-/]\d{1}[.-/]\d{4} \d{2}[:.]\d{2}[:.]\d{2}$',
+               # r'^\d{1}[.-/]\d{1}[.-/]\d{4} \d{2}[:.]\d{2}[:.]\d{2}$',
+               #
+               # r'^\d{4}[.-/]\d{2}[.-/]\d{1} \d{2}[:.]\d{2}[:.]\d{2}$',
+               # r'^\d{4}[.-/]\d{1}[.-/]\d{2} \d{2}[:.]\d{2}[:.]\d{2}$',
+               # r'^\d{4}[.-/]\d{1}[.-/]\d{1} \d{2}[:.]\d{2}[:.]\d{2}$',
+               ]
+    try:
+        for i in formats:
+            if re.match(i, date_str) is not None:
+                return re.match(i, date_str) is not None
+    except ValueError:
+        return False
 
 
 if __name__ == '__main__':

@@ -1,16 +1,9 @@
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-from PyQt6 import QtWidgets, QtGui
+from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from PyQt6.QtWidgets import QWidget
 
 import main
 from UI_Files.settings_ui import Ui_FormSettings
-
-# Google Sheets API'ye erişim için izinlerin belirlenmesi
-scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials/key.json', scope)
-client = gspread.authorize(credentials)
 
 
 class SettingsPage(QWidget):
@@ -18,6 +11,7 @@ class SettingsPage(QWidget):
         super().__init__()
         self.current_user = current_user
         self.decision = None
+        self.worksheet = None
         self.form_settings = Ui_FormSettings()
         self.form_settings.setupUi(self)  # At the beginning, we are writing labels etc..
         self.user_info_page_start()
@@ -99,13 +93,13 @@ class SettingsPage(QWidget):
             raise e
 
     def update_user(self, current_u):
-        users = main.connection_hub('credentials/key.json', 'Kullanicilar')
-        sheet = client.open('Kullanicilar').worksheet('Form Yanıtları 1')
+        self.worksheet = main.connection_hub('credentials/key.json', 'Kullanicilar', 'Form Yanıtları 1')
+        users = self.worksheet.get_all_values()
         if self.decision == '1':
             for i, u in enumerate(users):
                 if u[0] == self.current_user[0]:
                     u[1] = current_u[1]
-                    sheet.update_cell(i + 1, 1 + 1, u[1])  # Writing data to Google Sheets file
+                    self.worksheet.update_cell(i + 1, 1 + 1, u[1])  # Writing data to Google Sheets file
                     return True
             else:
                 return False
@@ -114,8 +108,8 @@ class SettingsPage(QWidget):
                 if u[0] == self.current_user[0]:
                     u[3] = current_u[3]
                     u[4] = current_u[4]
-                    sheet.update_cell(i + 1, 3 + 1, u[3])  # Writing data to Google Sheets file
-                    sheet.update_cell(i + 1, 4 + 1, u[4])
+                    self.worksheet.update_cell(i + 1, 3 + 1, u[3])  # Writing data to Google Sheets file
+                    self.worksheet.update_cell(i + 1, 4 + 1, u[4])
                     return True
             else:
                 return False
